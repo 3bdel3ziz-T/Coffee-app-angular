@@ -1,0 +1,48 @@
+@use "../../../../../styles" as *;
+
+section {
+  width: 100%;
+  position: sticky;
+  // top: calc(100dvh - 73px);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  z-index: $lay999;
+  a {
+    padding: 22px;
+    transition: 300ms;
+    display: inline-block;
+    &::before {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 2px;
+      border-radius: 5px;
+      position: relative;
+      left: 50%;
+      top: 20px;
+      background: $col-orange;
+      transition: 300ms;
+    }
+    svg {
+      transition: 300ms;
+      fill: $col-darkGray;
+      margin-top: 0;
+    }
+    &.active {
+      > svg {
+        fill: $col-orange;
+        scale: 1.2;
+        margin-top: -5px;
+      }
+      &::before {
+        width: 100%;
+        left: 0;
+        top: 25px;
+      }
+    }
+  }
+}

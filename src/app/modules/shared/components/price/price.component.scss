@@ -1,0 +1,10 @@
+@use "../../../../../styles" as *;
+
+.price {
+  font-weight: 500;
+  color: $col-white;
+  .dollar-sign {
+    font-weight: 600;
+    color: $col-orange;
+  }
+}

@@ -1,0 +1,46 @@
+@use "../../../../../styles" as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  h1 {
+    color: $col-white;
+    font-weight: 600;
+    @media (min-width: 425px) {
+      width: 195px;
+    }
+  }
+}
+
+.items-title {
+  font-weight: 400;
+  color: $col-white;
+}
+.slider {
+  display: flex;
+  overflow-x: scroll;
+  gap: 25px;
+  // grid-template-columns: repeat(auto-fill, 150px);
+  // grid-template-rows: repeat(1, 235px);
+  width: 100%;
+}
+
+.buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .add-to-cart {
+    $vol: 28px;
+    width: $vol;
+    height: $vol;
+    position: relative;
+    border-radius: 7px;
+    svg {
+      $vol: 9px;
+      width: $vol;
+      height: $vol;
+    }
+  }
+}

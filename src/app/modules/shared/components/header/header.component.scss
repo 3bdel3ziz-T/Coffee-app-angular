@@ -1,0 +1,108 @@
+@use "../../../../../styles" as *;
+
+header {
+  position: sticky;
+  top: 0;
+  color: $col-white;
+  margin-bottom: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: $lay999;
+  padding: 10px 20px;
+  transition: 200ms;
+  .time {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .phone-info {
+    display: flex;
+    gap: 4.5px;
+    .signal {
+      height: 12.08px;
+      width: 19.25px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 1.8px;
+      span {
+        background-color: $col-white;
+        border-radius: 1.3px;
+        width: 3.4px;
+        &:nth-child(1) {
+          height: 4.53px;
+        }
+        &:nth-child(2) {
+          height: 6.79px;
+        }
+        &:nth-child(3) {
+          height: 9.44px;
+        }
+        &:nth-child(4) {
+          height: 12.08px;
+        }
+      }
+    }
+    .wifi {
+      $vol: 20px;
+      position: relative;
+      width: $vol;
+      height: $vol;
+      span {
+        border: 0 solid transparent;
+        border-top-color: $col-white;
+        border-right-color: $col-white;
+        position: absolute;
+        border-top-right-radius: 20px;
+        &:nth-child(1) {
+          border: none;
+          background-color: $col-white;
+          // border-width: 8px;
+          width: 5px;
+          height: 5px;
+        }
+        &:nth-child(2) {
+        }
+        &:nth-child(3) {
+        }
+        .wifi {
+          padding: 20px;
+        }
+      }
+    }
+    .battery {
+      width: 24.8px;
+      height: 13.5px;
+      border-radius: 3px;
+      position: relative;
+      background-color: $col-gray;
+      &::after {
+        content: "";
+        position: absolute;
+        right: -2.5px;
+        background-color: $col-gray;
+        width: 2px;
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+        height: 4px;
+        top: calc(50% - 2px);
+      }
+      .percent {
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+      height: 100%;
+      color: $col-dark;
+      background-color: $col-white;
+      span {
+        margin-top: 0.5px;
+        font-weight: 600;
+          font-size: 9px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+    }
+  }
+}

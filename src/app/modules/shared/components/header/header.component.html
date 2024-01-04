@@ -1,0 +1,27 @@
+<header [ngStyle]="{'background-color': changeBG ? '#0c0f14' : 'transparent' }">
+  <div class="time">{{ time }}</div>
+  <div class="phone-info">
+    <div class="signal">
+      <span *ngIf="signal >= 25"></span>
+      <span *ngIf="signal >= 50"></span>
+      <span *ngIf="signal >= 75"></span>
+      <span *ngIf="signal >= 100"></span>
+    </div>
+    <!-- <div class="wifi">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div> -->
+    <div class="battery">
+      <div
+        class="percent"
+        [ngStyle]="{
+          width: batteryPercent + '%',
+          borderRadius: batteryPercent >= 88 ? '3px' : false
+        }"
+      >
+        <span>{{ batteryPercent }}</span>
+      </div>
+    </div>
+  </div>
+</header>

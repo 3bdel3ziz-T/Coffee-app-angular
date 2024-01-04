@@ -1,0 +1,17 @@
+  <section class="categories">
+  @for (cat of categories; track $index) {
+    <label
+      for="{{ cat }}"
+      title="{{ cat }}"
+      >
+      <!-- *ngFor="let cat of categories" -->
+      <input
+        type="radio"
+        name="option"
+        id="{{ cat }}"
+        (change)="getSelected(cat)"
+      />
+      <h4>{{ cat }}</h4>
+    </label>
+  }
+  </section>

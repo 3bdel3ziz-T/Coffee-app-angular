@@ -1,0 +1,43 @@
+@use "../../../../../styles" as *;
+
+.categories {
+  display: flex;
+  flex-wrap: nowrap;
+  text-wrap: nowrap;
+  gap: 19px;
+  overflow-x: scroll;
+  height: 31px;
+  width: 100%;
+  position: relative;
+  label {
+    input[type="radio"] {
+      display: none;
+      &:checked {
+        + h4 {
+          color: $col-orange;
+          &::before {
+            width: 100%;
+            left: 0%;
+          }
+        }
+      }
+    }
+    h4 {
+      color: $col-gray;
+      font-weight: 600;
+      transition: 200ms;
+      position: relative;
+      &::before {
+        content: "";
+        background-color: $col-orange;
+        width: 0%;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 50%;
+        transition: all 300ms;
+      }
+    }
+  }
+}
