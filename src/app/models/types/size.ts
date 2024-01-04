@@ -2,24 +2,35 @@
 
 export type Sizes = [
   S: {
-    size: Size['S'];
-    price: `${number}`;
+    size: Size['S'] | Dose['S'];
+    price: Price;
   },
   M: {
-    size: Size['M'],
-    price: `${number}`,
+    size: Size['M'] | Dose['M'],
+    price: Price,
   },
   L: {
-    size: Size['L'],
-    price: `${number}`,
+    size: Size['L'] | Dose['L'],
+    price: Price,
   }
 ]
 
-export type Size = {
-  "S": "S" | `${Amounts.S}gm`,
-  "M": "M" | `${Amounts.M}gm`,
-  "L": "L" | `${Amounts.L}gm`
+export type Dose = {
+  "S": `${Amounts.S}gm`,
+  "M": `${Amounts.M}gm`,
+  "L": `${Amounts.L}gm`
 }
+export type Size = {
+  "S": "S",
+  "M": "M",
+  "L": "L"
+}
+
+export type SizeOrDose =
+  Size['S'] | Size['M'] | Size['L'] |
+  Dose['S'] | Dose['M'] | Dose['L']
+
+export type Price = `${number}`;
 
 export enum Amounts {
   "S" = "250",

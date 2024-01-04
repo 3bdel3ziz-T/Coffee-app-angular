@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CoffeeCup, CoffeeBeans } from '../models/types/coffee';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
-import { CartItem, CartIds, Id } from '../models/types/cart-item';
+import { CartItem, ItemRef, Id } from '../models/types/cart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { CartItem, CartIds, Id } from '../models/types/cart-item';
 export class AppService {
   private coffeeData: CoffeeCup[];
   private beansData: CoffeeBeans[];
-  private cartIds: CartIds[] = [];
+  private cartIds: ItemRef[] = [];
   private cartData: CartItem[] = [];
   // private favoriteData: Favorite[] = [];
 
@@ -123,7 +123,7 @@ export class AppService {
 
   getCartById(): void {
     this.cartIds.forEach
-      ((id: CartIds, i: number, arr: CartIds[]) => {
+      ((id: ItemRef, i: number, arr: ItemRef[]) => {
         if (this.cartIds[i].itemId.startsWith('C')) {
           this.cartData.push({
             item: this.findById<CoffeeCup>(this.coffeeData, this.cartIds[i].itemId),

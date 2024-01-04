@@ -13,7 +13,7 @@
           [currency]="cupData.price.USD.currencySign"
           [price]="cupData.price.USD.sizes[0].price"
         ></price>
-        <button class="add-to-cart" btnShape>
+        <button class="add-to-cart" btnShape routerLink="item-details/{{cupData.id}}">
           <svg
             width="20"
             height="20"
@@ -42,7 +42,7 @@
           [price]="beansData.price.USD.sizes[0].price"
           [currency]="beansData.price.USD.currencySign"
         ></price>
-        <button class="add-to-cart" btnShape>
+        <button class="add-to-cart" btnShape routerLink="item-details/{{beansData.id}}">
           <svg
             width="20"
             height="20"

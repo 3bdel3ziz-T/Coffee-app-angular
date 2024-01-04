@@ -1,27 +1,28 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Sizes } from 'src/app/models/types/size';
+import { Amounts, SizeOrDose, Dose } from 'src/app/models/types/size';
 import { ShareService } from '../../services/share.service';
 import { CoffeeBeans, CoffeeCup, CurrencySign, Payment } from 'src/app/models/types/coffee';
-import { Id } from 'src/app/models/types/cart-item';
+import { ItemRef, Id, Item, Amount } from 'src/app/models/types/cart-item';
 
 @Component({
   selector: 'item-details',
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
 })
-export class ItemDetailsComponent implements OnInit {
-  @Input() box: { width: string, height: string,radius: string, background: string };
-  selected: { size: string, price: `${number}`, currencySign: CurrencySign };
+export class ItemDetailsComponent implements OnInit, AfterContentChecked {
+  @Input() box: { width: string, height: string, radius: string, background: string };
+  selected!: SizeOrDose;
   @Input() showBuySection: boolean;
   showFullDescription: boolean = false;
-  selectedCurrency: string = 'USD';
   item!: CoffeeCup | CoffeeBeans;
+  // selectedCurrency: string = 'USD';
   constructor(
     private activatedRoute: ActivatedRoute,
     private shareService: ShareService,
     private location: Location) {
+    // this.getSelected(this.item.price.USD.sizes[0].size)
     this.showBuySection = true;
     this.box = {
       width: '100%',
@@ -29,23 +30,18 @@ export class ItemDetailsComponent implements OnInit {
       radius: '0',
       background: '#0c0f14'
     }
-    this.selected = {
-      size: '',
-      price: '0',
-      currencySign: CurrencySign.USD
-    };
+  }
+  ngAfterContentChecked(): void {
+    // console.log(this.selected)
   }
   ngOnInit(): void {
     const Id: any = this.activatedRoute.snapshot.paramMap.get('id')!
     this.getItemById(Id)
-    this.getSelected('S', this.item.price.USD.sizes[0].price)
+    this.selected = this.item.price.USD.sizes[0].size
   }
 
-  getSelected(selectedSize: string, price: `${number}`): void {
-    //[1] set selected size 
-    this.selected.size = selectedSize;
-    //[2] set selected index
-    this.selected.price = price
+  getSelected(selectedSize: SizeOrDose): void {
+    this.selected = selectedSize
   }
 
   back(): void {
@@ -58,8 +54,81 @@ export class ItemDetailsComponent implements OnInit {
     typeof product === 'object' ? this.item = product :
       console.error(this.shareService.getById(id))
   }
-  // addToCart(size: Sizes): void { }
-  addItem(id: Id): void {
+  addItem(): void {
+    const obj: ItemRef = {
+      itemId: this.item.id,
+      amounts: this.getAmount(this.item.id)
+      // amounts: this.incrementQuantity(this.item.id)
+    }
+    console.log(obj)
+    // if (this.item.id.startsWith('C')) {
 
+    // }
   }
+
+  getAmount(id: Id): Amount {
+    let amount: Amount = [
+      {
+        size: 'S',
+        quantity: 0,
+      }, {
+        size: 'M',
+        quantity: 0,
+      }, {
+        size: 'L',
+        quantity: 0,
+      }
+    ]
+    if (id.startsWith('C')) {
+      this.incrementQuantity(amount)
+    } else if (id.startsWith('B')) {
+      amount[0].size = '250gm'
+      amount[1].size = '500gm'
+      amount[2].size = '1000gm'
+      this.incrementQuantity(amount)
+    }
+    return amount
+  }
+incrementQuantity(arr: Amount): void {
+  arr.forEach((e: {
+    size: SizeOrDose,
+    quantity: number
+  }) => {
+    this.selected == e.size ? e.quantity++ : false;
+  })
 }
+}
+// }
+
+// let coffeeAmount: Amount =
+//   [{
+//     size: 'S',
+//     quantity: 0,
+//   }, {
+//     size: 'M',
+//     quantity: 0,
+//   }, {
+//     size: 'L',
+//     quantity: 0,
+//   }]
+// let beansAmount: Amount =
+//   [{
+//     size: 'S',
+//     quantity: 0,
+//   }, {
+//     size: 'M',
+//     quantity: 0,
+//   }, {
+//     size: 'L',
+//     quantity: 0,
+//   }]
+// }
+// for (let i = 0; i < Amount.length; i++) {
+//     Amount[i].size =
+//   }
+// Amount[i].quantity = 0;
+// return Amount
+// }
+// arr.forEach((e: T, i: number) => e[i].size == this.selected ? e[i].quantity++ : false)
+// }
+// }

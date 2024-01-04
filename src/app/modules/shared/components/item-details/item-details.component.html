@@ -146,8 +146,9 @@
               id="{{ product.size }}"
               value="{{ product.size }}"
               [checked]="product.size == item.price.USD.sizes[0].size"
-              (change)="getSelected(product.size, product.price)"
+              (change)="getSelected(product.size)"
             />
+            <!-- (click)="show()" -->
             <h5>{{ product.size }}</h5>
           </label>
           }
@@ -155,13 +156,17 @@
       </div>
       <div class="buy">
         <div class="price-box">
-          <h4>Price</h4>
-          <price [price]="selected.price"></price>
-        </div>
-        <button class="add-btn" btnShape (click)="addItem(item.id)">Add to Cart</button>
+        <h4>Price</h4>
+        @for (size of item.price.USD.sizes; track $index) { 
+          @if (selected == size.size) {
+          <price [price]="size.price"></price>
+        } }
+      </div>
+        <button class="add-btn" btnShape (click)="addItem()">
+          Add to Cart
+        </button>
       </div>
     </section>
     }
   </div>
 </section>
-
