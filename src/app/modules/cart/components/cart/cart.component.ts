@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem, Item } from 'src/app/models/types/cart-item';
+import { CoffeeBeans, CoffeeCup } from 'src/app/models/types/coffee';
 
 @Component({
   selector: 'cart-page',
@@ -8,9 +9,9 @@ import { CartItem, Item } from 'src/app/models/types/cart-item';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements AfterViewChecked {
-  cartArr: CartItem[];
+  cart: CartItem[] = [];
   constructor(private cartService: CartService) {
-    this.cartArr = this.cartService.getCartArr
+    this.cart = this.cartService.getCartData
   }
   ngAfterViewChecked(): void {
   }

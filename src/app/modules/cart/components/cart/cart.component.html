@@ -1,6 +1,6 @@
 <section class="cart page">
   <div class="cart-list">
-    @for (data of cartArr; track $index) {
+    @for (data of cart; track $index) {
     <product-item
       [itemData]="data.item"
       [tagsTemplate]="isQuantity1(data.amounts) ? orderDetails : tags"

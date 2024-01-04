@@ -1,17 +1,20 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Sizes } from 'src/app/models/types/size';
 import { ShareService } from '../../services/share.service';
 import { CoffeeBeans, CoffeeCup, CurrencySign, Payment } from 'src/app/models/types/coffee';
+import { Id } from 'src/app/models/types/cart-item';
 
 @Component({
-  selector: 'app-item-details',
+  selector: 'item-details',
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit {
+  @Input() box: { width: string, height: string,radius: string, background: string };
   selected: { size: string, price: `${number}`, currencySign: CurrencySign };
+  @Input() showBuySection: boolean;
   showFullDescription: boolean = false;
   selectedCurrency: string = 'USD';
   item!: CoffeeCup | CoffeeBeans;
@@ -19,6 +22,13 @@ export class ItemDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private shareService: ShareService,
     private location: Location) {
+    this.showBuySection = true;
+    this.box = {
+      width: '100%',
+      height: '100%',
+      radius: '0',
+      background: '#0c0f14'
+    }
     this.selected = {
       size: '',
       price: '0',
@@ -26,7 +36,8 @@ export class ItemDetailsComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-    this.getItemById(this.activatedRoute.snapshot.paramMap.get('id')!)
+    const Id: any = this.activatedRoute.snapshot.paramMap.get('id')!
+    this.getItemById(Id)
     this.getSelected('S', this.item.price.USD.sizes[0].price)
   }
 
@@ -41,11 +52,14 @@ export class ItemDetailsComponent implements OnInit {
     setTimeout(() => this.location.back(), 501)
   }
 
-  getItemById(id: string): void {
+  getItemById(id: Id): void {
     const product: any = this.shareService.getById(id);
 
     typeof product === 'object' ? this.item = product :
       console.error(this.shareService.getById(id))
   }
-  addToCart(size: Sizes): void { }
+  // addToCart(size: Sizes): void { }
+  addItem(id: Id): void {
+
+  }
 }

@@ -1,2 +1,0 @@
-# CoffeeApp_Angular
-.

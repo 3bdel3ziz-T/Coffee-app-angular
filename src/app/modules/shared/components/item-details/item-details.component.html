@@ -1,4 +1,12 @@
-<section class="item-details">
+<section
+  class="item-details"
+  [ngStyle]="{
+    width: box.width,
+    height: box.height,
+    'border-radius': box.radius,
+    background: box.background
+  }"
+>
   <div class="img-box">
     <label for="back" class="btn back" (click)="back()">
       <input type="checkbox" name="back" id="back" />
@@ -67,8 +75,8 @@
             </svg>
           </div>
           <h3>
-            {{ item.average_rating
-            }}<span class="views"> {{ "(" + item.ratings_count + ")" }}</span>
+            {{ item.average_rating }}
+            <span class="views"> {{ "(" + item.ratings_count + ")" }}</span>
           </h3>
         </div>
       </div>
@@ -120,6 +128,7 @@
         {{ item.description }}
       </div>
     </div>
+    @if (showBuySection) {
     <section class="buy-section">
       <div class="sizes-box">
         <h4>size</h4>
@@ -138,7 +147,7 @@
               value="{{ product.size }}"
               [checked]="product.size == item.price.USD.sizes[0].size"
               (change)="getSelected(product.size, product.price)"
-              />
+            />
             <h5>{{ product.size }}</h5>
           </label>
           }
@@ -147,10 +156,12 @@
       <div class="buy">
         <div class="price-box">
           <h4>Price</h4>
-          <price [price]="selected.price" ></price>
+          <price [price]="selected.price"></price>
         </div>
-        <button class="add-btn" btnShape>Add to Cart</button>
+        <button class="add-btn" btnShape (click)="addItem(item.id)">Add to Cart</button>
       </div>
     </section>
+    }
   </div>
 </section>
+

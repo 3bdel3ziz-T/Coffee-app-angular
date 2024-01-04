@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CoffeeCup, CoffeeBeans, CurrencySign } from '../models/types/coffee';
-import {Size } from '../models/types/size';
+import { CoffeeCup, CoffeeBeans } from '../models/types/coffee';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
-import { CartItem } from '../models/types/cart-item';
+import { CartItem, CartIds, Id } from '../models/types/cart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -11,51 +10,67 @@ import { CartItem } from '../models/types/cart-item';
 export class AppService {
   private coffeeData: CoffeeCup[];
   private beansData: CoffeeBeans[];
+  private cartIds: CartIds[] = [];
   private cartData: CartItem[] = [];
+  // private favoriteData: Favorite[] = [];
 
   constructor(private dataService: DataService) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
-
-    this.cartData = [
+    this.cartIds = [
       {
-        item: {
-          id: 'C1',
-          name: 'Americano',
-          description: `The Americano is another popular type of coffee drink, and it's very easy to make! It's just espresso with hot water dripping over it. The name came about during World War II when European baristas added water to their espresso drinks for the American soldiers stationed there. The resulting drink had a smoother, less concentrated flavour than espresso and thus the Americano was born.`,
-          roasted: 'Medium Roasted',
-          // imagelink_square: require('../assets/coffee_assets/americano/square/americano_pic_1_square.png'),
-          // imagelink_portrait: require('../assets/coffee_assets/americano/portrait/americano_pic_1_portrait.png'),
-          ingredients: 'Milk',
-          special_ingredient: 'With Steamed Milk',
-          price: {
-            "USD": {
-              currencySign: CurrencySign["USD"],
-              sizes: [
-                {
-                  size: "S",
-                  price: "1.38"
-                },
-                {
-                  size: "M",
-                  price: "3.15"
-                },
-                {
-                  size: "L",
-                  price: "4.29"
-                }
-              ]
-
-            }
+        itemId: 'C1',
+        amounts: [
+          {
+            size: "S",
+            quantity: 1
+          },
+          {
+            size: "M",
+            quantity: 2
+          },
+          {
+            size: "L",
+            quantity: 0
           }
-          ,
-
-          average_rating: 4.7,
-          ratings_count: '6,879',
-          favorite: false,
-          type: 'Coffee',
-          index: 0,
-        },
+        ],
+      },
+      {
+        itemId: 'B2',
+        amounts: [
+          {
+            size: "S",
+            quantity: 1
+          },
+          {
+            size: "M",
+            quantity: 2
+          },
+          {
+            size: "L",
+            quantity: 0
+          }
+        ],
+      },
+      {
+        itemId: 'C5',
+        amounts: [
+          {
+            size: "S",
+            quantity: 1
+          },
+          {
+            size: "M",
+            quantity: 2
+          },
+          {
+            size: "L",
+            quantity: 0
+          }
+        ],
+      },
+      {
+        itemId: 'C5',
         amounts: [
           {
             size: "S",
@@ -72,6 +87,7 @@ export class AppService {
         ],
       }
     ]
+    this.getCartById()
   }
 
   passData<T>(arr: T[]): T[] {
@@ -94,18 +110,44 @@ export class AppService {
     })
   }
 
-  getCoffeeById(id: string): CoffeeCup | CoffeeBeans | 'ErrMsg' {
+  getCoffeeById(id: Id): CoffeeCup | CoffeeBeans | 'ErrMsg' {
     if (id.startsWith('C')) {
-      return this.loopById<CoffeeCup>(this.coffeeData, id)
+      return this.findById<CoffeeCup>(this.coffeeData, id)
     } else if (id.startsWith('B')) {
-      return this.loopById<CoffeeBeans>(this.beansData, id)
+      return this.findById<CoffeeBeans>(this.beansData, id)
     }
     else { return 'ErrMsg' }
     // console.log('this product field out!')
   }
 
-  private loopById<T extends CoffeeCup | CoffeeBeans>(arr: T[], id: string): T {
+
+  getCartById(): void {
+    this.cartIds.forEach
+      ((id: CartIds, i: number, arr: CartIds[]) => {
+        if (this.cartIds[i].itemId.startsWith('C')) {
+          this.cartData.push({
+            item: this.findById<CoffeeCup>(this.coffeeData, this.cartIds[i].itemId),
+            amounts: this.cartIds[i].amounts,
+          })
+        } else if (this.cartIds[i].itemId.startsWith('B')) {
+          this.cartData.push({
+            item: this.findById<CoffeeBeans>(this.beansData, this.cartIds[i].itemId),
+            amounts: this.cartIds[i].amounts,
+          })
+        }
+      })
+    //   return this.findById<CoffeeCup>(this.coffeeData, id)
+    // }
+    // else { return 'ErrMsg' }
+    // console.log('this product field out!')
+  }
+
+
+  private findById<T extends CoffeeCup | CoffeeBeans>(arr: T[], id: Id): T {
     return arr.find((e) => e.id == id)!
   }
+  // private forEachById<T extends CoffeeCup | CoffeeBeans>(arr: T[], id: Id): T[] {
+  //   return arr.forEach((e) => e.id == id)!
+  // }
 
 }

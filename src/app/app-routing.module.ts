@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ItemDetailsComponent } from './modules/shared/components/item-details/item-details.component';
 import { HomeComponent } from './modules/home/components/home/home.component';
 import { CartComponent } from './modules/cart/components/cart/cart.component';
+import { FavoriteComponent } from './modules/favorite/component/favorite/favorite.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'item-details/:id', component: ItemDetailsComponent },
     ]
   },
+  {path: 'favorite', component: FavoriteComponent},
   { path: '**', component: HomeComponent }
 ];
 

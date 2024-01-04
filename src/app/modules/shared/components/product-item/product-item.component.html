@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" routerLink="item-details/{{itemData.id}}">
   <div 
     class="content"
     [ngStyle]="{ flexDirection: mainBox.direction, gap: mainBox.gap + 'px' }">
@@ -8,7 +8,6 @@
         width: imgBoxSize == 'S' ? '100px' : '126px',
         height: imgBoxSize == 'S' ? '100px' : '126px'
       }"
-      routerLink="item-details/{{itemData.id}}"
     >
       <div class="rate">
         <svg

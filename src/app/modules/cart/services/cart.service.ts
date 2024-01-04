@@ -6,15 +6,15 @@ import { AppService } from 'src/app/services/app.service';
   providedIn: 'root'
 })
 export class CartService {
-  cartArr: CartItem[] = []
+  cartData: CartItem[] = [];
   constructor(private appService: AppService) {
     appService.cartObservable.subscribe({
-      next: (data: CartItem) => this.cartArr.push(data),
+      next: (data: CartItem) => this.cartData.push(data),
       error: (err: Error) => console.error(err),
       complete: () => { }
     })
   }
-  get getCartArr() {
-    return this.appService.passData<CartItem>(this.cartArr)
+  get getCartData() {
+    return this.appService.passData<CartItem>(this.cartData)
   }
 }

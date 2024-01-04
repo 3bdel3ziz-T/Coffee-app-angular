@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { HomeModule } from './modules/home/home.module';
 import { CartModule } from './modules/cart/cart.module';
+import { FavoriteModule } from './modules/favorite/favorite.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CartModule } from './modules/cart/cart.module';
     
     HomeModule,
     CartModule,
+    FavoriteModule,
     SharedModule,
 
   ],
