@@ -35,6 +35,8 @@ export type CoffeeBeans = Coffee & {
   special_ingredient: `From ${ImportedFrom}`,
 }
 
+export type Id = `${'C' | 'B'}${number}`
+
 
 // const validCurrencies = {
 //   'USD': 'USD',

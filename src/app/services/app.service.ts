@@ -1,99 +1,101 @@
 import { Injectable } from '@angular/core';
-import { CoffeeCup, CoffeeBeans } from '../models/types/coffee';
+import { CoffeeCup, CoffeeBeans, Id } from '../models/types/coffee';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
-import { CartItem, ItemRef, Id } from '../models/types/cart-item';
+import { CartItem, CartItemRef } from '../models/types/cart-item';
+import { Favorite } from '../models/types/favorite';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
+  private selectedItemDetails!: (CoffeeCup| CoffeeBeans);
   private coffeeData: CoffeeCup[];
   private beansData: CoffeeBeans[];
-  private cartIds: ItemRef[] = [];
   private cartData: CartItem[] = [];
-  // private favoriteData: Favorite[] = [];
+  private cartItemRef: CartItemRef[] = [];
+  private favoriteData: Favorite[] = [];
 
   constructor(private dataService: DataService) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
-    this.cartIds = [
-      {
-        itemId: 'C1',
-        amounts: [
-          {
-            size: "S",
-            quantity: 1
-          },
-          {
-            size: "M",
-            quantity: 2
-          },
-          {
-            size: "L",
-            quantity: 0
-          }
-        ],
-      },
-      {
-        itemId: 'B2',
-        amounts: [
-          {
-            size: "S",
-            quantity: 1
-          },
-          {
-            size: "M",
-            quantity: 2
-          },
-          {
-            size: "L",
-            quantity: 0
-          }
-        ],
-      },
-      {
-        itemId: 'C5',
-        amounts: [
-          {
-            size: "S",
-            quantity: 1
-          },
-          {
-            size: "M",
-            quantity: 2
-          },
-          {
-            size: "L",
-            quantity: 0
-          }
-        ],
-      },
-      {
-        itemId: 'C5',
-        amounts: [
-          {
-            size: "S",
-            quantity: 1
-          },
-          {
-            size: "M",
-            quantity: 2
-          },
-          {
-            size: "L",
-            quantity: 0
-          }
-        ],
-      }
-    ]
-    this.getCartById()
+    // this.itemRefArr = [
+    //   {
+    //     itemId: 'C1',
+    //     amounts: [
+    //       {
+    //         size: "S",
+    //         quantity: 1
+    //       },
+    //       {
+    //         size: "M",
+    //         quantity: 2
+    //       },
+    //       {
+    //         size: "L",
+    //         quantity: 0
+    //       }
+    //     ],
+    //   },
+    //   {
+    //     itemId: 'B2',
+    //     amounts: [
+    //       {
+    //         size: "S",
+    //         quantity: 1
+    //       },
+    //       {
+    //         size: "M",
+    //         quantity: 2
+    //       },
+    //       {
+    //         size: "L",
+    //         quantity: 0
+    //       }
+    //     ],
+    //   },
+    //   {
+    //     itemId: 'C5',
+    //     amounts: [
+    //       {
+    //         size: "S",
+    //         quantity: 1
+    //       },
+    //       {
+    //         size: "M",
+    //         quantity: 2
+    //       },
+    //       {
+    //         size: "L",
+    //         quantity: 0
+    //       }
+    //     ],
+    //   },
+    //   {
+    //     itemId: 'C5',
+    //     amounts: [
+    //       {
+    //         size: "S",
+    //         quantity: 1
+    //       },
+    //       {
+    //         size: "M",
+    //         quantity: 2
+    //       },
+    //       {
+    //         size: "L",
+    //         quantity: 0
+    //       }
+    //     ],
+    //   }
+    // ] 
+    this.getCartItemsById()
   }
-
+  //One pattern to pass data to "component.ts"
   passData<T>(arr: T[]): T[] {
     return arr
   }
-
+  //All application observables
   get coffeeObservable(): Observable<CoffeeCup> {
     return new Observable<CoffeeCup>((observer: any) => {
       this.coffeeData.forEach((e: CoffeeCup) => observer.next(e))
@@ -109,8 +111,13 @@ export class AppService {
       this.cartData.forEach((e: CartItem) => observer.next(e))
     })
   }
-
-  getCoffeeById(id: Id): CoffeeCup | CoffeeBeans | 'ErrMsg' {
+  get favoriteObservable(): Observable<CartItem> {
+    return new Observable<CartItem>((observer: any) => {
+      this.favoriteData.forEach((e: Favorite) => observer.next(e))
+    })
+  }
+  //Get the cup or beans details data using id
+  getItemDetailsById(id: Id): CoffeeCup | CoffeeBeans | 'ErrMsg' {
     if (id.startsWith('C')) {
       return this.findById<CoffeeCup>(this.coffeeData, id)
     } else if (id.startsWith('B')) {
@@ -119,20 +126,19 @@ export class AppService {
     else { return 'ErrMsg' }
     // console.log('this product field out!')
   }
-
-
-  getCartById(): void {
-    this.cartIds.forEach
-      ((id: ItemRef, i: number, arr: ItemRef[]) => {
-        if (this.cartIds[i].itemId.startsWith('C')) {
+  //Get the cart items using id
+  getCartItemsById(): void {
+    this.cartItemRef.forEach
+      ((e: CartItemRef, i: number, arr: CartItemRef[]) => {
+        if (this.cartItemRef[i].itemId.startsWith('C')) {
           this.cartData.push({
-            item: this.findById<CoffeeCup>(this.coffeeData, this.cartIds[i].itemId),
-            amounts: this.cartIds[i].amounts,
+            item: this.findById<CoffeeCup>(this.coffeeData, this.cartItemRef[i].itemId),
+            amounts: this.cartItemRef[i].amounts,
           })
-        } else if (this.cartIds[i].itemId.startsWith('B')) {
+        } else if (this.cartItemRef[i].itemId.startsWith('B')) {
           this.cartData.push({
-            item: this.findById<CoffeeBeans>(this.beansData, this.cartIds[i].itemId),
-            amounts: this.cartIds[i].amounts,
+            item: this.findById<CoffeeBeans>(this.beansData, this.cartItemRef[i].itemId),
+            amounts: this.cartItemRef[i].amounts,
           })
         }
       })
@@ -140,6 +146,9 @@ export class AppService {
     // }
     // else { return 'ErrMsg' }
     // console.log('this product field out!')
+  }
+  getCartItemsRef(itemRef: CartItemRef): void {
+
   }
 
 

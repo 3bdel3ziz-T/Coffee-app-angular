@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Id } from 'src/app/models/types/cart-item';
-import { CoffeeBeans, CoffeeCup } from 'src/app/models/types/coffee';
+import { CartItemRef } from 'src/app/models/types/cart-item';
+import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
 import { AppService } from 'src/app/services/app.service';
 
 @Injectable({
@@ -10,7 +10,10 @@ export class ShareService {
 
   constructor(private appService: AppService) { }
 
-  getById(id: Id): CoffeeCup | CoffeeBeans | 'ErrMsg' {
-    return this.appService.getCoffeeById(id)
+  getItemDetailsById(id: Id): CoffeeCup | CoffeeBeans | 'ErrMsg' {
+    return this.appService.getItemDetailsById(id)
+  }
+  getCartItemRef(CartItemRef: CartItemRef) {
+    this.appService.getCartItemsRef(CartItemRef)
   }
 }

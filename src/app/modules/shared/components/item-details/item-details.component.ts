@@ -3,8 +3,8 @@ import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Amounts, SizeOrDose, Dose } from 'src/app/models/types/size';
 import { ShareService } from '../../services/share.service';
-import { CoffeeBeans, CoffeeCup, CurrencySign, Payment } from 'src/app/models/types/coffee';
-import { ItemRef, Id, Item, Amount } from 'src/app/models/types/cart-item';
+import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
+import { CartItemRef, Item, Amount } from 'src/app/models/types/cart-item';
 
 @Component({
   selector: 'item-details',
@@ -36,7 +36,7 @@ export class ItemDetailsComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit(): void {
     const Id: any = this.activatedRoute.snapshot.paramMap.get('id')!
-    this.getItemById(Id)
+    this.getItemDetailsById(Id)
     this.selected = this.item.price.USD.sizes[0].size
   }
 
@@ -48,22 +48,18 @@ export class ItemDetailsComponent implements OnInit, AfterContentChecked {
     setTimeout(() => this.location.back(), 501)
   }
 
-  getItemById(id: Id): void {
-    const product: any = this.shareService.getById(id);
+  getItemDetailsById(id: Id): void {
+    const product: any = this.shareService.getItemDetailsById(id);
 
     typeof product === 'object' ? this.item = product :
-      console.error(this.shareService.getById(id))
+      console.error(this.shareService.getItemDetailsById(id))
   }
   addItem(): void {
-    const obj: ItemRef = {
+    const obj: CartItemRef = {
       itemId: this.item.id,
       amounts: this.getAmount(this.item.id)
-      // amounts: this.incrementQuantity(this.item.id)
     }
-    console.log(obj)
-    // if (this.item.id.startsWith('C')) {
-
-    // }
+    this.shareService.getCartItemRef(obj)
   }
 
   getAmount(id: Id): Amount {
@@ -89,46 +85,12 @@ export class ItemDetailsComponent implements OnInit, AfterContentChecked {
     }
     return amount
   }
-incrementQuantity(arr: Amount): void {
-  arr.forEach((e: {
-    size: SizeOrDose,
-    quantity: number
-  }) => {
-    this.selected == e.size ? e.quantity++ : false;
-  })
+  incrementQuantity(arr: Amount): void {
+    arr.forEach((e: {
+      size: SizeOrDose,
+      quantity: number
+    }) => {
+      this.selected == e.size ? e.quantity++ : false;
+    })
+  }
 }
-}
-// }
-
-// let coffeeAmount: Amount =
-//   [{
-//     size: 'S',
-//     quantity: 0,
-//   }, {
-//     size: 'M',
-//     quantity: 0,
-//   }, {
-//     size: 'L',
-//     quantity: 0,
-//   }]
-// let beansAmount: Amount =
-//   [{
-//     size: 'S',
-//     quantity: 0,
-//   }, {
-//     size: 'M',
-//     quantity: 0,
-//   }, {
-//     size: 'L',
-//     quantity: 0,
-//   }]
-// }
-// for (let i = 0; i < Amount.length; i++) {
-//     Amount[i].size =
-//   }
-// Amount[i].quantity = 0;
-// return Amount
-// }
-// arr.forEach((e: T, i: number) => e[i].size == this.selected ? e[i].quantity++ : false)
-// }
-// }

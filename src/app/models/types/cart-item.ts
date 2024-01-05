@@ -1,4 +1,4 @@
-import { CoffeeCup, CoffeeBeans } from "./coffee"
+import { CoffeeCup, CoffeeBeans, Id } from "./coffee"
 import { SizeOrDose, Size, Dose } from "./size"
 
 export type CartItem = {
@@ -6,7 +6,7 @@ export type CartItem = {
   amounts: Amount
 }
 
-export type ItemRef = {
+export type CartItemRef = {
   itemId: Id,
   amounts: Amount
 }
@@ -25,7 +25,6 @@ export type Amount = [
 ]
 
 // export type ItemId = Pick<CoffeeCup, 'id'> | Pick<CoffeeBeans, 'id'>
-export type Id = `${'C' | 'B'}${number}`
 
 export type Item = {
   size: SizeOrDose,
