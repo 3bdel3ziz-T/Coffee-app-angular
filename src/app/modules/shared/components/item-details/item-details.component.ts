@@ -2,9 +2,9 @@ import { Location } from '@angular/common';
 import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Amounts, SizeOrDose, Dose } from 'src/app/models/types/size';
-import { ShareService } from '../../services/share.service';
+import { itemService } from '../../services/item.service';
 import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
-import { CartItemRef, Item, Amount } from 'src/app/models/types/cart-item';
+import { ItemRef, Item, Amount } from 'src/app/models/types/cart-item';
 
 @Component({
   selector: 'item-details',
@@ -20,7 +20,7 @@ export class ItemDetailsComponent implements OnInit, AfterContentChecked {
   // selectedCurrency: string = 'USD';
   constructor(
     private activatedRoute: ActivatedRoute,
-    private shareService: ShareService,
+    private shareService: itemService,
     private location: Location) {
     // this.getSelected(this.item.price.USD.sizes[0].size)
     this.showBuySection = true;
@@ -55,11 +55,11 @@ export class ItemDetailsComponent implements OnInit, AfterContentChecked {
       console.error(this.shareService.getItemDetailsById(id))
   }
   addItem(): void {
-    const obj: CartItemRef = {
+    const ItemRef: ItemRef = {
       itemId: this.item.id,
       amounts: this.getAmount(this.item.id)
     }
-    this.shareService.getCartItemRef(obj)
+    this.shareService.passCartItemRef(ItemRef)
   }
 
   getAmount(id: Id): Amount {

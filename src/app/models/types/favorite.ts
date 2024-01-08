@@ -1,5 +1,5 @@
 import { CoffeeCup, CoffeeBeans, Id } from "./coffee";
 
-export type Favorite = (CoffeeCup | CoffeeBeans)
+export type FavItem = (CoffeeCup | CoffeeBeans)
 
-export type FavItemRef = {ItemId:Id}
+// export type ItemRef = { ItemId: Id }

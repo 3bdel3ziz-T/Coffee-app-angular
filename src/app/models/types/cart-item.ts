@@ -6,7 +6,7 @@ export type CartItem = {
   amounts: Amount
 }
 
-export type CartItemRef = {
+export type ItemRef = {
   itemId: Id,
   amounts: Amount
 }
