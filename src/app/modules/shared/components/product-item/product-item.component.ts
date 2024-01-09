@@ -1,6 +1,7 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { Box } from 'src/app/models/types/box';
 import { CoffeeCup, CoffeeBeans } from 'src/app/models/types/coffee';
+import { CssUnits } from 'src/app/models/types/style-units';
 
 @Component({
   selector: 'product-item',
@@ -11,12 +12,12 @@ export class ProductItemComponent {
   @Input() itemData!: CoffeeCup | CoffeeBeans;
   @Input() imgBoxSize: 'S' | 'L';
   @Input() mainBox: Box;
-  @Input() titlesSize: { mainTitle: number, subTitle: number };
+  @Input() titlesSize: { mainTitle: CssUnits, subTitle: CssUnits };
   @Input() tagsTemplate!: TemplateRef<unknown>;
   @Input() contentTemplate!: TemplateRef<unknown>;
   constructor() {
-    this.mainBox = { direction: 'column', gap: '12' };
-    this.titlesSize = { mainTitle: 13, subTitle: 9 };
+    this.mainBox = { direction: 'column', gap: '12px' };
+    this.titlesSize = { mainTitle: '13px', subTitle: '9px' };
     this.imgBoxSize = 'L';
   }
 }

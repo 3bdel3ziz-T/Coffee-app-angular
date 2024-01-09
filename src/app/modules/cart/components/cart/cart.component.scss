@@ -4,7 +4,7 @@
 .cart {
   .cart-list {
     display: flex;
-    gap: 15px;
+    gap: $global-gap;
     flex-direction: column;
   }
 }

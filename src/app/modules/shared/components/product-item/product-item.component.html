@@ -1,7 +1,7 @@
 <div class="item">
   <div 
     class="content"
-    [ngStyle]="{ flexDirection: mainBox.direction, gap: mainBox.gap + 'px' }">
+    [ngStyle]="{ flexDirection: mainBox.direction, gap: mainBox.gap }">
     <div 
       class="img-box"
       [ngStyle]="{
@@ -29,12 +29,12 @@
           <div class="titles"> 
       <span
         class="title"
-        [ngStyle]="{ 'font-size': titlesSize.mainTitle + 'px' }"
+        [ngStyle]="{ 'font-size': titlesSize.mainTitle }"
       >
         {{itemData.name}}</span>
       <span
         class="subtitle"
-        [ngStyle]="{ 'font-size': titlesSize.subTitle + 'px' }"
+        [ngStyle]="{ 'font-size': titlesSize.subTitle }"
       >
         {{itemData.special_ingredient}}</span>
     </div>

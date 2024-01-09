@@ -10,6 +10,7 @@
         name="option"
         id="{{ cat }}"
         (change)="getSelected(cat)"
+        [checked]="cat == 'all'"
       />
       <h4>{{ cat }}</h4>
     </label>

@@ -23,6 +23,8 @@ $col-lightBlack: #252a32;
 $col-darkGray: #52555a;
 $col-gray: #aeaeae;
 $col-white: #ffffff;
+$small-btn-size: 30px;
+$global-gap: 25px;
 $main-gradient: linear-gradient(to bottom right, #252a32 0%, #262b3300 100%);
 $sec-gradient: linear-gradient(to bottom right, #21262e 20%, #0c0f14 70%);
 
@@ -69,9 +71,10 @@ body {
 // Helper Classes
 
 .page {
-  padding: 10px 30px;
+  padding: 10px 30px 70px 30px;
   width: 100%;
-  height: fit-content;
+  height: calc(100dvh - 38px);
+  overflow-y: scroll;
   position: absolute;
   z-index: 5;
 }

@@ -6,8 +6,8 @@
       [tagsTemplate]="isQuantity1(data.amounts) ? orderDetails : tags"
       [contentTemplate]="isQuantity1(data.amounts) ? empty : orderDetails"
       [imgBoxSize]="isQuantity1(data.amounts) ? 'L' : 'S'"
-      [mainBox]="{ direction: 'row', gap: '25' }"
-      [titlesSize]="{ mainTitle: 16, subTitle: 10 }"
+      [mainBox]="{ direction: 'row', gap: '25px' }"
+      [titlesSize]="{ mainTitle: '16px', subTitle: '10px' }"
     ></product-item>
     <ng-template #empty></ng-template>
     <ng-template #tags>

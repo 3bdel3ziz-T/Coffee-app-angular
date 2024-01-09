@@ -9,234 +9,69 @@
   &:has(input[type="checkbox"]#back:checked) {
     animation: hide-animation 500ms ease-out 0s 1 normal both;
   }
-  .img-box {
-    position: relative;
-    .btn {
-      $vol: 40px;
-      width: $vol;
-      height: $vol;
-      top: 65px;
-      position: absolute;
-      border-radius: 13px;
-      border: 1px solid $col-gray;
-      background: $sec-gradient;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3 px solid $col-border;
-      input[type="checkbox"] {
-        display: none;
-      }
-      &.back {
-        left: 30px;
-        svg {
-          fill: $col-gray;
-          width: 10px;
-        }
-      }
-      &.add-fav {
-        &:has(input[type="checkbox"]#fav:checked) {
-          svg {
-            animation: heart 300ms ease-in-out 0s 1 normal both;
-            fill: $col-favorite;
-          }
-          .svg-celebrate {
-            animation-name: add-favorite;
-          }
-        }
-        right: 30px;
-        svg {
-          transition: 300ms;
-          fill: $col-gray;
-          width: 16px;
-        }
-        .svg-celebrate {
-          position: absolute;
-          display: block;
-          stroke: $col-favorite;
-          fill: $col-favorite;
-          stroke-width: 2px;
-          width: fit-content;
-          scale: 0;
-          opacity: 0;
-          animation: 350ms ease-in-out 0s 1 normal both;
-        }
-      }
-    }
-    img {
-      width: 100%;
-      min-height: 450px;
-      max-height: 50%;
-      background-color: $col-darkGray;
-      display: block;
-    }
-  }
-  .details-box {
-    width: 100%;
-    position: relative;
-    .details {
-      width: 100%;
-      height: 160px;
-      border-top-left-radius: 25px;
-      border-top-right-radius: 25px;
-      background-color: rgba($col-dark, 0.5);
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 100%;
-      .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        .titles {
-          height: 42px;
-          .title {
-            font-weight: 500;
-            color: $col-white;
-          }
-          .subtitle {
-            font-weight: 400;
-            color: $col-gray;
-          }
-        }
-        .rate {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          .star {
-            fill: $col-orange;
-            width: 14px;
-          }
-          h3 {
-            color: $col-white;
-            font-weight: 500;
-            .views {
-              color: $col-gray;
-              font-weight: 300;
-              font-size: 10px;
-            }
-          }
-        }
-      }
-      .tags {
-        width: 130px;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        .tag {
-          background-color: $col-dark;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          color: $col-gray;
-          border-radius: 10px;
-          font-size: 10px;
-          width: 55px;
-          height: 55px;
-          svg {
-            fill: $col-orange;
-            $vol: 17px;
-            width: $vol;
-          }
-          &.custom {
-            width: fit-content;
-            height: fit-content;
-            text-wrap: nowrap;
-            padding: 12px 20px;
-          }
-        }
-      }
-    }
-    .description {
-      padding: 15px;
+  .buy-section {
+    padding: 15px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    .sizes-box {
       h4 {
         color: $col-gray;
         font-weight: 600;
+        display: block;
         margin-bottom: 15px;
       }
-      .description-txt {
-        color: $col-white;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 20px;
-        // max-width: 100%;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        writing-mode: horizontal-tb;
-        overflow: hidden;
+      .sizes {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        width: 100%;
+        height: 40px;
+        label {
+          text-align: center;
+          background: $col-lightBlack;
+          padding: 10px 28px;
+          border: 2px solid transparent;
+          border-radius: 10px;
+          transition: 300ms;
+          h5 {
+            color: $col-gray;
+            font-weight: 500;
+            transition: 300ms;
+          }
+          input {
+            display: none;
+          }
+          &:has(input[type="radio"]:checked) {
+            border-color: $col-orange;
+            background-color: transparent;
+            h5 {
+              color: $col-orange;
+              font-weight: 600;
+            }
+          }
+        }
       }
     }
-    .buy-section {
-      padding: 15px;
-      gap: 30px;
+    .buy {
       display: flex;
-      flex-direction: column;
-      .sizes-box {
+      justify-content: space-between;
+      align-items: center;
+      .price-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
         h4 {
           color: $col-gray;
-          font-weight: 600;
-          display: block;
-          margin-bottom: 15px;
-        }
-        .sizes {
-          display: flex;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: center;
-          gap: 25px;
-          width: 100%;
-          height: 40px;
-          label {
-            text-align: center;
-            background: $col-lightBlack;
-            padding: 10px 28px;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            transition: 300ms;
-            h5 {
-              color: $col-gray;
-              font-weight: 500;
-              transition: 300ms;
-            }
-            input {
-              display: none;
-            }
-            &:has(input[type="radio"]:checked) {
-              border-color: $col-orange;
-              background-color: transparent;
-              h5 {
-                color: $col-orange;
-                font-weight: 600;
-              }
-            }
-          }
         }
       }
-      .buy {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .price-box {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 3px;
-          h4 {
-            color: $col-gray;
-          }
-        }
-        .add-btn {
-          padding: 20px 70px;
-          border-radius: 20px;
-        }
+      .add-btn {
+        padding: 20px 70px;
+        border-radius: 20px;
       }
     }
   }

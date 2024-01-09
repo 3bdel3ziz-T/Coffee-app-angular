@@ -11,6 +11,7 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
 import { FormsModule } from '@angular/forms';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
+import { DetailsComponent } from './components/item-details/details/details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive
     PriceComponent,
     SearchBoxComponent,
     CategoryFilterComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive
     PriceComponent,
     SearchBoxComponent,
     CategoryFilterComponent,
-    BtnShapeDirective
+    BtnShapeDirective,
+    DetailsComponent
   ]
 })
 export class SharedModule { }

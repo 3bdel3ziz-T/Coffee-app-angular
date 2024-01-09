@@ -1,4 +1,6 @@
+import { CssUnits } from "./style-units"
+
 export type Box = {
   direction: 'column' | 'row',
-  gap: string
+  gap: CssUnits
 }

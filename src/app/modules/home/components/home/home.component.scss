@@ -3,7 +3,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   h1 {
     color: $col-white;
     font-weight: 600;
@@ -19,6 +19,7 @@
 }
 .slider {
   display: flex;
+  overflow: visible;
   overflow-x: scroll;
   gap: 25px;
   // grid-template-columns: repeat(auto-fill, 150px);
@@ -32,13 +33,12 @@
   align-items: center;
 
   .add-to-cart {
-    $vol: 28px;
-    width: $vol;
-    height: $vol;
+    width: $small-btn-size;
+    height: $small-btn-size;
     position: relative;
     border-radius: 7px;
     svg {
-      $vol: 9px;
+      $vol: 10px;
       width: $vol;
       height: $vol;
     }

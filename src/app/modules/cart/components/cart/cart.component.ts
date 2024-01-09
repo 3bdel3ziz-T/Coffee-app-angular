@@ -18,6 +18,10 @@ export class CartComponent {
   //   })
   }
   isQuantity1(arr: Item[]): boolean {
-    return arr.length == 1 ? true : false
+    let arr2: boolean[] = []
+    arr.forEach((e: Item)=>{
+      e.quantity === 1 ? arr2.push(true) : false
+    })
+    return arr2.length === 1 ? true : false
   }
 }
