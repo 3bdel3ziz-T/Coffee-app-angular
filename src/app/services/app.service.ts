@@ -13,13 +13,13 @@ export class AppService {
 
   // private favoriteData: FavItem[] = [];
 
-  private cartRef: ItemRef[] = [];
-  // private favItemRef: ItemRef[] = [];
+  private cartItemsRef: ItemRef[] = [];
+  private favItemsRef: Id[]  = [];
 
   constructor(private dataService: DataService) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
-
+    this.favItemsRef = ['C1', 'C3', 'B2'];
     'cartRef' in localStorage ?
       this.getCartRef() : this.setCartRef()
 
@@ -41,20 +41,19 @@ export class AppService {
       this.beansData.forEach((e: CoffeeBeans) => observer.next(e))
     })
   }
-  // get cartRefObservable(): Observable<ItemRef> {
-  //   return new Observable<ItemRef>((observer: any) => {
-  //     this.cartRef.forEach((e: ItemRef) => observer.next(e))
-  //   })
-  // }
   get cartRefObservable(): Observable<ItemRef[]> {
     this.getCartRef()
-    return of(this.cartRef)
+    return of(this.cartItemsRef)
+  }
+  get favRefObservable(): Observable<Id[]> {
+    this.getCartRef()
+    return of(this.favItemsRef)
   }
 
   //----------Get the cup or beans details data using id----------
 
   getCartRefItems(itemRef: ItemRef): void {
-    this.cartRef.push(itemRef)
+    this.cartItemsRef.push(itemRef)
     this.setCartRef();
     this.getCartRef();
     // this.getCartItemsById
@@ -70,12 +69,6 @@ export class AppService {
   //     })
   // }
 
-  // private mapById<T extends { itemId: Id }, G = (CoffeeCup | CoffeeBeans)>(arr1: T[]): G[] {
-  //   const arr2: G[] = arr1.map((e: T, i: number, arr: T[]): any => {
-  //     return this.getItemById(e.itemId);
-  //   })
-  //   return arr2
-  // }
 
   getItemById(id: Id): CoffeeCup | CoffeeBeans {
     if (id.startsWith('C')) {
@@ -91,10 +84,10 @@ export class AppService {
 
   //----------------get and set cart data-----------------------
   private getCartRef(): void {
-    this.cartRef = JSON.parse(localStorage.getItem('cartRef')!)
+    this.cartItemsRef = JSON.parse(localStorage.getItem('cartRef')!)
   }
   private setCartRef(): void {
-    localStorage.setItem('cartRef', JSON.stringify(this.cartRef))
+    localStorage.setItem('cartRef', JSON.stringify(this.cartItemsRef))
   }
 }
 

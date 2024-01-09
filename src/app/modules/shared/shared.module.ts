@@ -12,6 +12,7 @@ import { CategoryFilterComponent } from './components/category-filter/category-f
 import { FormsModule } from '@angular/forms';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
 import { DetailsComponent } from './components/item-details/details/details.component';
+import { SubTitleDirective } from 'src/app/custom_directives/sub-title.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetailsComponent } from './components/item-details/details/details.comp
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    BtnShapeDirective
+    BtnShapeDirective,
+    SubTitleDirective
   ],
   exports: [
     // Components

@@ -1,10 +1,23 @@
 <!-- (click)="back()" -->
-<div class="item-details">
+<section
+  class="details-section"
+  [ngStyle]="{
+    width: MainBoxStyle.width,
+    height: MainBoxStyle.height,
+    'border-radius': MainBoxStyle.radius,
+    background: MainBoxStyle.background
+  }"
+>
   <div class="img-box">
-    <label for="back" class="btn back">
+    @if (backBtn) {
+    <label
+      for="back"
+      class="btn back"
+      [ngStyle]="{ top: backBtn ? '65px' : '30px' }"
+    >
       <input type="checkbox" name="back" id="back" />
       <svg
-        width="12"  
+        width="12"
         height="20"
         viewBox="0 0 12 20"
         fill="inherit"
@@ -16,8 +29,13 @@
         />
       </svg>
     </label>
-    <label for="fav" class="btn add-fav">
-      <input type="checkbox" name="fav" id="fav" />
+    }
+    <label
+    class="btn add-fav"
+    [ngStyle]="{ top: backBtn ? '65px' : '30px' }"
+    for="{{item.id}}"
+    >
+    <input type="checkbox" name="{{item.name}}" id="{{item.id}}" [checked]="item.isFavorite" />
       <svg
         class="svg-celebrate"
         width="100"
@@ -123,4 +141,4 @@
     </div>
     <ng-content></ng-content>
   </div>
-</div>
+</section>

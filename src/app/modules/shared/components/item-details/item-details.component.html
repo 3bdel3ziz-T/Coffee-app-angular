@@ -6,44 +6,44 @@
     'border-radius': MainBoxStyle.radius,
     background: MainBoxStyle.background
   }"
-></section>
-
-<details-section [item]="item">
-  <section class="buy-section">
-    <div class="sizes-box">
-      <h4>size</h4>
-      <div class="sizes">
-        @for (product of item.price.USD.sizes; track $index) {
-        <label
-          [ngStyle]="{
+>
+  <details-section [item]="item">
+    <section class="buy-section">
+      <div class="sizes-box">
+        <h4>size</h4>
+        <div class="sizes">
+          @for (product of item.price.USD.sizes; track $index) {
+          <label
+            [ngStyle]="{
             width: 'calc((100% - 50px) / 3)',
           }"
-          for="{{ product.size }}"
-        >
-          <input
-            type="radio"
-            name="size"
-            id="{{ product.size }}"
-            value="{{ product.size }}"
-            [checked]="product.size == item.price.USD.sizes[0].size"
-            (change)="getSelected(product.size)"
-          />
-          <h5>{{ product.size }}</h5>
-        </label>
-        }
+            for="{{ product.size }}"
+          >
+            <input
+              type="radio"
+              name="size"
+              id="{{ product.size }}"
+              value="{{ product.size }}"
+              [checked]="product.size == item.price.USD.sizes[0].size"
+              (change)="getSelected(product.size)"
+            />
+            <h5>{{ product.size }}</h5>
+          </label>
+          }
+        </div>
       </div>
-    </div>
-    <div class="buy">
-      <div class="price-box">
-        <h4>Price</h4>
-        @for (size of item.price.USD.sizes; track $index) { @if (selected ==
-        size.size) {
-        <price [price]="size.price"></price>
-        } }
+      <div class="buy">
+        <div class="price-box">
+          <h4>Price</h4>
+          @for (size of item.price.USD.sizes; track $index) { @if (selected ==
+          size.size) {
+          <price [price]="size.price"></price>
+          } }
+        </div>
+        <button class="add-btn" btnShape (click)="Cart_addItem()">
+          Add to Cart
+        </button>
       </div>
-      <button class="add-btn" btnShape (click)="Cart_addItem()">
-        Add to Cart
-      </button>
-    </div>
-  </section>
-</details-section>
+    </section>
+  </details-section>
+</section>

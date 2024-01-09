@@ -1,11 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Amounts, SizeOrDose } from 'src/app/models/types/size';
+import { SizeOrDose } from 'src/app/models/types/size';
 import { itemService } from '../../services/item.service';
 import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
 import { ItemRef, Item, Amount } from 'src/app/models/types/cart-item';
-import { CssUnits } from 'src/app/models/types/style-units';
+import { BoxStyles } from 'src/app/models/types/box';
 
 @Component({
   selector: 'item-details',
@@ -13,10 +13,7 @@ import { CssUnits } from 'src/app/models/types/style-units';
   styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit {
-  @Input() MainBoxStyle: {
-    width: CssUnits,
-    height: CssUnits, radius: string, background: string
-  };
+  @Input() MainBoxStyle: BoxStyles;
   selected!: SizeOrDose;
   item!: CoffeeCup | CoffeeBeans;
   // selectedCurrency: string = 'USD';
@@ -24,7 +21,6 @@ export class ItemDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private shareService: itemService,
     private location: Location) {
-    // console.log(this.item)
     // this.getSelected(this.item.price.USD.sizes[0].size)
     this.MainBoxStyle = {
       width: '100%',
@@ -32,8 +28,6 @@ export class ItemDetailsComponent implements OnInit {
       radius: '0',
       background: '#0c0f14'
     }
-
-
   }
 
   ngOnInit(): void {
@@ -43,7 +37,6 @@ export class ItemDetailsComponent implements OnInit {
     this.getItemDetailsById(Id)
 
     this.selected = this.item.price.USD.sizes[0].size
-    console.log(this.item)
   }
 
   getSelected(selectedSize: SizeOrDose): void {

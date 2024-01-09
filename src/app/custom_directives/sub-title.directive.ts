@@ -1,11 +1,17 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appSubTitle]',
+  selector: '[subTitle]',
   standalone: true
 })
 export class SubTitleDirective {
 
-  constructor() { }
+  constructor(private element: ElementRef) {
+    this.element.nativeElement.style.cssText = `
+      display: block;
+      font-weight: 600;
+      color: #aeaeae;
+    `
+  }
 
 }

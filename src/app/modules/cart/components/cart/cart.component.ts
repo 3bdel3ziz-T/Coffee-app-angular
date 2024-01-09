@@ -24,4 +24,8 @@ export class CartComponent {
     })
     return arr2.length === 1 ? true : false
   }
+
+  // get getTotal() {
+    
+  // }
 }

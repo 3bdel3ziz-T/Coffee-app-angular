@@ -4,14 +4,8 @@
   .slider {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    // align-items: center;
+    gap: $global-gap;
+    position: relative;
     justify-content: center;
-    .box {
-      position: relative;
-      height: fit-content;
-      border-radius: 25px;
-      overflow: hidden;
-    }
   }
 }

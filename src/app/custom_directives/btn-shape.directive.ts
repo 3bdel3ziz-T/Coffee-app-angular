@@ -9,7 +9,7 @@ export class BtnShapeDirective implements OnInit {
     orange: '#d17842',
     white: '#fff',
   }
-  constructor(private Element: ElementRef) {
+  constructor(private element: ElementRef) {
 
     // Element.nativeElement.style.cssText =
     // `
@@ -25,7 +25,7 @@ export class BtnShapeDirective implements OnInit {
     // `
   }
   ngOnInit(): void {
-    this.Element.nativeElement.style.cssText =
+    this.element.nativeElement.style.cssText =
       `
       cursor: pointer;
       font-size: 16px;

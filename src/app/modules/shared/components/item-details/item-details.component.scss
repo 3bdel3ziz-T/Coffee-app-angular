@@ -104,30 +104,3 @@
     display: none;
   }
 }
-
-@keyframes add-favorite {
-  0% {
-    scale: 0;
-    opacity: 0;
-  }
-
-  99% {
-    scale: 0.6;
-    opacity: 1;
-    display: block;
-  }
-  100% {
-    opacity: 0;
-    display: none;
-  }
-}
-
-@keyframes heart {
-  0%,
-  100% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.15;
-  }
-}

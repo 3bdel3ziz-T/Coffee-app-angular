@@ -1,5 +1,5 @@
 import { BeanTypes, CupCategory } from "./category"
-import { Size, Sizes } from "./size"
+import { Sizes } from "./size"
 
 type Coffee = {
   description: string,
@@ -8,7 +8,7 @@ type Coffee = {
   // imagelink_portrait: any,
   average_rating: number,
   ratings_count: `${number},${number}`,
-  favorite: boolean,
+  isFavorite: boolean,
   type: 'Coffee' | 'Bean',
   index: number,
 }

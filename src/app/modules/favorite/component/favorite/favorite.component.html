@@ -1,5 +1,17 @@
 <section class="favorite page">
   <div class="slider">
-    <details-section></details-section>
+    @for (favItem of favorites; track $index) {
+      <details-section
+        [MainBoxStyle]="{
+          width: '100%',
+          height: 'fit-content',
+          radius: '25px',
+          background:
+            'linear-gradient(to bottom right, #262B33 0%, #262B3300 100%)'
+        }"
+        [backBtn]="false"
+        [item]="favItem"
+      ></details-section>
+    }
   </div>
 </section>
