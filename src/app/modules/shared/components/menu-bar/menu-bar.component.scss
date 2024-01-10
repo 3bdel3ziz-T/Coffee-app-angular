@@ -8,7 +8,7 @@ section {
   align-items: center;
   justify-content: space-evenly;
   background-color: transparent;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur($blur-20);
   z-index: $lay999;
   a {
     padding: 22px;

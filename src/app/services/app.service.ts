@@ -14,11 +14,12 @@ export class AppService {
   // private favoriteData: FavItem[] = [];
 
   private cartItemsRef: ItemRef[] = [];
-  private favItemsRef: Id[]  = [];
+  private favItemsRef: Id[] = [];
 
   constructor(private dataService: DataService) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
+
     this.favItemsRef = ['C1', 'C3', 'B2'];
     'cartRef' in localStorage ?
       this.getCartRef() : this.setCartRef()
@@ -54,6 +55,18 @@ export class AppService {
 
   getCartRefItems(itemRef: ItemRef): void {
     this.cartItemsRef.push(itemRef)
+    this.cartItemsRef.push({
+      itemId: 'C5', amounts: [{
+        size: 'S',
+        quantity: 0
+      }, {
+        size: 'M',
+        quantity: 1
+      }, {
+        size: 'L',
+        quantity: 1
+      }]
+    })
     this.setCartRef();
     this.getCartRef();
     // this.getCartItemsById

@@ -31,7 +31,7 @@ import { SubTitleDirective } from 'src/app/custom_directives/sub-title.directive
     AppRoutingModule,
     FormsModule,
     BtnShapeDirective,
-    SubTitleDirective
+    SubTitleDirective,
   ],
   exports: [
     // Components
@@ -43,6 +43,7 @@ import { SubTitleDirective } from 'src/app/custom_directives/sub-title.directive
     PriceComponent,
     SearchBoxComponent,
     CategoryFilterComponent,
+    SubTitleDirective,
     BtnShapeDirective,
     DetailsComponent
   ]

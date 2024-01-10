@@ -6,14 +6,22 @@
   <h3 class="items-title">Coffee drinks</h3>
   <section class="slider">
     @for (cupData of coffeeCupArr; track $index) {
-    <product-item [contentTemplate]="buySection" [itemData]="cupData"></product-item>
+    <product-item
+      [contentTemplate]="buySection"
+      [itemData]="cupData"
+    ></product-item>
     <ng-template #buySection>
       <div class="buy">
         <price
           [currency]="cupData.price.USD.currencySign"
           [price]="cupData.price.USD.sizes[0].price"
+          [priceSize]="'15px'"
         ></price>
-        <button class="add-to-cart" btnShape routerLink="item-details/{{cupData.id}}">
+        <button
+          class="add-to-cart"
+          btnShape
+          routerLink="item-details/{{ cupData.id }}"
+        >
           <svg
             width="20"
             height="20"
@@ -35,14 +43,22 @@
   <h3 class="items-title">Coffee beans</h3>
   <section class="slider">
     @for (beansData of coffeeBeansArr; track $index) {
-    <product-item [contentTemplate]="buySection" [itemData]="beansData"></product-item>
+    <product-item
+      [contentTemplate]="buySection"
+      [itemData]="beansData"
+    ></product-item>
     <ng-template #buySection>
       <div class="buy">
         <price
           [price]="beansData.price.USD.sizes[0].price"
           [currency]="beansData.price.USD.currencySign"
+          [priceSize]="'15px'"
         ></price>
-        <button class="add-to-cart" btnShape routerLink="item-details/{{beansData.id}}">
+        <button
+          class="add-to-cart"
+          btnShape
+          routerLink="item-details/{{ beansData.id }}"
+        >
           <svg
             width="20"
             height="20"

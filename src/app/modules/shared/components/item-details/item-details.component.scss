@@ -16,9 +16,6 @@
     flex-direction: column;
     .sizes-box {
       h4 {
-        color: $col-gray;
-        font-weight: 600;
-        display: block;
         margin-bottom: 15px;
       }
       .sizes {
@@ -36,18 +33,21 @@
           border: 2px solid transparent;
           border-radius: 10px;
           transition: 300ms;
-          h5 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          h3 {
             color: $col-gray;
             font-weight: 500;
             transition: 300ms;
           }
-          input {
+          input[type="radio"] {
             display: none;
           }
           &:has(input[type="radio"]:checked) {
             border-color: $col-orange;
             background-color: transparent;
-            h5 {
+            h3 {
               color: $col-orange;
               font-weight: 600;
             }
@@ -65,9 +65,6 @@
         align-items: center;
         justify-content: center;
         gap: 3px;
-        h4 {
-          color: $col-gray;
-        }
       }
       .add-btn {
         padding: 20px 70px;

@@ -1,11 +1,27 @@
 @use "../../../../../styles" as *;
 
-
 .cart {
   .cart-list {
     display: flex;
     gap: $global-gap;
     flex-direction: column;
+  }
+  .buy-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    padding: 30px 0;
+
+    background-color: $col-dark;
+    .price {
+    }
+    button {
+      width: 240px;
+      padding: 20px 100px;
+      border-radius: 25px;
+    }
   }
 }
 
@@ -39,7 +55,6 @@
   gap: 10px;
   padding: 12px 0;
   .box {
-    $rad: 7px;
     $gap: 17px;
     display: flex;
     gap: $gap;
@@ -55,7 +70,7 @@
         background-color: $col-dark;
         font-weight: 400;
         font-size: 16px;
-        border-radius: $rad + 3;
+        border-radius: $rad-7 + 3px;
         color: $col-white;
         display: flex;
         align-items: center;
@@ -68,7 +83,7 @@
       .quantity {
         width: 50px;
         height: 30px;
-        border-radius: $rad;
+        border-radius: $rad-7;
         border: 1px solid $col-orange;
         display: flex;
         align-items: center;
@@ -82,20 +97,14 @@
         $vol: 30px;
         width: $vol;
         height: $vol;
-        border-radius: $rad;
-        fill: $col-white;
-        border: none;
-        background-color: $col-orange;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: $rad-7;
         svg {
-          width: 15px;
+          width: 12px;
         }
-        .increment {
-        }
-        .decrement {
-        }
+        //   .increment {
+        //   }
+        //   .decrement {
+        //   }
       }
     }
   }

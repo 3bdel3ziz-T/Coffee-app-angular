@@ -3,7 +3,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: $global-gap;
   h1 {
     color: $col-white;
     font-weight: 600;
@@ -21,7 +21,7 @@
   display: flex;
   overflow: visible;
   overflow-x: scroll;
-  gap: 25px;
+  gap: $global-gap;
   // grid-template-columns: repeat(auto-fill, 150px);
   // grid-template-rows: repeat(1, 235px);
   width: 100%;
@@ -36,9 +36,9 @@
     width: $small-btn-size;
     height: $small-btn-size;
     position: relative;
-    border-radius: 7px;
+    border-radius: $rad-7;
     svg {
-      $vol: 10px;
+      $vol: 12px;
       width: $vol;
       height: $vol;
     }

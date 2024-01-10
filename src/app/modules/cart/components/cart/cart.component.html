@@ -31,13 +31,16 @@
             [ngStyle]="{ gap: isQuantity1(data.amounts) ? '25px' : '17px' }"
           >
             <div class="size">{{ amount.size }}</div>
-            <price [price]="data.item.price.USD.sizes[$index].price"></price>
+            <price
+              [price]="data.item.price.USD.sizes[$index].price"
+              [priceSize]="isQuantity1(data.amounts) ? '20px' : '16px'"
+            ></price>
           </div>
           <div
             class="quantity-box"
             [ngStyle]="{ gap: isQuantity1(data.amounts) ? '25px' : '17px' }"
           >
-            <button class="btn decrement">
+            <button class="btn decrement" btnShape>
               <svg
                 width="20"
                 height="4"
@@ -52,7 +55,7 @@
               </svg>
             </button>
             <span class="quantity">{{ amount.quantity }}</span>
-            <button class="btn increment">
+            <button class="btn increment" btnShape>
               <svg
                 width="20"
                 height="20"
@@ -72,13 +75,15 @@
       </div>
     </ng-template>
     }
-    <div class="buy-box">
-      <div class="price">
-        <h4 subTitle>Total Price</h4>
-      <price></price>
-      </div>
-      <button btnShape>Pay</button>
-    </div>
   </div>
+  @if (cart.length) {
+  <div class="buy-box">
+    <div class="price">
+      <h4 subTitle>Total Price</h4>
+      <price [price]="totalPrice" [priceSize]="'20px'"></price>
+    </div>
+    <button btnShape>Pay</button>
+  </div>
+  }
 </section>
 <router-outlet></router-outlet>

@@ -1,7 +1,7 @@
 @use "../../../../../styles" as *;
 .item {
-  $rad: 23px;
-  border-radius: $rad;
+  // $rad: 23px;
+  border-radius: $rad-25;
   padding: 12px;
   background: $main-gradient;
   overflow: hidden;
@@ -15,7 +15,7 @@
     .img-box {
       position: relative;
       overflow: hidden;
-      border-radius: calc($rad - 5%);
+      border-radius: $rad-25 - 5px;
       .rate {
         display: flex;
         gap: 5px;
@@ -27,7 +27,7 @@
         top: 0;
         right: 0;
         background-color: rgba($col-dark, 0.5);
-        border-bottom-left-radius: calc($rad - 5%);
+        border-bottom-left-radius: $rad-25 - 5px;
         .star {
           overflow: visible;
           $vol: 8px;
