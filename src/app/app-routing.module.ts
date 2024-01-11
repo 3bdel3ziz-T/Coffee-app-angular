@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   {path: 'favorite', component: FavoriteComponent},
-  // {path: 'history', component: HistoryComponent},
+  {path: 'history', component: HistoryComponent},
   { path: '**', component: HomeComponent }
 ];
 
