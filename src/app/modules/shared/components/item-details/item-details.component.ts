@@ -1,16 +1,28 @@
-import { Location } from '@angular/common';
+import { Location, NgStyle } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SizeOrDose } from 'src/app/models/types/size';
 import { itemService } from '../../services/item.service';
 import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
-import { ItemRef, Item, Amount } from 'src/app/models/types/cart-item';
+import { ItemRef, AmountItem, Amount } from 'src/app/models/types/cart-item';
 import { BoxStyles } from 'src/app/models/types/box';
+import { BtnShapeDirective } from '../../../../custom_directives/btn-shape.directive';
+import { PriceComponent } from '../price/price.component';
+import { SubTitleDirective } from '../../../../custom_directives/sub-title.directive';
+import { DetailsComponent } from './details/details.component';
 
 @Component({
-  selector: 'item-details',
-  templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss'],
+    selector: 'item-details',
+    templateUrl: './item-details.component.html',
+    styleUrls: ['./item-details.component.scss'],
+    standalone: true,
+    imports: [
+        NgStyle,
+        DetailsComponent,
+        SubTitleDirective,
+        PriceComponent,
+        BtnShapeDirective,
+    ],
 })
 export class ItemDetailsComponent implements OnInit {
   @Input() MainBoxStyle: BoxStyles;
@@ -84,7 +96,7 @@ export class ItemDetailsComponent implements OnInit {
     return amount
   }
   incrementSelected(arr: Amount): void {
-    arr.forEach((e: Item) => {
+    arr.forEach((e: AmountItem) => {
       this.selected == e.size ? e.quantity++ : false;
     })
   }

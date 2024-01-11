@@ -27,9 +27,6 @@ export class CartService {
       })
   }
 
-  get getCartData() {
-    return this.appService.passData(this.cartData)
-  }
   // get cartObservable(): Observable<CartItem> {
   //   return new Observable<CartItem>((observer: any) => {
   //     this.cartData.forEach((e: CartItem) => observer.next(e))
@@ -57,5 +54,8 @@ export class CartService {
           e.size === size ? price = e.price : false) : false
     })
     return price
+  }
+  get getCartData() {
+    return this.appService.passData<CartItem>(this.cartData)
   }
 }

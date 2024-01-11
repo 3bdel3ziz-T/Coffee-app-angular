@@ -4,6 +4,7 @@ import { ItemDetailsComponent } from './modules/shared/components/item-details/i
 import { HomeComponent } from './modules/home/components/home/home.component';
 import { CartComponent } from './modules/cart/components/cart/cart.component';
 import { FavoriteComponent } from './modules/favorite/component/favorite/favorite.component';
+import { HistoryComponent } from './modules/orders-history/components/history/history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
     ]
   },
   {path: 'favorite', component: FavoriteComponent},
+  // {path: 'history', component: HistoryComponent},
   { path: '**', component: HomeComponent }
 ];
 

@@ -2,6 +2,7 @@ import { BeanTypes, CupCategory } from "./category"
 import { Sizes } from "./size"
 
 type Coffee = {
+  price: Payment,
   description: string,
   roasted: `${RoastLvlS} Roasted`,
   // imagelink_square: any,
@@ -22,7 +23,6 @@ export enum RoastLvlS {
 export type CoffeeCup = Coffee & {
   id: `C${number}`,
   name: CupCategory,
-  price: Payment,
   ingredients: 'Milk',
   special_ingredient: 'With Steamed Milk',
 }
@@ -30,12 +30,14 @@ export type CoffeeCup = Coffee & {
 export type CoffeeBeans = Coffee & {
   id: `B${number}`,
   name: `${BeanTypes} Beans`,
-  price: Payment,
   ingredients: `${ImportedFrom}`,
   special_ingredient: `From ${ImportedFrom}`,
 }
 
+export type Item = CoffeeCup | CoffeeBeans;
+
 export type Id = `${'C' | 'B'}${number}`
+
 
 
 // const validCurrencies = {

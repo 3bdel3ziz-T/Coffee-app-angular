@@ -1,12 +1,13 @@
 <div class="item">
-  <div 
+  <div
     class="content"
-    [ngStyle]="{ flexDirection: mainBox.direction, gap: mainBox.gap }">
-    <div 
+    [ngStyle]="{ flexDirection: mainBox.direction, gap: mainBox.gap }"
+  >
+    <div
       class="img-box"
       [ngStyle]="{
-        width: imgBoxSize == 'S' ? '100px' : '126px',
-        height: imgBoxSize == 'S' ? '100px' : '126px'
+        width: imgBoxSize == 'S' ? '57px': imgBoxSize == 'M' ? '100px' : '126px',
+        height: imgBoxSize == 'S' ? '57px': imgBoxSize == 'M' ? '100px' : '126px',
       }"
     >
       <div class="rate">
@@ -21,24 +22,20 @@
             fill="inherit"
           />
         </svg>
-        <h6>{{itemData.average_rating}}</h6>
+        <h6>{{ itemData.average_rating }}</h6>
       </div>
       <img src="" alt="" />
     </div>
     <div class="content-box">
-          <div class="titles"> 
-      <span
-        class="title"
-        [ngStyle]="{ 'font-size': titlesSize.mainTitle }"
-      >
-        {{itemData.name}}</span>
-      <span
-        class="subtitle"
-        [ngStyle]="{ 'font-size': titlesSize.subTitle }"
-      >
-        {{itemData.special_ingredient}}</span>
-    </div>
-    <ng-container [ngTemplateOutlet]="tagsTemplate"></ng-container>
+      <div class="titles">
+        <span class="title" [ngStyle]="{ 'font-size': titlesSize.mainTitle }">
+          {{ itemData.name }}</span
+        >
+        <span class="subtitle" [ngStyle]="{ 'font-size': titlesSize.subTitle }">
+          {{ itemData.special_ingredient }}</span
+        >
+      </div>
+      <ng-container [ngTemplateOutlet]="tagsTemplate"></ng-container>
     </div>
   </div>
   <ng-container [ngTemplateOutlet]="contentTemplate"></ng-container>

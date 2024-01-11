@@ -15,37 +15,34 @@ import { DetailsComponent } from './components/item-details/details/details.comp
 import { SubTitleDirective } from 'src/app/custom_directives/sub-title.directive';
 
 @NgModule({
-  declarations: [
-    SplashScreenComponent,
-    MenuBarComponent,
-    HeaderComponent,
-    ItemDetailsComponent,
-    ProductItemComponent,
-    PriceComponent,
-    SearchBoxComponent,
-    CategoryFilterComponent,
-    DetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    BtnShapeDirective,
-    SubTitleDirective,
-  ],
-  exports: [
-    // Components
-    SplashScreenComponent,
-    MenuBarComponent,
-    HeaderComponent,
-    ItemDetailsComponent,
-    ProductItemComponent,
-    PriceComponent,
-    SearchBoxComponent,
-    CategoryFilterComponent,
-    SubTitleDirective,
-    BtnShapeDirective,
-    DetailsComponent
-  ]
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        FormsModule,
+        BtnShapeDirective,
+        SubTitleDirective,
+        SplashScreenComponent,
+        MenuBarComponent,
+        HeaderComponent,
+        ItemDetailsComponent,
+        ProductItemComponent,
+        PriceComponent,
+        SearchBoxComponent,
+        CategoryFilterComponent,
+        DetailsComponent,
+    ],
+    exports: [
+        SplashScreenComponent,
+        MenuBarComponent,
+        HeaderComponent,
+        ItemDetailsComponent,
+        ProductItemComponent,
+        PriceComponent,
+        SearchBoxComponent,
+        CategoryFilterComponent,
+        SubTitleDirective,
+        BtnShapeDirective,
+        DetailsComponent
+    ]
 })
 export class SharedModule { }

@@ -1,11 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { BoxStyles } from 'src/app/models/types/box';
 import { CoffeeBeans, CoffeeCup } from 'src/app/models/types/coffee';
+import { SubTitleDirective } from '../../../../../custom_directives/sub-title.directive';
+import { NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'details-section',
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+    selector: 'details-section',
+    templateUrl: './details.component.html',
+    styleUrl: './details.component.scss',
+    standalone: true,
+    imports: [NgStyle, SubTitleDirective]
 })
 export class DetailsComponent {
   @Input() item!: (CoffeeCup | CoffeeBeans);

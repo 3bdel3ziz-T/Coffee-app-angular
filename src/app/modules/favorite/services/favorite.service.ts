@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CoffeeBeans, CoffeeCup, Id as FavRef } from 'src/app/models/types/coffee';
-import { FavItem } from 'src/app/models/types/favorite';
+import { Item as FavItem, Id as FavRef } from 'src/app/models/types/coffee';
 import { AppService } from 'src/app/services/app.service';
 
 @Injectable({
@@ -17,7 +16,7 @@ export class FavoriteService {
   }
 
 
-  private getFavItemsByRef<T extends FavRef, G = (CoffeeCup | CoffeeBeans)>(arr1: T[]): G[] {
+  private getFavItemsByRef<T extends FavRef, G = FavItem>(arr1: T[]): G[] {
     const arr2: G[] = arr1.map((e: T, i: number, arr: T[]): any => {
       return this.appService.getItemById(e);
     })

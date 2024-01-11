@@ -26,6 +26,8 @@ export type Size = {
   "L": "L"
 }
 
+export type TupleSize = "S" | "M" | "L" 
+
 export type SizeOrDose =
   Size['S'] | Size['M'] | Size['L'] |
   Dose['S'] | Dose['M'] | Dose['L']
