@@ -1,3 +1,80 @@
 <section class="history page">
-  <product-item></product-item>
+  <div class="slider">
+    @for (history of historyItems; track $index) {
+    <div class="item">
+      <div class="item-head">
+        <div class="date">
+          <h4>order date</h4>
+          <!-- <span>{{orderDate}}</span> -->
+          <span>11th Jun 2:10 AM</span>
+        </div>
+        <div class="total">
+          <h4>Total Amount</h4>
+          <price [price]="orderTotal(history)" [priceSize]="'22px'"></price>
+        </div>
+      </div>
+      @for (cartItem of history; track $index) {
+      <product-item
+        [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
+        [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }"
+        [mainBoxFlex]="{ direction: 'row', gap: '25px' }"
+        [itemStyles]="{ padding: '18px' }"
+        [contentTemplate]="orderAmounts"
+        [sideTemplate]="itemTotalTemp"
+        [imgBoxSize]="'S'"
+        [itemData]="cartItem.item"
+      ></product-item>
+
+      <ng-template #itemTotalTemp>
+        <div class="price">
+          <price
+            [price]="ToPrice(itemTotal(cartItem))"
+            [priceSize]="'22px'"
+          ></price>
+        </div>
+      </ng-template>
+      <ng-template #orderAmounts>
+        <div class="details-items">
+          @for (detail of cartItem.amounts; track $index) { @if(detail.quantity
+          > 0){
+          <div class="detail">
+            <div class="price-and-size">
+              <h3>{{ detail.size }}</h3>
+              <div class="price">
+                <price
+                  [price]="
+                    getPriceBySize(
+                      cartItem.item.id,
+                      cartItem.amounts[$index].size
+                    )
+                  "
+                  [priceSize]="'16px'"
+                ></price>
+              </div>
+            </div>
+            <h3 class="quantity">
+              <span class="Xsign">X</span>{{ detail.quantity }}
+            </h3>
+            <div class="price">
+              <price
+                [price]="
+                  ToPrice(
+                    +detail.quantity *
+                      +getPriceBySize(
+                        cartItem.item.id,
+                        cartItem.amounts[$index].size
+                      )
+                  )
+                "
+                [priceSize]="'18px'"
+              ></price>
+            </div>
+          </div>
+          }}
+        </div>
+      </ng-template>
+      }
+    </div>
+    }
+  </div>
 </section>

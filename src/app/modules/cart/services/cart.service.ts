@@ -1,61 +1,67 @@
-import { Injectable } from '@angular/core';
+import { DoCheck, Injectable } from '@angular/core';
 import { CartItem, ItemRef } from 'src/app/models/types/cart-item';
 import { Id } from 'src/app/models/types/coffee';
-import { Price, SizeOrDose } from 'src/app/models/types/size';
-import { AppService } from 'src/app/services/app.service';
+import { Price, SizeOrDose, Sizes } from 'src/app/models/types/size';
+import { AppService } from '../../../services/app.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cartData!: CartItem[];
+  private cartItemsRef: ItemRef[] = [];
   constructor(private appService: AppService) {
-    appService.cartRefObservable.subscribe({
-      next: (data: ItemRef[]) => this.cartData = this.getCartItemsByRef(data),
-      error: (err: Error) => console.error(err),
-      complete: () => { }
-    })
+    // appService.getCartRefItems()
+  }
+  getCartRefItems(itemRef: ItemRef): void {
+    this.cartItemsRef.push(itemRef)
   }
 
   getCartItemsByRef(arr: ItemRef[]): CartItem[] {
-    return arr.map
-      ((e: ItemRef, i: number, arr: ItemRef[]): any => {
-        return {
-          item: this.appService.getItemById(e.itemId),
-          amounts: e.amounts
-        }
-      })
+    return arr.map((e: ItemRef, i: number, arr: ItemRef[]): any => {
+      return {
+        item: this.appService.getItemById(e.itemId),
+        amounts: e.amounts
+      }
+    })
   }
 
-  // get cartObservable(): Observable<CartItem> {
-  //   return new Observable<CartItem>((observer: any) => {
-  //     this.cartData.forEach((e: CartItem) => observer.next(e))
-  //   })
-  // }
-
-  get getTotal(): Price {
+  getTotal(cartItems: CartItem[]): Price {
     let totalPrice: number = 0;
-    this.cartData.forEach((item: CartItem, i: number, arr: CartItem[]) => {
-      item.amounts.forEach((e) => {
-        let itemPrice: number = 0;
-        if (e.quantity > 0) {
-          itemPrice += e.quantity * +this.getPriceBySize(arr[i].item.id, e.size)
-        }
-        totalPrice += itemPrice
-      })
+    cartItems.forEach((item: CartItem, i: number, arr: CartItem[]) => {
+      totalPrice += this.itemTotal(item)
     })
-    return `${totalPrice}`
+    return this.ToPrice(totalPrice)
   }
-  private getPriceBySize(id: Id, size: SizeOrDose): Price {
-    let price!: Price;
-    this.cartData.forEach((e: CartItem, i: number) => {
-      e.item.id === id ?
-        e.item.price.USD.sizes.forEach((e) =>
-          e.size === size ? price = e.price : false) : false
+  
+  itemTotal(item: CartItem): number {
+    let itemTotal: number = 0;
+    item.amounts.forEach((e) => {
+      let itemPrice: number = 0;
+      if (e.quantity > 0) {
+        itemPrice += e.quantity * +this.getPriceBySize(item.item.id, e.size)
+      }
+      itemTotal += itemPrice
     })
+    return itemTotal
+  }
+  getPriceBySize(id: Id, size: SizeOrDose): Price {
+    let price!: Price;
+    this.appService.getItemById(id).price.USD.sizes
+      .forEach((e: {
+        size: SizeOrDose;
+        price: Price;
+      }, i: number) => {
+        e.size === size ? price = e.price : false
+      })
     return price
   }
-  get getCartData() {
-    return this.appService.passData<CartItem>(this.cartData)
+
+  ToPrice(price: number): Price {
+    return `${price}`
+  }
+
+  get cartObservable(): Observable<CartItem[]> {
+    return of(this.getCartItemsByRef(this.cartItemsRef))
   }
 }

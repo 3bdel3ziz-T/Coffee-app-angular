@@ -31,11 +31,17 @@
     </label>
     }
     <label
-    class="btn add-fav"
-    [ngStyle]="{ top: backBtn ? '65px' : '30px' }"
-    for="{{item.id}}"
-    >
-    <input type="checkbox" name="{{item.name}}" id="{{item.id}}" [checked]="item.isFavorite" />
+      class="btn add-fav"
+      [ngStyle]="{ top: backBtn ? '65px' : '30px' }"
+      for="{{ item.id }}"
+      >
+      <input
+      type="checkbox"
+      name="{{ item.name }}"
+      id="{{ item.id }}"
+      (click)="emit_favRef()"
+      [checked]="item.isFavorite"
+      />
       <svg
         class="svg-celebrate"
         width="100"

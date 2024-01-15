@@ -3,7 +3,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: $global-gap;
+  gap: $gap-25;
   h1 {
     color: $col-white;
     font-weight: 600;
@@ -21,7 +21,7 @@
   display: flex;
   overflow: visible;
   overflow-x: scroll;
-  gap: $global-gap;
+  gap: $gap-25;
   // grid-template-columns: repeat(auto-fill, 150px);
   // grid-template-rows: repeat(1, 235px);
   width: 100%;

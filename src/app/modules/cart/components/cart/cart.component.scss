@@ -3,7 +3,7 @@
 .cart {
   .cart-list {
     display: flex;
-    gap: $global-gap;
+    gap: $gap-25;
     flex-direction: column;
   }
   .buy-box {
