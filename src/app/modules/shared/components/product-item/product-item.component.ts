@@ -14,15 +14,21 @@ import { NgStyle, NgTemplateOutlet } from '@angular/common';
 })
 export class ProductItemComponent {
   @Input() itemData!: Item;
+  @Input() itemStyles: {padding: CssUnits};
   @Input() imgBoxSize: TupleSize;
-  @Input() mainBox: BoxFlex;
+  @Input() mainBoxFlex: BoxFlex;
+  @Input() sideContentBoxFlex: BoxFlex;
   @Input() titlesSize: { mainTitle: CssUnits, subTitle: CssUnits };
-  @Input() tagsTemplate!: TemplateRef<unknown>;
+  @Input() sideTemplate!: TemplateRef<unknown>;
   @Input() contentTemplate!: TemplateRef<unknown>;
   constructor() {
-    this.mainBox = { direction: 'column', gap: '12px' };
+    this.mainBoxFlex = { direction: 'column', gap: '12px' };
     this.titlesSize = { mainTitle: '13px', subTitle: '9px' };
     this.imgBoxSize = 'M'
-    // this.imgBoxSize = 'L';
+    this.sideContentBoxFlex = {
+      direction: 'column',
+      gap: '0',
+    }
+    this.itemStyles = { padding : '12px'}
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeService } from '../../services/home.service';
+import { AppService } from 'src/app/services/app.service';
 import { CoffeeCup, CoffeeBeans } from 'src/app/models/types/coffee';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { BtnShapeDirective } from '../../../../custom_directives/btn-shape.directive';
@@ -25,11 +25,19 @@ import { SearchBoxComponent } from '../../../shared/components/search-box/search
 })
 export class HomeComponent {
 
-  coffeeCupArr: CoffeeCup[] = [];
-  coffeeBeansArr: CoffeeBeans[] = [];
+  coffeeData: CoffeeCup[] = [];
+  beansData: CoffeeBeans[] = [];
 
-  constructor(private homeService: HomeService) {
-    this.coffeeCupArr = homeService.getCoffeeData
-    this.coffeeBeansArr = homeService.getBeansData
+  constructor(private appService: AppService) {
+    appService.coffeeObservable.subscribe({
+      next: (data: CoffeeCup) => this.coffeeData.push(data),
+      error: (err: Error) => console.error(err),
+      complete: () => { }
+    })
+    appService.beansObservable.subscribe({
+      next: (data: CoffeeBeans) => this.beansData.push(data),
+      error: (err: Error) => console.error(err),
+      complete: () => { }
+    })
   }
 }

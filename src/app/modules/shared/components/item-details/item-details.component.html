@@ -7,7 +7,8 @@
     background: MainBoxStyle.background
   }"
 >
-  <details-section [item]="item">
+  <details-section [item]="item" 
+    (favRef)="fav_addItem($event)">
     <section class="buy-section">
       <div class="sizes-box">
         <h4 subTitle>size</h4>
@@ -40,7 +41,11 @@
           <price [price]="size.price" [priceSize]="'20px'"></price>
           } }
         </div>
-        <button class="add-btn" btnShape (click)="Cart_addItem()">
+        <button
+          class="add-btn"
+          btnShape
+          (click)="cart_addItem(item.id, selected)"
+        >
           Add to Cart
         </button>
       </div>

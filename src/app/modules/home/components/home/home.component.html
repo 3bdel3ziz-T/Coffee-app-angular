@@ -5,7 +5,7 @@
 
   <h3 class="items-title">Coffee drinks</h3>
   <section class="slider">
-    @for (cupData of coffeeCupArr; track $index) {
+    @for (cupData of coffeeData; track $index) {
     <product-item
       [contentTemplate]="buySection"
       [itemData]="cupData"
@@ -43,7 +43,7 @@
 
   <h3 class="items-title">Coffee beans</h3>
   <section class="slider">
-    @for (beansData of coffeeBeansArr; track $index) {
+    @for (beansData of beansData; track $index) {
     <product-item
       [contentTemplate]="buySection"
       [itemData]="beansData"

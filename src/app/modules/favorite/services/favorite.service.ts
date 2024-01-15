@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Item as FavItem, Id as FavRef } from 'src/app/models/types/coffee';
 import { AppService } from 'src/app/services/app.service';
 
@@ -6,15 +7,15 @@ import { AppService } from 'src/app/services/app.service';
   providedIn: 'root'
 })
 export class FavoriteService {
-  private favItems!: FavItem[];
-  constructor(private appService: AppService) {
-    appService.favRefObservable.subscribe({
-      next: (data: FavRef[]) => this.favItems = this.getFavItemsByRef(data),
-      error: (err: Error) => console.error(err),
-      complete: () => { }
-    }) 
-  }
+  private favItemsRef: FavRef[] = [];
+  constructor(private appService: AppService) { }
 
+  favRef_addItem(favRef: FavRef): void {
+    this.favItemsRef.push(favRef)
+    console.log(this)
+    console.log(this.favItemsRef)
+    console.log('fav service get it!')
+  }
 
   private getFavItemsByRef<T extends FavRef, G = FavItem>(arr1: T[]): G[] {
     const arr2: G[] = arr1.map((e: T, i: number, arr: T[]): any => {
@@ -22,7 +23,8 @@ export class FavoriteService {
     })
     return arr2
   }
-  get getFavData() {
-    return this.appService.passData<FavItem>(this.favItems)
+  
+  get favObservable(): Observable<FavItem[]> {
+    return of(this.getFavItemsByRef(this.favItemsRef))
   }
 }
