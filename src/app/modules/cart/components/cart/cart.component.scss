@@ -1,6 +1,13 @@
 @use "../../../../../styles" as *;
 
 .cart {
+  display: flex;
+  flex-direction: column;
+  
+  .page-content {
+    min-height: calc(100dvh - 250px);
+    overflow-y: scroll;
+  }
   .cart-list {
     display: flex;
     gap: $gap-25;
@@ -12,7 +19,7 @@
     align-items: center;
     position: sticky;
     bottom: 0;
-    padding: 30px 0;
+    padding: 30px;
 
     background-color: $col-dark;
     .price {
@@ -20,7 +27,7 @@
     button {
       width: 240px;
       padding: 20px 100px;
-      border-radius: 25px;
+      border-radius: $rad-25;
     }
   }
 }
@@ -70,7 +77,7 @@
         background-color: $col-dark;
         font-weight: 400;
         font-size: 16px;
-        border-radius: $rad-7 + 3px;
+        border-radius: $rad-10;
         color: $col-white;
         display: flex;
         align-items: center;

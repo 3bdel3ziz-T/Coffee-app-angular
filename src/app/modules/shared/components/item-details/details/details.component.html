@@ -39,7 +39,7 @@
       type="checkbox"
       name="{{ item.name }}"
       id="{{ item.id }}"
-      (click)="emit_favRef()"
+      (click)="fav_addItem(item.id)"
       [checked]="item.isFavorite"
       />
       <svg

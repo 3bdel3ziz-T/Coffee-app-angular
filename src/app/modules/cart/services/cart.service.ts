@@ -1,7 +1,7 @@
-import { DoCheck, Injectable } from '@angular/core';
-import { CartItem, ItemRef } from 'src/app/models/types/cart-item';
+import { Injectable } from '@angular/core';
+import { Amount, AmountItem, CartItem, ItemRef } from 'src/app/models/types/cart-item';
 import { Id } from 'src/app/models/types/coffee';
-import { Price, SizeOrDose, Sizes } from 'src/app/models/types/size';
+import { Price, SizeOrDose } from 'src/app/models/types/size';
 import { AppService } from '../../../services/app.service';
 import { Observable, of } from 'rxjs';
 
@@ -10,11 +10,69 @@ import { Observable, of } from 'rxjs';
 })
 export class CartService {
   private cartItemsRef: ItemRef[] = [];
-  constructor(private appService: AppService) {
-    // appService.getCartRefItems()
+  constructor(private appService: AppService) { }
+
+  checkItemRef(itemRef: ItemRef): void {
+    this.isItemExist(itemRef, this.cartItemsRef) ?
+      this.changeQty("increment", itemRef)
+      : this.cartItemsRef.push(itemRef)
   }
-  getCartRefItems(itemRef: ItemRef): void {
-    this.cartItemsRef.push(itemRef)
+  createCartRefItem(id: Id, selected: SizeOrDose): ItemRef {
+    const itemRef: ItemRef = {
+      itemId: id,
+      amounts: this.createAmount(id, selected)
+    }
+    return itemRef
+  }
+  private createAmount(id: Id, selected: SizeOrDose): Amount {
+    let amount: Amount = [
+      {
+        size: 'S',
+        quantity: 0,
+      }, {
+        size: 'M',
+        quantity: 0,
+      }, {
+        size: 'L',
+        quantity: 0,
+      }
+    ]
+    if (id.startsWith('C')) {
+      this.incrementSelected(selected, amount)
+    } else if (id.startsWith('B')) {
+      amount[0].size = '250gm'
+      amount[1].size = '500gm'
+      amount[2].size = '1000gm'
+      this.incrementSelected(selected, amount)
+    }
+    return amount
+  }
+  private incrementSelected(selected: SizeOrDose, arr: Amount): void {
+    arr.forEach((e: AmountItem) => {
+      selected == e.size ? e.quantity++ : false;
+    })
+  }
+
+  private isItemExist<T extends ItemRef>(itemRef: T, arr: T[]): boolean {
+    let booleans: boolean[] = [];
+    arr.forEach((e: ItemRef) =>
+      e.itemId === itemRef.itemId ? booleans.push(true) : false
+    )
+    return booleans.includes(true) ? true : false
+  }
+
+  changeQty<T extends ItemRef>(X: 'increment' | 'decrement', itemRef: T): void {
+    this.cartItemsRef.forEach((cartRef: ItemRef) => {
+      cartRef.itemId === itemRef.itemId ?
+        itemRef.amounts.forEach((amount: AmountItem, i: number) => {
+          if (amount.quantity === 1 && X === 'increment') {
+            cartRef.amounts[i].quantity++
+          } else if (amount.quantity === 1 && X === 'decrement') {
+            cartRef.amounts[i].quantity--
+          }
+        }
+        ) : false
+    })
   }
 
   getCartItemsByRef(arr: ItemRef[]): CartItem[] {
@@ -33,7 +91,6 @@ export class CartService {
     })
     return this.ToPrice(totalPrice)
   }
-  
   itemTotal(item: CartItem): number {
     let itemTotal: number = 0;
     item.amounts.forEach((e) => {
@@ -64,4 +121,14 @@ export class CartService {
   get cartObservable(): Observable<CartItem[]> {
     return of(this.getCartItemsByRef(this.cartItemsRef))
   }
+
+
+  // returning the index if it exist
+  // private isItemExist<T extends ItemRef>(itemRef: T, arr: T[]): number | false {
+  //   let index: number | false = false;
+  //   arr.forEach((e: ItemRef, i: number) =>
+  //     e.itemId === itemRef.itemId ? index = i : false
+  //   )
+  //   return index
+  // }
 }

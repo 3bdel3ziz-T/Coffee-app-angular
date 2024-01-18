@@ -16,7 +16,7 @@ export class BtnShapeDirective implements OnInit {
     this.element.nativeElement.style.cssText =
       `
       cursor: pointer;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 500;
       display: flex;
       align-items: center;

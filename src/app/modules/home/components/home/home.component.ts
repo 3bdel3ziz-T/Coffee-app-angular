@@ -7,6 +7,7 @@ import { PriceComponent } from '../../../shared/components/price/price.component
 import { ProductItemComponent } from '../../../shared/components/product-item/product-item.component';
 import { CategoryFilterComponent } from '../../../shared/components/category-filter/category-filter.component';
 import { SearchBoxComponent } from '../../../shared/components/search-box/search-box.component';
+import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 
 @Component({
     selector: 'home-page',
@@ -21,6 +22,7 @@ import { SearchBoxComponent } from '../../../shared/components/search-box/search
         BtnShapeDirective,
         RouterLink,
         RouterOutlet,
+        MenuBarComponent
     ],
 })
 export class HomeComponent {

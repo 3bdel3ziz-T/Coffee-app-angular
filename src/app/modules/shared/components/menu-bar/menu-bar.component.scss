@@ -3,7 +3,8 @@
 section {
   width: 100%;
   position: sticky;
-  top: calc(100dvh - 70px);
+  // top: 100%;
+  bottom: -1px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;

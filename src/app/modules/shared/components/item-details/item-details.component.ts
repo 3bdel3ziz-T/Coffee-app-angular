@@ -64,7 +64,4 @@ export class ItemDetailsComponent implements OnInit {
   cart_addItem(id: Id, selected: SizeOrDose): void {
     this.prodService.cart_addItem(id, selected)
   }
-  fav_addItem(id: Id): void {
-    this.prodService.favRef_addItem(id)
-  }
 }

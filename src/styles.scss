@@ -24,9 +24,11 @@ $col-darkGray: #52555a;
 $col-gray: #aeaeae;
 $col-white: #ffffff;
 $rad-25: 25px;
+$rad-10: 10px;
 $rad-7: 7px;
 $small-btn-size: 30px;
 $gap-25: 25px;
+$gap-15: 15px;
 $blur-20: 20px;
 $main-gradient: linear-gradient(to bottom right, #252a32 0%, #262b3300 100%);
 $sec-gradient: linear-gradient(to bottom right, #21262e 20%, #0c0f14 70%);
@@ -71,15 +73,32 @@ body {
   z-index: 1;
 }
 
+button {
+  user-select: none;
+}
+
+img {
+  user-select: none;
+}
 // Helper Classes
 
 .page {
-  padding: 10px 30px 70px 30px;
   width: 100%;
-  height: calc(100dvh - 38px);
+  height: calc(100dvh - 45px);
   overflow-y: scroll;
   position: absolute;
   z-index: 5;
+}
+
+.page-content {
+  padding: 10px 30px 10px 30px;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-25;
+  // height: calc(100dvh - 114px);
+  // overflow: scroll;
 }
 
 .container {
@@ -88,10 +107,8 @@ body {
   z-index: 1;
 }
 
-// button[btnshape] {
-//   &:focus {
-//     color: $col-orange;
-//     background-color: transparent;
-//     border-color: $col-orange;
-//   }
+// button:hover {
+//   color: $col-orange;
+//   background-color: transparent;
+//   border-color: $col-orange;
 // }

@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BoxStyles } from 'src/app/models/types/box';
-import { CoffeeBeans, CoffeeCup } from 'src/app/models/types/coffee';
+import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
 import { SubTitleDirective } from '../../../../../custom_directives/sub-title.directive';
 import { NgStyle } from '@angular/common';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'details-section',
@@ -16,8 +17,7 @@ export class DetailsComponent {
   showFullDescription: boolean = false;
   @Input() backBtn: boolean;
   @Input() MainBoxStyle: BoxStyles;
-  @Output() favRef: EventEmitter<any> = new EventEmitter<any>
-  constructor() {
+  constructor(private prodService: ProductService) {
     this.showFullDescription = false;
     this.backBtn = true;
     this.MainBoxStyle = {
@@ -27,8 +27,7 @@ export class DetailsComponent {
       background: '#0c0f14'
     }
   }
-  emit_favRef(): void {
-    // this.prodService.favRef_addItem(this.item.id)
-    this.favRef.emit(this.item.id)
+  fav_addItem(id: Id): void {
+    this.prodService.favRef_addItem(id)
   }
 }

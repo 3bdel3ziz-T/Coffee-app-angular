@@ -5,12 +5,14 @@ import { HomeComponent } from './modules/home/components/home/home.component';
 import { CartComponent } from './modules/cart/components/cart/cart.component';
 import { FavoriteComponent } from './modules/favorite/component/favorite/favorite.component';
 import { HistoryComponent } from './modules/orders-history/components/history/history.component';
+import { SettingComponent } from './modules/shared/components/setting/setting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent, children: [
       { path: 'item-details/:id', component: ItemDetailsComponent },
+      { path: 'setting', component: SettingComponent },
     ]
   },
   {

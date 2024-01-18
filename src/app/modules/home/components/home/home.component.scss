@@ -1,14 +1,46 @@
 @use "../../../../../styles" as *;
 
-.home {
+.top-bar {
   display: flex;
-  flex-direction: column;
-  gap: $gap-25;
-  h1 {
-    color: $col-white;
-    font-weight: 600;
-    @media (min-width: 425px) {
-      width: 195px;
+  justify-content: space-between;
+  padding: 15px 0;
+  .btn {
+    border: 1px solid $col-border;
+    padding: 8px;
+    width: 33px;
+    height: 33px;
+    border-radius: $rad-10;
+    background: $sec-gradient;
+  }
+  .setting {
+    .squares-box {
+      width: 16px;
+      height: 16px;
+      background-color: transparent;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 2px;
+      justify-content: center;
+      span {
+        display: block;
+        position: relative;
+        width: 7px;
+        height: 7px;
+        border-radius: 2px;
+        background-color: rgba($col-white, 20%);
+      }
+    }
+  }
+}
+
+.home {
+  .page-content {
+    h1 {
+      color: $col-white;
+      font-weight: 600;
+      @media (min-width: 425px) {
+        width: 195px;
+      }
     }
   }
 }
@@ -19,9 +51,10 @@
 }
 .slider {
   display: flex;
-  overflow: visible;
+  // overflow: visible;
   overflow-x: scroll;
   gap: $gap-25;
+  height: fit-content;
   // grid-template-columns: repeat(auto-fill, 150px);
   // grid-template-rows: repeat(1, 235px);
   width: 100%;

@@ -22,42 +22,15 @@ export class ProductService {
   }
 
   cart_addItem(id: Id, selected: SizeOrDose): void {
-    const itemRef: ItemRef = {
-      itemId: id,
-      amounts: this.getAmount(id, selected)
-    }
-    this.cartService.getCartRefItems(itemRef)
-  }
-  getAmount(id: Id, selected: SizeOrDose): Amount {
-    let amount: Amount = [
-      {
-        size: 'S',
-        quantity: 0,
-      }, {
-        size: 'M',
-        quantity: 0,
-      }, {
-        size: 'L',
-        quantity: 0,
-      }
-    ]
-    if (id.startsWith('C')) {
-      this.incrementSelected(selected, amount)
-    } else if (id.startsWith('B')) {
-      amount[0].size = '250gm'
-      amount[1].size = '500gm'
-      amount[2].size = '1000gm'
-      this.incrementSelected(selected, amount)
-    }
-    return amount
-  }
-  incrementSelected(selected: SizeOrDose, arr: Amount): void {
-    arr.forEach((e: AmountItem) => {
-      selected == e.size ? e.quantity++ : false;
-    })
+    this.cartService.checkItemRef(
+      this.cartService.createCartRefItem(id, selected))
   }
 
-  favRef_addItem(favRef: Id) {
-    this.favService.favRef_addItem(favRef)
+  favRef_addItem(favRef: Id): void {
+    const favItem = this.appService.getItemById(favRef)
+    this.appService.getItemById(favRef).isFavorite =
+    !this.appService.getItemById(favRef).isFavorite
+
+    this.favService.favRef_addItem(favItem)
   }
 }

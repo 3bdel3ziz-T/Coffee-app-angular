@@ -1,6 +1,8 @@
 <section class="favorite page">
-  <div class="slider">
-    @for (favItem of favorites; track $index) {
+  @if(favData.length) {
+  <section class="page-content">
+    <div class="slider">
+      @for (favItem of favData; track $index) { @if(favItem.isFavorite) {
       <details-section
         [MainBoxStyle]="{
           width: '100%',
@@ -12,6 +14,11 @@
         [backBtn]="false"
         [item]="favItem"
       ></details-section>
-    }
-  </div>
+      } }
+    </div>
+  </section>
+} @else {
+<msg [msg]="'your favorites is empty'" [btnTxt]="'home page'"></msg>
+}
+  <menu-bar></menu-bar>
 </section>
