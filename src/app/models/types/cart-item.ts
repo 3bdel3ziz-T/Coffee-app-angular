@@ -1,10 +1,6 @@
 import { Id, Item } from "./coffee"
 import { SizeOrDose, Size, Dose } from "./size"
 
-export type OrderItem = {
-  date: Date,
-  cartItem: CartItem[],
-}
 export type CartItem = {
   item: Item,
   amounts: Amount

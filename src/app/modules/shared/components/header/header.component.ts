@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { NgStyle, NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    standalone: true,
-    imports: [NgStyle, NgIf]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [NgStyle, NgIf]
 })
 export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
-    const dateNow: Date = new Date;
-    this.time = `${dateNow.getHours() > 12 ? dateNow.getHours() - 12 : dateNow.getHours()} : ${dateNow.getMinutes() > 9 ? dateNow.getMinutes() : '0' + dateNow.getMinutes()}  ${dateNow.getHours() >= 12 ? 'pm' : 'am'}`
+    const dateNow: Date = new Date,
+      day = dateNow.getDate(),
+      hours = dateNow.getHours(),
+      minutes = dateNow.getMinutes();
+    this.time = `${hours > 12 ? hours - 12 : hours + 12} : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`
 
     this.changeBackground();
   }

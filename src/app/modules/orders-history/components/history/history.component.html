@@ -7,15 +7,15 @@
         <div class="item-head">
           <div class="date">
             <h4>order date</h4>
-            <!-- <span>{{orderDate}}</span> -->
-            <span>11th Jun 2:10 AM</span>
+            <span>{{getDate(history.date)}}</span>
+            <!-- <span>11th Jun 2:10 AM</span> -->
           </div>
           <div class="total">
             <h4>Total Amount</h4>
-            <price [price]="orderTotal(history)" [priceSize]="'22px'"></price>
+            <price [price]="orderTotal(history.cartData)" [priceSize]="'22px'"></price>
           </div>
         </div>
-        @for (cartItem of history; track $index) {
+        @for (cartItem of history.cartData; track $index) {
         <product-item
           [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
           [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }"

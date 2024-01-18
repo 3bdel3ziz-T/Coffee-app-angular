@@ -2,7 +2,7 @@
   @if (cart.length) {
   <section class="page-content">
     <div class="cart-list">
-      @for (data of cart; track $index) {
+      @for (data of cart; track $index) { @if (isQty1(data.amounts)) {
       <product-item
         [itemData]="data.item"
         [sideTemplate]="isQty1(data.amounts) ? orderDetails : tags"
@@ -84,7 +84,7 @@
           }
         </div>
       </ng-template>
-      }
+      } }
     </div>
   </section>
   @if (cart.length) {
@@ -96,7 +96,7 @@
     <button btnShape>Pay</button>
   </div>
   } }@else {
-    <msg [msg]="'your cart is empty!'" [btnTxt]="'order coffee now!'"></msg>
+  <msg [msg]="'your cart is empty!'" [btnTxt]="'order coffee now!'"></msg>
   }
   <menu-bar></menu-bar>
 </section>

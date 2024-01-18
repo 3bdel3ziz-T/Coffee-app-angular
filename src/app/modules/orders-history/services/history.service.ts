@@ -1,91 +1,101 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer, of } from 'rxjs';
-import { CartItem, ItemRef } from 'src/app/models/types/cart-item';
+import { Observable, of } from 'rxjs';
 import { CartService } from '../../cart/services/cart.service';
+import { OrderItem, OrderRef } from 'src/app/models/types/order-history';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
-  private historyItemsRef: ItemRef[][] = []
+  private historyItemsRef: OrderRef[] = []
   constructor(private cartService: CartService) {
     this.historyItemsRef = [
-      [
-        {
-          itemId: 'C1',
-          amounts: [
-            {
-              size: 'S',
-              quantity: 2
-            }, {
-              size: 'M',
-              quantity: 0
-            }, {
-              size: 'L',
-              quantity: 1
-            }
-          ]
-        },
-        {
-          itemId: 'B2',
-          amounts: [
-            {
-              size: '250gm',
-              quantity: 0
-            }, {
-              size: '500gm',
-              quantity: 0
-            }, {
-              size: '1000gm',
-              quantity: 1
-            }
-          ]
-        },
-      ],
-      [
-        {
-          itemId: 'C3',
-          amounts: [
-            {
-              size: 'S',
-              quantity: 1
-            }, {
-              size: 'M',
-              quantity: 1
-            }, {
-              size: 'L',
-              quantity: 0
-            }
-          ]
-        },
-        {
-          itemId: 'B4',
-          amounts: [
-            {
-              size: '250gm',
-              quantity: 2
-            }, {
-              size: '500gm',
-              quantity: 0
-            }, {
-              size: '1000gm',
-              quantity: 1
-            }
-          ]
-        },
-      ],
+      {
+        date: new Date,
+        cartRef: [
+          {
+            itemId: 'C1',
+            amounts: [
+              {
+                size: 'S',
+                quantity: 2
+              }, {
+                size: 'M',
+                quantity: 0
+              }, {
+                size: 'L',
+                quantity: 1
+              }
+            ]
+          },
+          {
+            itemId: 'B2',
+            amounts: [
+              {
+                size: '250gm',
+                quantity: 0
+              }, {
+                size: '500gm',
+                quantity: 0
+              }, {
+                size: '1000gm',
+                quantity: 1
+              }
+            ]
+          },
+        ], isAccepted: true
+      },
+      {
+        date: new Date,
+        cartRef: [
+          {
+            itemId: 'C3',
+            amounts: [
+              {
+                size: 'S',
+                quantity: 1
+              }, {
+                size: 'M',
+                quantity: 1
+              }, {
+                size: 'L',
+                quantity: 0
+              }
+            ]
+          },
+          {
+            itemId: 'B4',
+            amounts: [
+              {
+                size: '250gm',
+                quantity: 2
+              }, {
+                size: '500gm',
+                quantity: 0
+              }, {
+                size: '1000gm',
+                quantity: 1
+              }
+            ]
+          },
+        ], isAccepted: true
+      }
     ]
   }
 
-  private getHistory(historyRef: ItemRef[][]): CartItem[][] {
-    let historyItems: CartItem[][] = [];
-    historyRef.forEach((e: ItemRef[]) => {
-      historyItems.push(this.cartService.getCartItemsByRef(e))
+  private getHistory(historyRef: OrderRef[]): OrderItem[] {
+    let historyItems: OrderItem[] = [];
+    historyRef.forEach((e: OrderRef, i: number) => {
+      historyItems.push({
+        date: historyRef[i].date,
+        cartData: this.cartService.getCartItemsByRef(e.cartRef),
+        isAccepted: true
+      })
     })
     return historyItems
   }
-  
-  get historyObservable(): Observable<CartItem[][]> {
-    return of(this.getHistory(this.historyItemsRef)) 
+
+  get historyObservable(): Observable<OrderItem[]> {
+    return of(this.getHistory(this.historyItemsRef))
   }
 }
