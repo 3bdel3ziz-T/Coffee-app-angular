@@ -6,6 +6,7 @@ import { CartComponent } from './modules/cart/components/cart/cart.component';
 import { FavoriteComponent } from './modules/favorite/component/favorite/favorite.component';
 import { HistoryComponent } from './modules/orders-history/components/history/history.component';
 import { SettingComponent } from './modules/shared/components/setting/setting.component';
+import { PaymentComponent } from './modules/cart/components/cart/payment/payment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: 'cart', component: CartComponent, children: [
       { path: 'item-details/:id', component: ItemDetailsComponent },
+      { path: 'pay', component: PaymentComponent }
     ]
   },
   {path: 'favorite', component: FavoriteComponent},

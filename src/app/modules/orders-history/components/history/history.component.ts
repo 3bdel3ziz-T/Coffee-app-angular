@@ -42,7 +42,7 @@ export class HistoryComponent {
       day === 2 ? letter = 'nd' :
         day === 3 ? 'nd' : 'th'
 
-    let orderDate: string = `${day}${letter} ${months[date.getMonth()]} ${hours >= 12 ? hours - 12 : hours + 12} : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`;
+    let orderDate: string = `${day}${letter} ${months[date.getMonth()]} ${hours > 12 ? hours - 12 : hours } : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`;
     return orderDate
   }
 

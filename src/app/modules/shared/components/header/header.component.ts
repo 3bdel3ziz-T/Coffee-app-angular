@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
       day = dateNow.getDate(),
       hours = dateNow.getHours(),
       minutes = dateNow.getMinutes();
-    this.time = `${hours > 12 ? hours - 12 : hours + 12} : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`
+    this.time = `${hours > 12 ? hours - 12 : hours } : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`
 
     this.changeBackground();
   }

@@ -2,7 +2,8 @@
   @if (cart.length) {
   <section class="page-content">
     <div class="cart-list">
-      @for (data of cart; track $index) { @if (isQty1(data.amounts)) {
+      @for (data of cart; track $index) { @if (hasQty(data.amounts).length > 0)
+      {
       <product-item
         [itemData]="data.item"
         [sideTemplate]="isQty1(data.amounts) ? orderDetails : tags"
@@ -91,9 +92,9 @@
   <div class="buy-box">
     <div class="price">
       <h4 subTitle>Total Price</h4>
-      <price [price]="totalPrice" [priceSize]="'20px'"></price>
+      <price [price]="getTotal(cart)" [priceSize]="'20px'"></price>
     </div>
-    <button btnShape>Pay</button>
+    <button routerLink="pay" btnShape>Pay</button>
   </div>
   } }@else {
   <msg [msg]="'your cart is empty!'" [btnTxt]="'order coffee now!'"></msg>
