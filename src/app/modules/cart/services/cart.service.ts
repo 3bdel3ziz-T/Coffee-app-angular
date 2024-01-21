@@ -10,9 +10,15 @@ import { Observable, of } from 'rxjs';
 })
 export class CartService {
   private cartItemsRef: ItemRef[] = [];
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService) { 
+    this.cartItemsRef.push(
+      this.createCartRefItem('C1', 'S')
+    )
+  }
 
-  checkItemRef(itemRef: ItemRef): void {
+  cart_addItem(id: Id, selected: SizeOrDose): void {
+    const itemRef = this.createCartRefItem(id, selected);
+
     this.isItemExist(itemRef, this.cartItemsRef) ?
       this.changeQty("increment", itemRef)
       : this.cartItemsRef.push(itemRef)

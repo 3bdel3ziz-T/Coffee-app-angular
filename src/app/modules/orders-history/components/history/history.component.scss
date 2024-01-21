@@ -12,6 +12,10 @@
         flex-direction: column;
         gap: $gap-25;
         padding: $gap-25 0;
+        &:first-of-type {
+          padding: 0;
+          padding-bottom: $gap-25; 
+        }
         .item-head {
           display: flex;
           justify-content: space-between;

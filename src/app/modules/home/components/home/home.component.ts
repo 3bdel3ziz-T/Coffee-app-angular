@@ -8,6 +8,7 @@ import { ProductItemComponent } from '../../../shared/components/product-item/pr
 import { CategoryFilterComponent } from '../../../shared/components/category-filter/category-filter.component';
 import { SearchBoxComponent } from '../../../shared/components/search-box/search-box.component';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
+import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
 
 @Component({
     selector: 'home-page',
@@ -22,7 +23,8 @@ import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/men
         BtnShapeDirective,
         RouterLink,
         RouterOutlet,
-        MenuBarComponent
+        MenuBarComponent,
+        TitleSectionComponent
     ],
 })
 export class HomeComponent {

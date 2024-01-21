@@ -1,6 +1,7 @@
 <section class="cart page">
   @if (cart.length) {
   <section class="page-content">
+    <title-section [svg]="'setting'" [pageTitle]="'cart'"></title-section>
     <div class="cart-list">
       @for (data of cart; track $index) { @if (hasQty(data.amounts).length > 0)
       {

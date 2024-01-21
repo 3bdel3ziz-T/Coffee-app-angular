@@ -1,0 +1,42 @@
+@use "../../../../../../styles" as *;
+
+.payment {
+  .content {
+    height: calc((100dvh - 120px) - 45px);
+    width: 100%;
+    background: $col-dark;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-15;
+    .item {
+      padding: 15px;
+      border-radius: $rad-25;
+      border: 1px solid $col-border;
+      color: white;
+      background: $main-gradient;
+      h4 {
+        font-weight: 500;
+      }
+    }
+  }
+  .buy-box {
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    padding: 30px;
+
+    background-color: $col-dark;
+    .price {
+    }
+    button {
+      width: 240px;
+      padding: 20px 0;
+      text-align: center;
+      border-radius: $rad-25;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/men
 import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
 import { OrderItem } from 'src/app/models/types/order-history';
+import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
 
 @Component({
   selector: 'history-page',
@@ -17,7 +18,7 @@ import { OrderItem } from 'src/app/models/types/order-history';
   styleUrl: './history.component.scss',
   standalone: true,
   imports:
-    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective]
+    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent]
 })
 export class HistoryComponent {
   historyItems: OrderItem[] = []

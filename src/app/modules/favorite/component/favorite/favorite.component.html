@@ -1,6 +1,7 @@
 <section class="favorite page">
   @if(favData.length) {
   <section class="page-content">
+    <title-section [svg]="'setting'" [pageTitle]="'favorites'"></title-section>
     <div class="slider">
       @for (favItem of favData; track $index) { @if(favItem.isFavorite) {
       <details-section

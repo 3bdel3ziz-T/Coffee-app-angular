@@ -1,5 +1,29 @@
 <section class="payment page">
-  <section class="page-content">
-    <p>payment works!</p>
+  <section class="content">
+    <title-section [svg]="'back'" [pageTitle]="'payment'"></title-section>
+    <!-- @for (item of items; track $index) { -->
+    <div class="item">
+      <h4 class="">add credit card</h4>
+    </div>
+    <div class="item">
+      <h4 class="">wallet</h4>
+    </div>
+    <div class="item">
+      <h4 class="">google pay</h4>
+    </div>
+    <div class="item">
+      <h4 class="">apple pay</h4>
+    </div>
+    <div class="item">
+      <h4 class="">amazon pay</h4>
+    </div>
+    <!-- } -->
   </section>
+  <div class="buy-box">
+    <div class="price">
+      <h4 subTitle>Total Price</h4>
+      <!-- <price [price]="getTotal(cart)" [priceSize]="'20px'"></price> -->
+    </div>
+    <button routerLink="pay" btnShape>Pay from</button>
+  </div>
 </section>

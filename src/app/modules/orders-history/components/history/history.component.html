@@ -1,6 +1,8 @@
 <section class="history page">
   <section class="page-content">
     @if (historyItems.length) {
+    <title-section [svg]="'setting'" [pageTitle]="'history'"></title-section>
+
     <div class="slider">
       @for (history of historyItems; track $index) {
       <div class="item">

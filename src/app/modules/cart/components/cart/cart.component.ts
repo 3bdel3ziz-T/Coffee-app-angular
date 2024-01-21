@@ -12,13 +12,14 @@ import { Id } from 'src/app/models/types/coffee';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
 
 @Component({
   selector: 'cart-page',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
   standalone: true,
-  imports: [ProductItemComponent, NgStyle, NgIf, PriceComponent, BtnShapeDirective, SubTitleDirective, RouterOutlet, MenuBarComponent, MsgComponent, RouterLink, RouterOutlet, PaymentComponent]
+  imports: [ProductItemComponent, NgStyle, NgIf, PriceComponent, BtnShapeDirective, SubTitleDirective, RouterOutlet, MenuBarComponent, MsgComponent, RouterLink, RouterOutlet, PaymentComponent, TitleSectionComponent]
 })
 export class CartComponent {
   cart!: CartItem[];
