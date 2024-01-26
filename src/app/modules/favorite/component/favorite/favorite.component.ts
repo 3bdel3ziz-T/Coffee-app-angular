@@ -25,7 +25,7 @@ export class FavoriteComponent {
   constructor(private favService: FavoriteService) {
     this.favService.favObservable
       .subscribe({
-        next: (data: FavItem[]) => this.favData = data,
+        next: (data: Id[]) => this.favData = this.favService.getFavItemsByRef(data),
         error: (err: Error) => console.error(err),
         complete: () => { }
       });

@@ -6,6 +6,7 @@
       @for (data of cart; track $index) { @if (hasQty(data.amounts).length > 0)
       {
       <product-item
+        imgLink="item-details/{{data.item.id}}"
         [itemData]="data.item"
         [sideTemplate]="isQty1(data.amounts) ? orderDetails : tags"
         [contentTemplate]="isQty1(data.amounts) ? empty : orderDetails"

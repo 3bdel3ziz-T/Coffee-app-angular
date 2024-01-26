@@ -84,7 +84,8 @@ img {
 
 .page {
   width: 100%;
-  height: calc(100dvh - 45px);
+  height: calc(100dvh - 44px);
+  overflow: hidden;
   overflow-y: scroll;
   position: absolute;
   z-index: 5;
@@ -105,8 +106,6 @@ img {
   padding: 10px 30px;
   position: relative;
   z-index: 1;
-
-
 }
 
 // button:hover {
@@ -114,3 +113,32 @@ img {
 //   background-color: transparent;
 //   border-color: $col-orange;
 // }
+
+//show and hide animation
+@keyframes show-animation {
+  0% {
+    display: none;
+  }
+  1% {
+    display: block;
+    top: 70%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+@keyframes hide-animation {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  99% {
+    top: 70%;
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}

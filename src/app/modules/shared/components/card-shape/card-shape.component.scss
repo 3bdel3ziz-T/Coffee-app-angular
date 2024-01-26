@@ -1,0 +1,158 @@
+@use "../../../../../styles" as *;
+.card,
+.chip-texture,
+.card-texture {
+  animation: 3s ease-in-out 0s infinite normal both;
+}
+.card {
+  overflow: hidden;
+  font: 0.75em/1 "DM Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  inset: 0;
+  width: 370px;
+  height: 230px;
+  position: relative;
+  background-color: $col-dark;
+  background-image: radial-gradient(
+      circle at 100% 0%,
+      hsla(0, 0%, 100%, 0.08) 29.5%,
+      hsla(0, 0%, 100%, 0) 30%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      hsla(0, 0%, 100%, 0.08) 39.5%,
+      hsla(0, 0%, 100%, 0) 40%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      hsla(0, 0%, 100%, 0.08) 49.5%,
+      hsla(0, 0%, 100%, 0) 50%
+    );
+  border-radius: 20px;
+  box-shadow: 0 0 0 #ccc, 0 0 0 #fff, -0.2rem 0 0.75rem 0 #0000004d;
+  color: #fff;
+  padding: 20px;
+  .card-head {
+    width: 100%;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .type {
+      font-size: 25px;
+    }
+  }
+  .chip {
+  overflow: hidden;
+    width: 50px;
+    height: 40px;
+    background-image: linear-gradient(hsl(0, 0%, 70%), hsl(0, 0%, 80%));
+    border-radius: 8px;
+    box-shadow: 0 0 0 0.05rem hsla(0, 0%, 0%, 0.5) inset;
+    transform: translate3d(0, 0, 0);
+  }
+  .card-number {
+    width: 100%;
+    font-size: 27px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .valid-thru,
+  .exp-date {
+    margin-bottom: 0.25rem;
+    font-size: 12px;
+    width: 50%;
+  }
+  .valid-thru {
+    text-transform: uppercase;
+    padding-right: 0.25rem;
+    text-align: right;
+  }
+  .exp-date {
+    padding-left: 0.25rem;
+    font-size: 16px;
+  }
+  .brand-logo {
+    right: 70px;
+    bottom: 65px;
+    position: absolute;
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      position: absolute;
+    }
+    &::before {
+      background-color: #e71d1a;
+      right: -15px;
+    }
+    &::after {
+      background-color: #fa5e03;
+      box-shadow: -2.05rem 0 0 #f59d1a inset;
+      left: 0;
+    }
+  }
+  .holder-name {
+    text-transform: uppercase;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 6.25rem;
+  }
+  .card-texture,
+  .chip-texture {
+    position: absolute;
+    animation-name: texture;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(
+      -80deg,
+      hsla(0, 0%, 100%, 0.3) 25%,
+      hsla(0, 0%, 100%, 0) 45%
+    );
+  }
+  .nums-group,
+  .card__exp-date,
+  .holder-name {
+    background: linear-gradient(
+      hsl(0, 0%, 100%),
+      hsl(0, 0%, 85%) 15% 55%,
+      hsl(0, 0%, 70%) 70%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Courier Prime", monospace;
+    filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
+  }
+}
+.card-texture {
+  animation-name: texture;
+  background-image: linear-gradient(
+    -80deg,
+    hsla(0, 0%, 100%, 0.3) 25%,
+    hsla(0, 0%, 100%, 0) 45%
+  );
+}
+
+@keyframes texture {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

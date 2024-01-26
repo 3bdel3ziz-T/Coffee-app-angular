@@ -83,7 +83,7 @@ export class HistoryService {
     ]
   }
 
-  private getHistory(historyRef: OrderRef[]): OrderItem[] {
+  getHistory(historyRef: OrderRef[]): OrderItem[] {
     let historyItems: OrderItem[] = [];
     historyRef.forEach((e: OrderRef, i: number) => {
       historyItems.push({
@@ -95,7 +95,7 @@ export class HistoryService {
     return historyItems
   }
 
-  get historyObservable(): Observable<OrderItem[]> {
-    return of(this.getHistory(this.historyItemsRef))
+  get historyObservable(): Observable<OrderRef[]> {
+    return of(this.historyItemsRef)
   }
 }

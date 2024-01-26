@@ -17,10 +17,10 @@
       $col-dark,
       $col-dark,
       $col-lightBlack
-    );
-    animation: pop-left 500ms ease-in-out 0s 1 normal both;
-    display: flex;
-    flex-direction: column;
+      );
+      animation: pop-left 500ms ease-in-out 0s 1 normal both;
+      display: flex;
+      flex-direction: column;
     .close-btn {
       display: block;
       position: relative;
@@ -73,7 +73,6 @@
       }
       .user-name {
         color: transparent;
-        // -webkit-text-stroke: 1px $col-lightBlack;
         color: $col-gray;
         font-weight: 500;
       }

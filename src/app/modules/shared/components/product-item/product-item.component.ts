@@ -4,16 +4,18 @@ import { Item } from 'src/app/models/types/coffee';
 import { TupleSize } from 'src/app/models/types/size';
 import { CssUnits } from 'src/app/models/types/style-units';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'product-item',
     templateUrl: './product-item.component.html',
     styleUrl: './product-item.component.scss',
     standalone: true,
-    imports: [NgStyle, NgTemplateOutlet]
+    imports: [NgStyle, NgTemplateOutlet, RouterLink]
 })
 export class ProductItemComponent {
   @Input() itemData!: Item;
+  @Input() imgLink!: string;
   @Input() itemStyles: {padding: CssUnits};
   @Input() imgBoxSize: TupleSize;
   @Input() mainBoxFlex: BoxFlex;

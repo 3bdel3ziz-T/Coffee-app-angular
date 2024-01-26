@@ -74,31 +74,3 @@
     }
   }
 }
-
-@keyframes show-animation {
-  0% {
-    display: none;
-  }
-  1% {
-    display: block;
-    top: 70%;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-@keyframes hide-animation {
-  0% {
-    top: 0;
-    opacity: 1;
-  }
-  99% {
-    top: 70%;
-    opacity: 0;
-  }
-  100% {
-    display: none;
-  }
-}

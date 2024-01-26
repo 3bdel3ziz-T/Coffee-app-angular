@@ -24,8 +24,8 @@ export class FavoriteService {
     arr.splice(index, 1);
   }
 
-  getFavItemsByRef<T extends FavRef, G = FavItem>(arr1: T[]): G[] {
-    const arr2: G[] = arr1.map((e: T, i: number, arr: T[]): any => {
+  getFavItemsByRef(arr1: FavRef[]): FavItem[] {
+    const arr2: FavItem[] = arr1.map((e: FavRef, i: number, arr: FavRef[]): any => {
 
       this.appService.getItemById(e).isFavorite = true;
 
@@ -34,7 +34,7 @@ export class FavoriteService {
     return arr2
   }
 
-  get favObservable(): Observable<FavItem[]> {
-    return of(this.getFavItemsByRef(this.favItemsRef))
+  get favObservable(): Observable<FavRef[]> {
+    return of(this.favItemsRef)
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartItem, AmountItem } from 'src/app/models/types/cart-item';
+import { CartItem, AmountItem, ItemRef } from 'src/app/models/types/cart-item';
 import { Price, SizeOrDose } from 'src/app/models/types/size';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SubTitleDirective } from '../../../../custom_directives/sub-title.directive';
@@ -25,7 +25,7 @@ export class CartComponent {
   cart!: CartItem[];
   constructor(private cartService: CartService) {
     this.cartService.cartObservable.subscribe({
-      next: (data: CartItem[]) => this.cart = data,
+      next: (data: ItemRef[]) => this.cart = this.cartService.getCartItemsByRef(data),
       error: (err: Error) => console.error(err),
       complete: () => { }
     })

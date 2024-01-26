@@ -124,8 +124,8 @@ export class CartService {
     return `${price}`
   }
 
-  get cartObservable(): Observable<CartItem[]> {
-    return of(this.getCartItemsByRef(this.cartItemsRef))
+  get cartObservable(): Observable<ItemRef[]> {
+    return of(this.cartItemsRef)
   }
 
 

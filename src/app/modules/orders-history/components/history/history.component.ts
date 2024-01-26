@@ -9,7 +9,7 @@ import { Id } from 'src/app/models/types/coffee';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
-import { OrderItem } from 'src/app/models/types/order-history';
+import { OrderItem, OrderRef } from 'src/app/models/types/order-history';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
 
 @Component({
@@ -26,8 +26,8 @@ export class HistoryComponent {
     private historyService: HistoryService,
     private cartService: CartService) {
     this.historyService.historyObservable.subscribe({
-      next: (historyItems: OrderItem[]) => {
-        this.historyItems = historyItems
+      next: (historyItems: OrderRef[]) => {
+        this.historyItems = this.historyService.getHistory(historyItems)
       }
     })
   }
