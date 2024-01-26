@@ -34,13 +34,13 @@
       class="btn add-fav"
       [ngStyle]="{ top: backBtn ? '65px' : '30px' }"
       for="{{ item.id }}"
-      >
+    >
       <input
-      type="checkbox"
-      name="{{ item.name }}"
-      id="{{ item.id }}"
-      (click)="fav_addItem(item.id)"
-      [checked]="item.isFavorite"
+        type="checkbox"
+        name="{{ item.name }}"
+        id="{{ item.id }}"
+        (click)="fav_addItem(item.id)"
+        [checked]="item.isFavorite"
       />
       <svg
         class="svg-celebrate"
@@ -68,7 +68,7 @@
         />
       </svg>
     </label>
-    <img src="" />
+      <img src="../../../../../../{{item.imageLink_portrait}}" />
   </div>
   <div class="details-box">
     <div class="details">

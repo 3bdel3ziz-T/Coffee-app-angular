@@ -2,8 +2,12 @@
 
 .details-section {
   overflow: hidden;
+  top: 0;
+  position: absolute;
   .img-box {
     position: relative;
+    height: 500px;
+    overflow: hidden;
     .btn {
       $vol: 40px;
       width: $vol;
@@ -57,8 +61,8 @@
     }
     img {
       width: 100%;
-      min-height: 450px;
-      max-height: 50%;
+      height: fit-content;
+      background-size: cover;
       background-color: $col-darkGray;
       display: block;
     }
@@ -165,7 +169,6 @@
     }
   }
 }
-
 
 @keyframes add-favorite {
   0% {
