@@ -4,22 +4,29 @@
     <title-section [svg]="'setting'" [pageTitle]="'favorites'"></title-section>
     <div class="slider">
       @for (favItem of favData; track $index) { @if(favItem.isFavorite) {
-      <details-section
-        [MainBoxStyle]="{
-          width: '100%',
-          height: 'fit-content',
-          radius: '25px',
-          background:
-            'linear-gradient(to bottom right, #262B33 0%, #262B3300 100%)'
-        }"
-        [backBtn]="false"
-        [item]="favItem"
-      ></details-section>
+      <div class="item" >
+        <details-section
+        routerLink="item-details/{{favItem.id}}"
+          [MainBoxStyle]="{
+            width: '100%',
+            height: 'fit-content',
+            radius: '25px',
+            background:
+              'linear-gradient(to bottom right, #262B33 0%, #262B3300 100%)'
+          }"
+          [backBtn]="false"
+          [item]="favItem"
+        ></details-section>
+      </div>
       } }
     </div>
   </section>
-} @else {
-<msg [msg]="'your favorites is empty'" [btnTxt]="'home page'"></msg>
-}
+  } @else {
+  <msg
+    [msg]="'you can t add favorite without sign in'"
+    [btnTxt]="'sign in now!'"
+  ></msg>
+  }
   <menu-bar></menu-bar>
 </section>
+<router-outlet></router-outlet>

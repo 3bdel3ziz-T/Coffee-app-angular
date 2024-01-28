@@ -5,13 +5,14 @@ import { DetailsComponent } from '../../../shared/components/item-details/detail
 import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'favorite-page',
   templateUrl: './favorite.component.html',
   styleUrl: './favorite.component.scss',
   standalone: true,
-  imports: [DetailsComponent, MsgComponent, MenuBarComponent, TitleSectionComponent]
+  imports: [DetailsComponent, MsgComponent, MenuBarComponent, TitleSectionComponent, RouterOutlet]
 })
 export class FavoriteComponent {
   itemDetailsStyles =

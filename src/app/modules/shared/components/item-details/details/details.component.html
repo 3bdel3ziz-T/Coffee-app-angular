@@ -1,4 +1,3 @@
-<!-- (click)="back()" -->
 <section
   class="details-section"
   [ngStyle]="{
@@ -68,9 +67,9 @@
         />
       </svg>
     </label>
-      <img src="../../../../../../{{item.imageLink_portrait}}" />
+    <img [src]="'./../../../../../../' + item.imageLink_portrait" />
   </div>
-  <div class="details-box">
+  <div class="details-box" routerLink="{{ routerLink }}">
     <div class="details">
       <div class="info">
         <div class="titles">

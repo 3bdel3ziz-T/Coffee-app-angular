@@ -8,6 +8,10 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class FavoriteService {
   private favItemsRef: FavRef[] = [];
+  private testData: any =
+  [
+    'C1', 'C4', 'B2', 'C6'
+  ];
   constructor(private appService: AppService) { }
 
   favRef_addItem(favItem: Item): void {
@@ -35,6 +39,7 @@ export class FavoriteService {
   }
 
   get favObservable(): Observable<FavRef[]> {
-    return of(this.favItemsRef)
+    return of(this.testData)
+    // return of(this.favItemsRef)
   }
 }

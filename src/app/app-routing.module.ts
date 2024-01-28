@@ -31,6 +31,8 @@ const routes: Routes = [
   {
     path: 'favorite', component: FavoriteComponent, children: [
       { path: 'setting', component: SettingComponent },
+      { path: 'item-details/:id', component: ItemDetailsComponent },
+      // { path: 'sign-in', component: UserLoginComponent },
     ]
   },
   {
