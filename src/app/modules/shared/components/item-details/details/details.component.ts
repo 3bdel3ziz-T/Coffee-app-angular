@@ -18,7 +18,7 @@ export class DetailsComponent {
   showFullDescription: boolean = false;
   @Input() backBtn: boolean;
   @Input() MainBoxStyle: BoxStyles;
-  @Input() routerLink: string = '';
+  @Input() routerLink?: string = undefined;
   constructor(private prodService: ProductService) {
     this.showFullDescription = false;
     this.backBtn = true;

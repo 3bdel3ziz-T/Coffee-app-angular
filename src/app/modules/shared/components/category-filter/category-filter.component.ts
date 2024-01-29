@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
-import { CupCategory } from 'src/app/models/types/category';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CoffeeCategory } from 'src/app/models/types/category';
 
 @Component({
-    selector: 'category-filter',
-    templateUrl: './category-filter.component.html',
-    styleUrls: ['./category-filter.component.scss'],
-    standalone: true
+  selector: 'category-filter',
+  templateUrl: './category-filter.component.html',
+  styleUrls: ['./category-filter.component.scss'],
+  standalone: true
 })
-export class CategoryFilterComponent {
-  categories: CupCategory[] = ["all", "Black Coffee", "Latte", "Cappuccino", "Espresso", "Americano", "Macchiato"];
+export class CategoryFilterComponent implements OnInit {
+  @Output() emitSelected: EventEmitter<CoffeeCategory> = new EventEmitter<CoffeeCategory>
 
-  getSelected(selected: CupCategory): CupCategory {
-    return selected;
+  ngOnInit(): void {
+    this.getSelected('all');
+  }
+  categories: CoffeeCategory[] = ["all", "Black Coffee", "Latte", "Cappuccino", "Espresso", "Americano", "Macchiato"];
+  getSelected(selected: CoffeeCategory) {
+    this.emitSelected.emit(selected);
   }
 }

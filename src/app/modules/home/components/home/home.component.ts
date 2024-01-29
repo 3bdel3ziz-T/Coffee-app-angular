@@ -9,28 +9,30 @@ import { CategoryFilterComponent } from '../../../shared/components/category-fil
 import { SearchBoxComponent } from '../../../shared/components/search-box/search-box.component';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
+import { CoffeeCategory } from 'src/app/models/types/category';
 
 @Component({
-    selector: 'home-page',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    standalone: true,
-    imports: [
-        SearchBoxComponent,
-        CategoryFilterComponent,
-        ProductItemComponent,
-        PriceComponent,
-        BtnShapeDirective,
-        RouterLink,
-        RouterOutlet,
-        MenuBarComponent,
-        TitleSectionComponent
-    ],
+  selector: 'home-page',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [
+    SearchBoxComponent,
+    CategoryFilterComponent,
+    ProductItemComponent,
+    PriceComponent,
+    BtnShapeDirective,
+    RouterLink,
+    RouterOutlet,
+    MenuBarComponent,
+    TitleSectionComponent
+  ],
 })
 export class HomeComponent {
 
   coffeeData: CoffeeCup[] = [];
   beansData: CoffeeBeans[] = [];
+  selected: CoffeeCategory = 'all';
 
   constructor(private appService: AppService) {
     appService.coffeeObservable.subscribe({
@@ -43,5 +45,8 @@ export class HomeComponent {
       error: (err: Error) => console.error(err),
       complete: () => { }
     })
+  }
+  selectedCategory(selected: CoffeeCategory): void {
+    this.selected = selected
   }
 }

@@ -3,11 +3,13 @@
     <title-section [svg]="'setting'" [ImgSrc]="''"></title-section>
     <h1>Find the best coffee for you</h1>
     <search-box></search-box>
-    <category-filter></category-filter>
+    <category-filter
+      (emitSelected)="selectedCategory($event)"
+    ></category-filter>
 
     <h3 class="items-title">Coffee drinks</h3>
     <section class="slider">
-      @for (cupData of coffeeData; track $index) {
+      @for (cupData of coffeeData; track $index) { @if (selected === 'all' ? true : cupData.name === selected) {
       <product-item
         [contentTemplate]="buySection"
         [itemData]="cupData"
@@ -40,7 +42,7 @@
           </button>
         </div>
       </ng-template>
-      }
+      } }
     </section>
 
     <h3 class="items-title">Coffee beans</h3>

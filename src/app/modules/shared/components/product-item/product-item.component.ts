@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductItemComponent {
   @Input() itemData!: Item;
-  @Input() imgLink!: string;
+  @Input() imgLink?: string = undefined;
   @Input() itemStyles: {padding: CssUnits};
   @Input() imgBoxSize: TupleSize;
   @Input() mainBoxFlex: BoxFlex;

@@ -1,4 +1,4 @@
-import { BeanTypes, CupCategory } from "./category"
+import { BeanTypes, CoffeeCategory } from "./category"
 import { Sizes } from "./size"
 
 type Coffee = {
@@ -11,7 +11,6 @@ type Coffee = {
   ratings_count: `${number},${number}`,
   isFavorite: boolean,
   type: 'Coffee' | 'Bean',
-  index: number,
 }
 
 export enum RoastLvlS {
@@ -22,7 +21,7 @@ export enum RoastLvlS {
 
 export type CoffeeCup = Coffee & {
   id: `C${number}`,
-  name: CupCategory,
+  name: Omit<CoffeeCategory, 'all'>,
   ingredients: 'Milk',
   special_ingredient: 'With Steamed Milk',
 }
