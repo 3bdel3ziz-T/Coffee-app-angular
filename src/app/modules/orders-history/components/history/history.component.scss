@@ -52,7 +52,7 @@
               width: fit-content;
               background-color: $col-dark;
               h3 {
-                padding: 8px 20px;
+                padding: 8px 0;
                 text-align: center;
                 border-right: 2px solid $col-border;
                 color: $col-white;
@@ -83,10 +83,16 @@
       }
     }
   }
-  button {
+  button.btn {
     flex: 1;
-    padding: 20px 100px;
-    border-radius: $rad-25;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: $rad-10 + 10;
+  }
+  .btn.download {
     margin: 30px;
+    padding: 20px 0;
+    border-radius: $rad-25;
+    width: calc(100% - 60px);
   }
 }

@@ -9,12 +9,14 @@
         <div class="item-head">
           <div class="date">
             <h4>order date</h4>
-            <span>{{getDate(history.date)}}</span>
-            <!-- <span>11th Jun 2:10 AM</span> -->
+            <span>{{ getDate(history.date) }}</span>
           </div>
           <div class="total">
             <h4>Total Amount</h4>
-            <price [price]="orderTotal(history.cartData)" [priceSize]="'22px'"></price>
+            <price
+              [price]="orderTotal(history.cartData)"
+              [priceSize]="'22px'"
+            ></price>
           </div>
         </div>
         @for (cartItem of history.cartData; track $index) {
@@ -43,7 +45,13 @@
             @if(detail.quantity > 0){
             <div class="detail">
               <div class="price-and-size">
-                <h3>{{ detail.size }}</h3>
+                <h3
+                  [ngStyle]="{
+                    width: cartItem.item.type === 'Coffee' ? '60px' : '90px'
+                  }"
+                >
+                  {{ detail.size }}
+                </h3>
                 <div class="price">
                   <price
                     [price]="
@@ -78,6 +86,7 @@
           </div>
         </ng-template>
         }
+        <button class="btn reorder" btnShape>Reorder</button>
       </div>
       }
     </div>
@@ -85,6 +94,6 @@
     <msg></msg>
     }
   </section>
-    <button btnShape>download</button>
+  <button class="btn download" btnShape>download</button>
   <menu-bar></menu-bar>
 </section>

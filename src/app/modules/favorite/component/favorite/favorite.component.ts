@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FavoriteService } from '../../services/favorite.service';
-import { Item as FavItem, Id } from 'src/app/models/types/coffee';
+import { Item as FavItem, Id as FavRef } from 'src/app/models/types/coffee';
 import { DetailsComponent } from '../../../shared/components/item-details/details/details.component';
 import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
 import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'favorite-page',
@@ -26,7 +26,7 @@ export class FavoriteComponent {
   constructor(private favService: FavoriteService) {
     this.favService.favObservable
       .subscribe({
-        next: (data: Id[]) => this.favData = this.favService.getFavItemsByRef(data),
+        next: (data: FavRef[]) => this.favData = this.favService.getFavItemsByRef(data),
         error: (err: Error) => console.error(err),
         complete: () => { }
       });
