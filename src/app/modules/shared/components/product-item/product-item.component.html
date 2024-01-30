@@ -1,4 +1,4 @@
-<div class="item" [ngStyle]="{padding: itemStyles.padding}">
+<div class="item" [ngStyle]="{ padding: itemStyles.padding }">
   <div
     class="content"
     [ngStyle]="{ flexDirection: mainBoxFlex.direction, gap: mainBoxFlex.gap }"
@@ -11,6 +11,7 @@
       }"
       [routerLink]="imgLink"
     >
+      @if (imgBoxSize !== 'S') {
       <div class="rate">
         <svg
           viewBox="0 0 17 17"
@@ -25,18 +26,23 @@
         </svg>
         <h6>{{ itemData.average_rating }}</h6>
       </div>
-      <img src='{{itemData.imageLink_square}}' alt="" />
+      }
+      <img src="{{ itemData.imageLink_square }}" alt="" />
     </div>
-    <div class="content-box" [ngStyle]="{'flex-direction': sideContentBoxFlex.direction, gap: sideContentBoxFlex.gap}">
+    <div
+      class="content-box"
+      [ngStyle]="{
+        'flex-direction': sideContentBoxFlex.direction,
+        gap: sideContentBoxFlex.gap
+      }"
+    >
       <div class="titles">
         <span class="title" [ngStyle]="{ 'font-size': titlesSize.mainTitle }">
           {{ itemData.name }}
-          </span
-        >
+        </span>
         <span class="subtitle" [ngStyle]="{ 'font-size': titlesSize.subTitle }">
           {{ itemData.special_ingredient }}
-          </span
-        >
+        </span>
       </div>
       <ng-container [ngTemplateOutlet]="sideTemplate"></ng-container>
     </div>
