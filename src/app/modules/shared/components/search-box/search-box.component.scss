@@ -1,91 +1,118 @@
 @use "../../../../../styles.scss" as *;
 
-/* form style */
-.form {
+label {
   position: relative;
   width: 100%;
-  /* label styling */
   height: 45px;
-  label {
-    background: $col-lightBlack;
-    font-size: 0.9rem;
-    border-radius: 30px;
-    height: 100%;
-    display: flex;
-    align-items: center;
+  background: $col-lightBlack;
+  font-size: 18px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  transition: 300ms;
+  border: 1px solid transparent;
+  overflow: hidden;
+  .search-icon {
+    padding: 18px;
+    fill: $col-gray;
     transition: 300ms;
-    /* styling search-icon */
-    .search-icon {
-      padding: 0.8em;
-      fill: $col-gray;
-      transition: 300ms;
+    svg {
+      width: 20px;
+      height: fit-content;
     }
-    /* styling of input */
-    .search-input {
-      padding: 0.8em;
-      padding-left: 0;
-      color: $col-white;
+  }
+  .search-input {
+    padding: 18px 0;
+    color: $col-white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    caret-color: $col-orange;
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    appearance: none !important;
+    border: none;
+    // &:internal-autofill-selected {
+    //   appearance: none !important;
+    //   background-image: none !important;
+    //   background-color: transparent !important;
+    //   color: $col-white !important;
+    // }
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: $col-gray;
+      font-size: 10px;
       font-weight: 500;
-      caret-color: $col-orange;
-      width: 100%;
-      background: transparent;
-      appearance: none !important;
-      border: none;
-      &:internal-autofill-selected {
-        appearance: none !important;
-        background-image: none !important;
-        background-color: transparent !important;
-        color: $col-white !important;
-      }
-      &:focus {
-        outline: none;
-      }
-      &::placeholder {
-        color: $col-gray;
-        font-size: 10px;
-        font-weight: 500;
-      }
-      /* showing close button when typing */
-      &:valid ~ .close-btn {
+    }
+    &:valid {
+      & ~ .close-btn {
         $vol: 20px;
         width: $vol;
         height: $vol;
         right: 0.7em;
       }
+      & ~ .search-btn {
+        opacity: 1;
+        scale: 1;
+      }
     }
-    /* styling of close button */
-    .close-btn {
-      $vol: 0px;
+  }
+  .close-btn {
+    $vol: 0px;
+    width: $vol;
+    height: $vol;
+    transition: 100ms;
+    position: relative;
+    right: 1.4em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+    color: $col-gray;
+    border-radius: 50%;
+    background: $col-dark;
+    & svg {
+      $vol: 8.4px;
       width: $vol;
       height: $vol;
-      transition: 100ms;
-      position: absolute;
-      right: 1.4em;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform-origin: center center;
-      color: $col-gray;
-      border-radius: 50%;
-      background: $col-dark;
-      & svg {
-        $vol: 8.4px;
-        width: $vol;
-        height: $vol;
-      }
-    }
-    /* search icon color change in focus */
-    &:has(.search-input:focus) {
-      box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 7px 2px;
-      > .search-icon {
-        fill: $col-orange;
-      }
     }
   }
-  /* svg -- size */
-  svg {
-    width: 17px;
-    display: block;
+  .search-btn {
+    appearance: none;
+    outline: none;
+    border: none;
+    position: relative;
+    background: $col-orange;
+    color: $col-white;
+    width: 100px;
+    height: calc(100% - 12px);
+    margin: 5px;
+    border-radius: 20px;
+    text-align: center;
+    transform-origin: center center;
+    opacity: 0;
+    scale: 0.7;
+    transition: scale 500ms;
+    &:active {
+      scale: 0.95;
+      box-shadow: 1px 1px 15px 3px $col-dark;
+    }
   }
+  &:has(.search-input:focus) {
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 7px 2px;
+    > .search-icon {
+      fill: $col-orange;
+    }
+  }
+  &:has(input:focus) {
+    border: 1px solid $col-orange;
+  }
+}
+svg {
+  width: 17px;
+  display: block;
 }

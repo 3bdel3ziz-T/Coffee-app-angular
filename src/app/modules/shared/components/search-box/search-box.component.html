@@ -1,4 +1,4 @@
-<form class="form">
+<form action="">
   <label for="search">
     <div class="search-icon">
       <svg
@@ -20,7 +20,7 @@
       required=""
       placeholder="Find Your Coffee..."
       id="search"
-      [(ngModel)]="searchValue"
+      #searchInput
     />
     <button class="close-btn" type="reset">
       <svg
@@ -34,6 +34,9 @@
           clip-rule="evenodd"
         ></path>
       </svg>
+    </button>
+    <button class="search-btn" (click)="getSearchValue(searchInput)">
+      search
     </button>
   </label>
 </form>

@@ -49,4 +49,7 @@ export class HomeComponent {
   selectedCategory(selected: CoffeeCategory): void {
     this.selected = selected
   }
+  getSearchTxt(searchTxt: string): string {
+    return searchTxt;
+  }
 }

@@ -6,7 +6,31 @@
       color: $col-white;
       font-weight: 600;
       @media (min-width: 425px) {
-        width: 195px;
+        width: 205px;
+      }
+    }
+    .svg-box {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      svg {
+        fill: $col-darkGray;
+        height: fit-content;
+        position: absolute;
+        &:first-child {
+          top: 140px;
+          right: -150px;
+          transform: rotate(45deg);
+          width: 140px;
+        }
+        &:nth-child(2) {
+          width: 100px;
+          left: -160px;
+          top: 120px;
+          transform: rotate(-45deg);
+        }
       }
     }
   }
