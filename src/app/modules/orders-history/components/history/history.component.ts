@@ -12,6 +12,7 @@ import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive
 import { OrderItem, OrderRef } from 'src/app/models/types/order-history';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
 import { NgStyle } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'history-page',
@@ -19,7 +20,7 @@ import { NgStyle } from '@angular/common';
   styleUrl: './history.component.scss',
   standalone: true,
   imports:
-    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle]
+    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle, RouterOutlet]
 })
 export class HistoryComponent {
   historyItems: OrderItem[] = []
