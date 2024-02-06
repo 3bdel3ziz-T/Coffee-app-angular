@@ -1,6 +1,6 @@
 <section class="history page">
+  @if (historyItems.length) {
   <section class="page-content">
-    @if (historyItems.length) {
     <title-section [svg]="'setting'" [pageTitle]="'history'"></title-section>
 
     <div class="slider">
@@ -88,16 +88,22 @@
         } @if (history.isAccepted) {
         <button class="btn reorder" btnShape>Reorder</button>
         }@else{
-        <button class="btn cancel-order" btnShape [ngStyle]="{background: 'red'}">cancel order</button>
+        <button
+          class="btn cancel-order"
+          btnShape
+          [ngStyle]="{ background: 'red' }"
+        >
+          cancel order
+        </button>
         }
       </div>
       }
     </div>
-    }@else {
-    <msg></msg>
-    }
   </section>
   <button class="btn download" btnShape>download</button>
+  }@else {
+  <msg></msg>
+  }
   <menu-bar></menu-bar>
 </section>
 <router-outlet></router-outlet>

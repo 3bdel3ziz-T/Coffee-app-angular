@@ -30,9 +30,9 @@ export class UserService {
   get get_cartRef() {
     return this.get_Data<ItemRef[]>(this._user.cartData)
   }
-  // get get_orderRef() {
-  //   return this.get_Data<OrderRef[]>(this._user.historyData)
-  // }
+  get get_HistoryRef() {
+    return this.get_Data<OrderRef[]>(this._user.historyData)
+  }
 
   private set_Data<T>(favRef: T, arr: T[]): void {
     arr.push(favRef)
@@ -40,6 +40,9 @@ export class UserService {
   }
   set_favRef(favRef: Id) {
     this.set_Data<Id>(favRef, this._user.favData)
+  }
+  set_cartRef(cartRef: ItemRef) {
+    this.set_Data<ItemRef>(cartRef, this._user.cartData)
   }
 
   // get getUserCartRef(): ItemRef[] {

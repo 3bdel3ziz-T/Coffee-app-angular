@@ -3,10 +3,10 @@
   <section class="page-content">
     <title-section [svg]="'setting'" [pageTitle]="'cart'"></title-section>
     <div class="cart-list">
-      @for (data of cart; track $index) { @if (hasQty(data.amounts).length > 0)
+      @for (data of cart; track data.item.id) { @if (qtyCount(data.amounts) > 0)
       {
       <product-item
-        imgLink="item-details/{{data.item.id}}"
+        imgLink="item-details/{{ data.item.id }}"
         [itemData]="data.item"
         [sideTemplate]="isQty1(data.amounts) ? orderDetails : tags"
         [contentTemplate]="isQty1(data.amounts) ? empty : orderDetails"

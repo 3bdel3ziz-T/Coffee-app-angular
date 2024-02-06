@@ -20,6 +20,6 @@ export class MsgComponent implements OnInit {
     let min: number = 1;
     let max: number = 10;
     let randomNumber: number = Math.round(Math.random() * max) + min;
-    return randomNumber < 5 ? 1 : -1;
+    return randomNumber / 2 === 1 ? 1 : -1;
   }
 }

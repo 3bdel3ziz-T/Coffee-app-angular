@@ -20,7 +20,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './history.component.scss',
   standalone: true,
   imports:
-    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle, RouterOutlet,NgIf, NgStyle]
+    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle, RouterOutlet, NgIf, NgStyle]
 })
 export class HistoryComponent {
   historyItems: OrderItem[] = []
@@ -45,7 +45,7 @@ export class HistoryComponent {
       day === 2 ? letter = 'nd' :
         day === 3 ? 'nd' : 'th'
 
-    let orderDate: string = `${day}${letter} ${months[date.getMonth()]} ${hours > 12 ? hours - 12 : hours } : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`;
+    let orderDate: string = `${day}${letter} ${months[date.getMonth()]} ${hours > 12 ? hours - 12 : hours} : ${minutes < 10 ? '0' : ''}${minutes} ${hours < 12 ? 'AM' : 'PM'}`;
     return orderDate
   }
 
