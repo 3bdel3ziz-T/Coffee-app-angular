@@ -85,8 +85,11 @@
             }}
           </div>
         </ng-template>
-        }
+        } @if (history.isAccepted) {
         <button class="btn reorder" btnShape>Reorder</button>
+        }@else{
+        <button class="btn cancel-order" btnShape [ngStyle]="{background: 'red'}">cancel order</button>
+        }
       </div>
       }
     </div>

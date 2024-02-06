@@ -3,25 +3,30 @@ import { Amount, AmountItem, CartItem, ItemRef } from 'src/app/models/types/cart
 import { Id } from 'src/app/models/types/coffee';
 import { Price, SizeOrDose } from 'src/app/models/types/size';
 import { AppService } from '../../../services/app.service';
-import { Observable, of } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { UserService } from 'src/app/user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private cartItemsRef: ItemRef[] = [];
-  constructor(private appService: AppService) { 
-    this.cartItemsRef.push(
-      this.createCartRefItem('C1', 'S')
-    )
+  constructor(
+    private appService: AppService,
+    private userService: UserService
+  ) {
+    // this.cartItemsRef = userService.getUserCartRef
   }
 
   cart_addItem(id: Id, selected: SizeOrDose): void {
     const itemRef = this.createCartRefItem(id, selected);
 
-    this.isItemExist(itemRef, this.cartItemsRef) ?
+    if (this.isItemExist(itemRef, this.cartItemsRef)) {
       this.changeQty("increment", itemRef)
-      : this.cartItemsRef.push(itemRef)
+    } else {
+      this.cartItemsRef.push(itemRef)
+      this.userService.setValueToCartRef(itemRef);
+    }
   }
   createCartRefItem(id: Id, selected: SizeOrDose): ItemRef {
     const itemRef: ItemRef = {
@@ -81,13 +86,16 @@ export class CartService {
     })
   }
 
-  getCartItemsByRef(arr: ItemRef[]): CartItem[] {
+  getCartItemsByRefArr(arr: ItemRef[]): CartItem[] {
     return arr.map((e: ItemRef, i: number, arr: ItemRef[]): any => {
-      return {
-        item: this.appService.getItemById(e.itemId),
-        amounts: e.amounts
-      }
+      return this.getCartItemByRef(e)
     })
+  }
+  getCartItemByRef(ref: ItemRef): CartItem {
+    return {
+      item: this.appService.getItemById(ref.itemId),
+      amounts: ref.amounts
+    }
   }
 
   getTotal(cartItems: CartItem[]): Price {
@@ -124,8 +132,8 @@ export class CartService {
     return `${price}`
   }
 
-  get cartObservable(): Observable<ItemRef[]> {
-    return of(this.cartItemsRef)
+  get cartObservable(): Observable<ItemRef> {
+    return from(this.cartItemsRef)
   }
 
 

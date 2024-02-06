@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { CoffeeCup, CoffeeBeans, Id, Item } from '../models/types/coffee';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class AppService implements OnInit {
   private coffeeData: CoffeeCup[];
   private beansData: CoffeeBeans[];
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService,
+  ) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
   }

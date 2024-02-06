@@ -2,7 +2,7 @@ import { ItemRef } from "./cart-item"
 import { Id } from "./coffee"
 import { OrderRef } from "./order-history"
 
-export type User = {
+export interface IUser {
   userId: string | 'guest',
   userName: string | 'guest',
   age?: `${number}`,
@@ -11,7 +11,7 @@ export type User = {
   payments: PaymentInfo[],
   cartData: ItemRef[],
   favData: Id[],
-  historyData: (OrderRef[])[],
+  historyData: OrderRef[],
   appMode: 'light' | 'dark',
 }
 

@@ -22,10 +22,10 @@ import { TitleSectionComponent } from 'src/app/modules/shared/components/title-s
   imports: [ProductItemComponent, NgStyle, NgIf, PriceComponent, BtnShapeDirective, SubTitleDirective, RouterOutlet, MenuBarComponent, MsgComponent, RouterLink, RouterOutlet, PaymentComponent, TitleSectionComponent]
 })
 export class CartComponent {
-  cart!: CartItem[];
+  cart: CartItem[] = [];
   constructor(private cartService: CartService) {
     this.cartService.cartObservable.subscribe({
-      next: (data: ItemRef[]) => this.cart = this.cartService.getCartItemsByRef(data),
+      next: (ref: ItemRef) => this.cart.push(this.cartService.getCartItemByRef(ref)),
       error: (err: Error) => console.error(err),
       complete: () => { }
     })

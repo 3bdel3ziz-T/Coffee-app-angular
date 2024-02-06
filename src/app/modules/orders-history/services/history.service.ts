@@ -43,7 +43,7 @@ export class HistoryService {
               }
             ]
           },
-        ], isAccepted: true
+        ], isAccepted: false
       },
       {
         date: new Date,
@@ -88,7 +88,7 @@ export class HistoryService {
     historyRef.forEach((e: OrderRef, i: number) => {
       historyItems.push({
         date: historyRef[i].date,
-        cartData: this.cartService.getCartItemsByRef(e.cartRef),
+        cartData: this.cartService.getCartItemsByRefArr(e.cartRef),
         isAccepted: true
       })
     })

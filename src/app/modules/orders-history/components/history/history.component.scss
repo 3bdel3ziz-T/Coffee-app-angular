@@ -14,7 +14,7 @@
         padding: $gap-25 0;
         &:first-of-type {
           padding: 0;
-          padding-bottom: $gap-25; 
+          padding-bottom: $gap-25;
         }
         .item-head {
           display: flex;
@@ -88,11 +88,11 @@
     padding: 10px 0;
     width: 100%;
     border-radius: $rad-10 + 10;
-  }
-  .btn.download {
-    margin: 30px;
-    padding: 20px 0;
-    border-radius: $rad-25;
-    width: calc(100% - 60px);
+    &.download {
+      margin: 30px;
+      padding: 20px 0;
+      border-radius: $rad-25;
+      width: calc(100% - 60px);
+    }
   }
 }

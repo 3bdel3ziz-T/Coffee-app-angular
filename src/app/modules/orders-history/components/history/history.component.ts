@@ -11,7 +11,7 @@ import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.componen
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
 import { OrderItem, OrderRef } from 'src/app/models/types/order-history';
 import { TitleSectionComponent } from 'src/app/modules/shared/components/title-section/title-section.component';
-import { NgStyle } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './history.component.scss',
   standalone: true,
   imports:
-    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle, RouterOutlet]
+    [ProductItemComponent, PriceComponent, MenuBarComponent, MsgComponent, BtnShapeDirective, TitleSectionComponent, NgStyle, RouterOutlet,NgIf, NgStyle]
 })
 export class HistoryComponent {
   historyItems: OrderItem[] = []

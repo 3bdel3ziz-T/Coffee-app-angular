@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Item as FavItem, Id as FavRef, Item } from 'src/app/models/types/coffee';
 import { AppService } from 'src/app/services/app.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
   private favItemsRef: FavRef[] = [];
-  private testData: any =
-  [
-    'C1', 'C4', 'B2', 'C6'
-  ];
-  constructor(private appService: AppService) { }
 
+  constructor(
+    private appService: AppService,
+    private userService: UserService) {
+    // this.favItemsRef = userService.user.favData;
+  }
   favRef_addItem(favItem: Item): void {
-    this.isFavTrue(favItem) ?
-      this.favItemsRef.push(favItem.id)
-      : this.deleteItem<FavRef>(favItem.id, this.favItemsRef)
+    if (this.isFavTrue(favItem)) {
+      this.favItemsRef.push(favItem.id);
+      // this.userService.user.favData.push(favItem.id);
+    } else {
+      this.deleteItem<FavRef>(favItem.id, this.favItemsRef)
+    }
   }
 
   private isFavTrue(favItem: Item): boolean {
@@ -39,7 +43,6 @@ export class FavoriteService {
   }
 
   get favObservable(): Observable<FavRef[]> {
-    return of(this.testData)
-    // return of(this.favItemsRef)
+    return of(this.favItemsRef)
   }
 }
