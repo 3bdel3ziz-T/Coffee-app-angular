@@ -25,7 +25,7 @@ export class CartService {
       this.changeQty("increment", itemRef)
     } else {
       this.cartItemsRef.push(itemRef)
-      this.userService.setValueToCartRef(itemRef);
+      // this.userService.setValueToCartRef(itemRef);
     }
   }
   createCartRefItem(id: Id, selected: SizeOrDose): ItemRef {

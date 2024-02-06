@@ -8,20 +8,15 @@ import { UserService } from 'src/app/user/user.service';
   providedIn: 'root'
 })
 export class FavoriteService {
-  private favItemsRef: FavRef[] = [];
-
   constructor(
     private appService: AppService,
     private userService: UserService) {
-    // this.favItemsRef = userService.user.favData;
   }
-  favRef_addItem(favItem: Item): void {
-    if (this.isFavTrue(favItem)) {
-      this.favItemsRef.push(favItem.id);
-      // this.userService.user.favData.push(favItem.id);
-    } else {
-      this.deleteItem<FavRef>(favItem.id, this.favItemsRef)
-    }
+
+  fav_addItem(favItem: Item): void {
+    this.isFavTrue(favItem) ?
+      this.userService.set_favRef(favItem.id) :
+      this.deleteItem<FavRef>(favItem.id, this.userService.get_favRef)
   }
 
   private isFavTrue(favItem: Item): boolean {
@@ -30,6 +25,7 @@ export class FavoriteService {
   private deleteItem<T>(favRef: FavRef, arr: T[]) {
     let index: number = arr.findIndex((e: T) => favRef === e)
     arr.splice(index, 1);
+    this.userService.set_UserData()
   }
 
   getFavItemsByRef(arr1: FavRef[]): FavItem[] {
@@ -43,6 +39,6 @@ export class FavoriteService {
   }
 
   get favObservable(): Observable<FavRef[]> {
-    return of(this.favItemsRef)
+    return of(this.userService.get_favRef)
   }
 }

@@ -15,7 +15,7 @@ export class ProductService {
     private appService: AppService,
     private cartService: CartService,
     private favService: FavoriteService) {
-    }
+  }
 
   getItemDetailsById(id: Id): Item {
     return this.appService.getItemById(id)
@@ -30,6 +30,6 @@ export class ProductService {
     this.appService.getItemById(favRef).isFavorite =
       !this.appService.getItemById(favRef).isFavorite
 
-    this.favService.favRef_addItem(favItem)
+    this.favService.fav_addItem(favItem)
   }
 }

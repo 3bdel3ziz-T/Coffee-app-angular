@@ -3,10 +3,10 @@
   <section class="page-content">
     <title-section [svg]="'setting'" [pageTitle]="'favorites'"></title-section>
     <div class="slider">
-      @for (favItem of favData; track $index) { @if(favItem.isFavorite) {
-      <div class="item" >
+      @for (favItem of favData; track $index) {
+      <div class="item">
         <details-section
-        routerLink="item-details/{{favItem.id}}"
+          routerLink="item-details/{{ favItem.id }}"
           [MainBoxStyle]="{
             width: '100%',
             height: 'fit-content',
@@ -18,7 +18,7 @@
           [item]="favItem"
         ></details-section>
       </div>
-      } }
+      }
     </div>
   </section>
   } @else {
