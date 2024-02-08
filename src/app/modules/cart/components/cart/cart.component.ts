@@ -22,7 +22,7 @@ import { CartService } from '../../services/cart.service';
   imports: [ProductItemComponent, NgStyle, NgIf, PriceComponent, BtnShapeDirective, SubTitleDirective, RouterOutlet, MenuBarComponent, MsgComponent, RouterLink, RouterOutlet, PaymentComponent, TitleSectionComponent]
 })
 export class CartComponent {
-  cart: CartItem[] = [];
+  cart!: CartItem[];
   constructor(private cartService: CartService) {
     this.cartService.cartObservable.subscribe({
       next: (itemRef: ItemRef[]) => this.cart = this.cartService.getCartItemsByRefArr(itemRef),
@@ -37,7 +37,6 @@ export class CartComponent {
     return this.qtyCount(arr) === 1 ? true : false
   }
 
-
   getTotal(cart: CartItem[]): Price {
     return this.cartService.getTotal(cart)
   }
@@ -49,5 +48,14 @@ export class CartComponent {
   decrementQty(id: Id, clickedSize: SizeOrDose) {
     this.cartService.changeQty("decrement", id, clickedSize)
     this.getTotal(this.cart)
+    // this.isStillValid(id)
   }
+
+  // isStillValid(id: Id): void {
+  //   const item: CartItem = this.cart.find((e: CartItem, i: number) => {
+  //     if (e.item.id === id) { return e } else { return false }
+  //   })!
+  //   this.cartService.itemTotal(item) === 0 ?
+  //     this.cartService.cart_deleteItem(id) : false
+  // }
 }

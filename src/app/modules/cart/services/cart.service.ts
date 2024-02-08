@@ -84,7 +84,7 @@ export class CartService {
               amount.quantity++
             } else if (action === 'decrement') {
               amount.quantity--;
-              (this.qtyCount(itemRef.amounts) === 0) ? this.deleteItem(itemRef.itemId) : false;
+              (this.qtyCount(itemRef.amounts) === 0) ? this.cart_deleteItem(itemRef.itemId) : false;
             }
           }
         })
@@ -93,7 +93,7 @@ export class CartService {
     })
   }
 
-  private deleteItem(id: Id) {
+  cart_deleteItem(id: Id) {
     let index: number = this.userService.get_cartRef.findIndex((e: ItemRef) => id === e.itemId)
     this.userService.get_cartRef.splice(index, 1);
     this.userService.set_UserData()
