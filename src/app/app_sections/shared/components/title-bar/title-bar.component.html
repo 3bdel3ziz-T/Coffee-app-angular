@@ -1,0 +1,94 @@
+<div class="bar-container">
+  <ng-container
+    [ngTemplateOutlet]="
+      leftBtnShape === 'settingBtn'
+        ? settingBtn
+        : leftBtnShape === 'backBtn'
+        ? backBtn
+        : null
+    "
+  ></ng-container>
+
+  <h2>{{ pageTitle }}</h2>
+
+  <ng-container
+    [ngTemplateOutlet]="
+      rightBtnShape === 'notification'
+        ? notification
+        : rightBtnShape === 'addFav'
+        ? addFav
+        : null
+    "
+  ></ng-container>
+
+  <ng-template #settingBtn>
+    <div class="squares-box btn" routerLink="setting">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </ng-template>
+  <ng-template #backBtn>
+    <label for="back" class="btn back">
+      <input type="checkbox" name="back" id="back" (change)="(goBack)" />
+      <svg
+        width="12"
+        height="20"
+        viewBox="0 0 12 20"
+        fill="inherit"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.883 17.7735C11.3922 18.2823 11.3925 19.1088 10.883 19.6181C10.3742 20.1274 9.54799 20.1272 9.0384 19.6181C9.0354 19.6151 9.03315 19.6121 9.03045 19.6089L9.02671 19.6122L0.387177 10.9727L0.390773 10.9694C0.266855 10.8483 0.168439 10.7036 0.101325 10.5438C0.0342123 10.3841 -0.000239639 10.2125 1.25459e-06 10.0392C-0.000242883 9.84492 0.0430963 9.65303 0.126828 9.47768C0.210559 9.30234 0.33255 9.148 0.483821 9.02604L0.474831 9.01735L9.11436 0.377821L9.11811 0.381418C9.12081 0.378271 9.12305 0.375574 9.12605 0.372727C9.37151 0.132211 9.70197 -0.00172571 10.0456 1.67917e-05C10.3893 0.0017593 10.7184 0.139041 10.9614 0.382033C11.2044 0.625026 11.3417 0.954098 11.3435 1.29775C11.3452 1.6414 11.2113 1.97187 10.9708 2.21736C10.9677 2.22035 10.9647 2.22245 10.9617 2.22545L10.9651 2.22904L3.15584 10.0392L10.8784 17.7618L10.8746 17.7649C10.8769 17.7682 10.88 17.7703 10.883 17.7735Z"
+          fill="inherit"
+        />
+      </svg>
+    </label>
+  </ng-template>
+  <ng-template #notification>
+    <div class="btn bell-container" routerLink="notifications">
+      <label class="bell" for="bell">
+        <input type="checkbox" name="" id="bell" />
+      </label>
+    </div>
+  </ng-template>
+  <ng-template #addFav>
+    <label class="btn add-fav"
+    for="{{ item.id }}"
+    >
+      <input type="checkbox" 
+      
+      name="{{ item.name }}"
+      id="{{ item.id }}"
+      [checked]="item.isFavorite"
+      (click)="fav_addItem(item.id)"
+      />
+      <svg
+        class="svg-celebrate"
+        width="100"
+        height="100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon points="10,10 20,20"></polygon>
+        <polygon points="10,50 20,50"></polygon>
+        <polygon points="20,80 30,70"></polygon>
+        <polygon points="90,10 80,20"></polygon>
+        <polygon points="90,50 80,50"></polygon>
+        <polygon points="80,80 70,70"></polygon>
+      </svg>
+      <svg
+        width="20"
+        height="18"
+        viewBox="0 0 20 18"
+        fill="inherit"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.44 0C12.63 0 11.01 0.88 10 2.23C9.48413 1.53881 8.81426 0.977391 8.04353 0.590295C7.27281 0.203198 6.42247 0.00108555 5.56 0C2.49 0 0 2.5 0 5.59C0 6.78 0.19 7.88 0.52 8.9C2.1 13.9 6.97 16.89 9.38 17.71C9.72 17.83 10.28 17.83 10.62 17.71C13.03 16.89 17.9 13.9 19.48 8.9C19.81 7.88 20 6.78 20 5.59C20 2.5 17.51 0 14.44 0Z"
+          fill="inherit"
+        />
+      </svg>
+    </label>
+  </ng-template>
+</div>

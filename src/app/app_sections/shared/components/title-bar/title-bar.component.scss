@@ -1,0 +1,166 @@
+@use "../../../../../styles" as *;
+
+
+.bar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  h2 {
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+  }
+}
+// Global btn styles
+.btn {
+  border: 1px solid $col-border;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: $rad-10;
+  background: $sec-gradient;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+// setting btn styles
+.squares-box {
+  background-color: transparent;
+  flex-wrap: wrap;
+  gap: 3px;
+  span {
+    display: block;
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: rgba($col-white, 20%);
+  }
+}
+
+// Bell btn shape styles
+.bell {
+  border: 2.17px solid $col-darkGray;
+  border-radius: 10px 10px 0 0;
+  width: 15px;
+  height: 17px;
+  background: transparent;
+  display: block;
+  position: relative;
+  top: -3px;
+  &::before,
+  &::after {
+    content: "";
+    background: $col-darkGray;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2.17px;
+  }
+  &::before {
+    top: 100%;
+    width: 20px;
+  }
+  &::after {
+    top: calc(100% + 4px);
+    width: 7px;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  &:has(input:checked) {
+    animation: bell-animation 500ms ease-out 0s 1 normal both;
+  }
+}
+@keyframes bell-animation {
+  20% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-15deg);
+    scale: 1.1;
+  }
+  60% {
+    transform: rotate(10deg);
+    scale: 1.1;
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  0%,
+  100% {
+    scale: 1;
+    transform: rotate(0deg);
+  }
+}
+
+// Back btn styles
+.back {
+  svg {
+    fill: $col-gray;
+    width: 10px;
+  }
+}
+
+// Add favorite btn styles
+.add-fav {
+  &:has(input[type="checkbox"]:checked) {
+    svg {
+      animation: heart 300ms ease-in-out 0s 1 normal both;
+      fill: $col-favorite;
+    }
+    .svg-celebrate {
+      animation-name: add-favorite;
+    }
+  }
+  right: 30px;
+  svg {
+    transition: 300ms;
+    fill: $col-gray;
+    width: 16px;
+  }
+  .svg-celebrate {
+    position: absolute;
+    display: block;
+    stroke: $col-favorite;
+    fill: $col-favorite;
+    stroke-width: 2px;
+    width: fit-content;
+    scale: 0;
+    opacity: 0;
+    animation: 350ms ease-in-out 0s 1 normal both;
+  }
+}
+@keyframes add-favorite {
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
+
+  99% {
+    scale: 0.6;
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes heart {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.15;
+  }
+}
