@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { MenuBarComponent } from './modules/shared/components/menu-bar/menu-bar.component';
+import { MenuBarComponent } from './app_sections/shared/components/menu-bar/menu-bar.component';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './modules/shared/components/header/header.component';
+import { HeaderComponent } from './app_sections/shared/components/header/header.component';
 
 @Component({
     selector: 'app-root',

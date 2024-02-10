@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
 import { SubTitleDirective } from 'src/app/custom_directives/sub-title.directive';
-import { CardShapeComponent } from 'src/app/modules/shared/components/card-shape/card-shape.component';
-import { PriceComponent } from 'src/app/modules/shared/components/price/price.component';
-import { TitleBarComponent } from 'src/app/modules/shared/components/title-bar/title-bar.component';
+import { CardShapeComponent } from 'src/app/app_sections/shared/components/card-shape/card-shape.component';
+import { PriceComponent } from 'src/app/app_sections/shared/components/price/price.component';
+import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 
 @Component({
   selector: 'app-payment',

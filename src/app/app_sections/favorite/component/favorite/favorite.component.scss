@@ -1,6 +1,9 @@
 @use "../../../../../styles" as *;
 
 .favorite {
+  .page-content {
+    min-height: calc(100% - 73px);
+  }
   .slider {
     display: flex;
     flex-direction: column;
@@ -9,7 +12,7 @@
     justify-content: center;
     .item {
       position: relative;
-      height: 625px;
+      min-height: 660px;
       width: 100%;
       overflow: hidden;
     }

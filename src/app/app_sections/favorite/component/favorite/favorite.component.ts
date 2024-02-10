@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FavoriteService } from '../../services/favorite.service';
 import { Item as FavItem, Id as FavRef } from 'src/app/models/types/coffee';
 import { DetailsComponent } from '../../../shared/components/item-details/details/details.component';
-import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
-import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
-import { TitleBarComponent } from 'src/app/modules/shared/components/title-bar/title-bar.component';
+import { MsgComponent } from 'src/app/app_sections/shared/components/msg/msg.component';
+import { MenuBarComponent } from 'src/app/app_sections/shared/components/menu-bar/menu-bar.component';
+import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

@@ -1,1 +1,15 @@
-<p>notification works!</p>
+<section class="notifications page">
+  <section class="page-content">
+    <title-bar leftBtnShape="backBtn" pageTitle="notifications"></title-bar>
+    <div class="slider">
+      @for (item of notifications; track $index) {
+      <div class="notification">
+        <span class="date">{{item.date.toDateString()}}</span>
+        <span class="time">{{item.date.toLocaleTimeString(undefined, { timeStyle: 'short' })}}</span>
+        <h3>{{item.title}}</h3>
+        <p>{{item.description}}</p>
+      </div>
+      }
+    </div>
+  </section>
+</section>

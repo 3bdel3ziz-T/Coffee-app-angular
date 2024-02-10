@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
-import { CardShapeComponent } from 'src/app/modules/shared/components/card-shape/card-shape.component';
-import { TitleBarComponent } from 'src/app/modules/shared/components/title-bar/title-bar.component';
+import { CardShapeComponent } from 'src/app/app_sections/shared/components/card-shape/card-shape.component';
+import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 
 @Component({
   selector: 'add-card-form',

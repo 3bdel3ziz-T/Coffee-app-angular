@@ -8,7 +8,7 @@
   background-color: $col-dark;
   overflow: hidden;
   animation: show-animation 500ms ease-out 0s 1 normal both;
-  &:has(input[type="checkbox"]#back:checked) {
+  &:has(input[type="checkbox"].back-input:checked) {
     animation: hide-animation 500ms ease-out 0s 1 normal both;
   }
   .buy-section {

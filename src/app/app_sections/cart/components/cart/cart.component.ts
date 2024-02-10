@@ -8,10 +8,10 @@ import { PriceComponent } from '../../../shared/components/price/price.component
 import { NgStyle, NgIf } from '@angular/common';
 import { ProductItemComponent } from '../../../shared/components/product-item/product-item.component';
 import { Id } from 'src/app/models/types/coffee';
-import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
-import { MsgComponent } from 'src/app/modules/shared/components/msg/msg.component';
+import { MenuBarComponent } from 'src/app/app_sections/shared/components/menu-bar/menu-bar.component';
+import { MsgComponent } from 'src/app/app_sections/shared/components/msg/msg.component';
 import { PaymentComponent } from './payment/payment.component';
-import { TitleBarComponent } from 'src/app/modules/shared/components/title-bar/title-bar.component';
+import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { CartService } from '../../services/cart.service';
 
 @Component({

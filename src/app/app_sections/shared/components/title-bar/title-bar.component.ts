@@ -16,7 +16,10 @@ export class TitleBarComponent {
   @Input() pageTitle: string = '';
   @Input() leftBtnShape: 'settingBtn' | 'backBtn' | null = null;
   @Input() rightBtnShape: 'addFav' | 'notification' | null = null;
-  constructor(private productService: ProductService) { }
+  id: string;
+  constructor(private productService: ProductService) {
+    this.id = `${Math.round(Math.random() * 1000) + 1}`;
+  }
   get goBack(): boolean {
     return this.productService.goBack;
   }

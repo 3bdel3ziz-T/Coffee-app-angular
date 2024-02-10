@@ -1,0 +1,75 @@
+@use "../../../../../styles" as *;
+
+.notifications {
+  background-color: $col-dark;
+  animation: show-animation 500ms ease-in-out 0s 1 normal both;
+  &:has(input[type="checkbox"].back-input:checked) {
+    animation: hide-animation 500ms ease-out 0s 1 normal both;
+  }
+  .slider {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-25;
+    .notification {
+      position: relative;
+      span {
+        color: $col-gray;
+        display: block;
+        width: 100%;
+        text-align: center;
+        &.time {
+          width: fit-content;
+          position: absolute;
+          right: 0;
+        }
+      }
+      h3 {
+        color: white;
+        padding-bottom: 15px;
+      }
+      p {
+        color: $col-gray;
+        border-radius: $rad-25;
+        background: $sec-gradient;
+        padding: 15px;
+      }
+    }
+  }
+}
+
+@keyframes show-animation {
+  0% {
+    width: 0;
+    height: 0;
+    top: 80px;
+    left: calc(100% - 30px);
+    border-radius: 50px;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    height: calc(100dvh - 44px);
+    border-radius: 0;
+    top: 44px;
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes hide-animation {
+  0% {
+    width: 100%;
+    height: calc(100dvh - 44px);
+    border-radius: 0;
+    top: 44px;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    height: 0;
+    top: 80px;
+    left: calc(100% - 30px);
+    border-radius: 50px;
+    opacity: 0;
+  }
+}

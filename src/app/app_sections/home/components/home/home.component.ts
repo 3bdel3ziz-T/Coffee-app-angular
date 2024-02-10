@@ -7,8 +7,8 @@ import { PriceComponent } from '../../../shared/components/price/price.component
 import { ProductItemComponent } from '../../../shared/components/product-item/product-item.component';
 import { CategoryFilterComponent } from '../../../shared/components/category-filter/category-filter.component';
 import { SearchBoxComponent } from '../../../shared/components/search-box/search-box.component';
-import { MenuBarComponent } from 'src/app/modules/shared/components/menu-bar/menu-bar.component';
-import { TitleBarComponent } from 'src/app/modules/shared/components/title-bar/title-bar.component';
+import { MenuBarComponent } from 'src/app/app_sections/shared/components/menu-bar/menu-bar.component';
+import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { CoffeeCategory } from 'src/app/models/types/category';
 
 @Component({

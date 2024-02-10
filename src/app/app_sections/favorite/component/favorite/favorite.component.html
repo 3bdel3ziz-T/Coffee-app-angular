@@ -1,35 +1,23 @@
 <section class="favorite page">
   @if(favData.length) {
   <section class="page-content">
-    <title-bar
-      leftBtnShape="settingBtn"
-      rightBtnShape="notification"
-      pageTitle="favorites"
-    ></title-bar>
+    <title-bar leftBtnShape="settingBtn" rightBtnShape="notification" pageTitle="favorites"></title-bar>
     <div class="slider">
       @for (favItem of favData; track $index) {
       <div class="item">
-        <details-section
-          routerLink="item-details/{{ favItem.id }}"
-          [MainBoxStyle]="{
+        <details-section routerLink="item-details/{{ favItem.id }}" [MainBoxStyle]="{
             width: '100%',
-            height: 'fit-content',
+            height: '100%',
             radius: '25px',
             background:
               'linear-gradient(to bottom right, #262B33 0%, #262B3300 100%)'
-          }"
-          [buttons]="{ leftBtn: false, rightBtn: true }"
-          [item]="favItem"
-        ></details-section>
+          }" [buttons]="{ leftBtn: false, rightBtn: true }" [item]="favItem"></details-section>
       </div>
       }
     </div>
   </section>
   } @else {
-  <msg
-    [msg]="'you can t add favorite without sign in'"
-    [btnTxt]="'sign in now!'"
-  ></msg>
+  <msg [msg]="'you can t add favorite without sign in'" [btnTxt]="'sign in now!'"></msg>
   }
   <menu-bar></menu-bar>
 </section>
