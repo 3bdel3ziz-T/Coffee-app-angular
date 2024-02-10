@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+### source
+
+_Figma Design URL => https://www.figma.com/file/RyVLhDKrymZhThABrSgzIK/Coffee-Shop-App-UI?type=design&node-id=0-1&mode=design&t=vYsol2nUqAMj0Z3I-0
+_Youtube video URL => https://youtu.be/W1Co2M-gsQE?si=MI_iADSgJC9uELdp
+_Github Author code URL => https://github.com/darshanpawar101/Coffee-Shop-App/commit/6a2d49dc4e462c325112fffe8fd6a8e165f627b2
