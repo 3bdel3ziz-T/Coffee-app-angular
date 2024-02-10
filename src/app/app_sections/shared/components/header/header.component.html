@@ -1,4 +1,4 @@
-<header [ngStyle]="{'background-color': changeBG ? '#0c0f14' : 'transparent' }">
+<header>
   <div class="time">{{ time }}</div>
   <div class="phone-info">
     <div class="signal">
@@ -13,13 +13,10 @@
       <span></span>
     </div> -->
     <div class="battery">
-      <div
-        class="percent"
-        [ngStyle]="{
+      <div class="percent" [ngStyle]="{
           width: batteryPercent + '%',
           borderRadius: batteryPercent >= 88 ? '3px' : false
-        }"
-      >
+        }">
         <span>{{ batteryPercent }}</span>
       </div>
     </div>
