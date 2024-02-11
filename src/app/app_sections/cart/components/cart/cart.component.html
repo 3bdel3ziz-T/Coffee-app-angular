@@ -4,8 +4,6 @@
     <title-bar leftBtnShape="settingBtn" pageTitle="cart" rightBtnShape="notification"></title-bar>
     <div class="cart-list">
       @for (data of cart; track data.item.id) {
-      <!-- @if (qtyCount(data.amounts) > 0) -->
-      <!-- { -->
       <product-item imgLink="item-details/{{ data.item.id }}" [itemData]="data.item"
         [sideTemplate]="isQty1(data.amounts) ? orderDetails : tags"
         [contentTemplate]="isQty1(data.amounts) ? empty : orderDetails" [imgBoxSize]="isQty1(data.amounts) ? 'L' : 'M'"
@@ -48,21 +46,20 @@
         </div>
       </ng-template>
       }
-      <!-- } -->
     </div>
   </section>
   @if (cart.length) {
   <div class="buy-box">
     <div class="price">
       <h4 subTitle>Total Price</h4>
-      <price [price]="getTotal(cart)" [priceSize]="'20px'"></price>
+      <price [price]="getTotal(cart)" priceSize="20px"></price>
     </div>
-    <button routerLink="pay" btnShape [disabled]="getTotal(cart) === '0'">
-      Pay
+    <button routerLink="make-order" btnShape [disabled]="getTotal(cart) === '0'" (click)="makeOrder()">
+      make order
     </button>
   </div>
   } }@else {
-  <msg [msg]="'your cart is empty!'" [btnTxt]="'order coffee now!'"></msg>
+  <msg msg="your cart is empty!" btnTxt="order coffee now!"></msg>
   }
   <menu-bar></menu-bar>
 </section>

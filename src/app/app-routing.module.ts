@@ -9,6 +9,7 @@ import { SettingComponent } from './app_sections/shared/components/setting/setti
 import { PaymentComponent } from './app_sections/cart/components/cart/payment/payment.component';
 import { AddCardFormComponent } from './app_sections/cart/components/cart/payment/add-card-form/add-card-form.component';
 import { NotificationComponent } from './app_sections/shared/components/notification/notification.component';
+import { MakeOrderComponent } from './app_sections/cart/components/cart/make-order/make-order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,10 +26,15 @@ const routes: Routes = [
       { path: 'setting', component: SettingComponent },
       { path: 'notifications', component: NotificationComponent },
       {
-        path: 'pay', component: PaymentComponent, children: [
-          { path: 'add-card', component: AddCardFormComponent }
+        path: 'make-order', component: MakeOrderComponent, children: [
+          {
+            path: 'choose-payment', component: PaymentComponent, children: [
+              { path: 'add-card', component: AddCardFormComponent },
+            ]
+          }
         ]
-      }
+      },
+
     ]
   },
   {

@@ -21,6 +21,15 @@
       border: 1px solid $col-border;
       color: white;
       background: $main-gradient;
+      transition: 400ms;
+      input[type="radio"] {
+        display: none;
+      }
+      &:has(input[type="radio"]:checked) {
+        border-color: $col-orange;
+        color: $col-orange;
+        background: $col-dark;
+      }
       h4 {
         font-weight: 500;
       }
@@ -34,7 +43,6 @@
     position: sticky;
     bottom: 0;
     padding: 30px;
-
     background-color: $col-dark;
     .price {
     }

@@ -1,0 +1,36 @@
+@use "../../../../../../styles" as *;
+
+.make-order {
+  margin-top: 42px;
+  background-color: $col-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: show-animation 500ms ease-out 0s 1 normal both;
+  &:has(input[type="checkbox"].back-input:checked) {
+    animation: hide-animation 500ms ease-out 0s 1 normal both;
+  }
+  .page-content {
+    min-height: calc(100dvh - 185px);
+    .btn {
+      width: 100%;
+      padding: 12px 0;
+      border-radius: $rad-10;
+    }
+  }
+  .buy-box {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #0c0f14;
+    .approve-order {
+      width: 240px;
+      padding: 20px 0;
+      text-align: center;
+      border-radius: 25px;
+    }
+  }
+}

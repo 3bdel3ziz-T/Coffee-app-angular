@@ -13,6 +13,7 @@ import { MsgComponent } from 'src/app/app_sections/shared/components/msg/msg.com
 import { PaymentComponent } from './payment/payment.component';
 import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { CartService } from '../../services/cart.service';
+import { OrderRef } from 'src/app/models/types/order-history';
 
 @Component({
   selector: 'cart-page',
@@ -58,4 +59,16 @@ export class CartComponent {
   //   this.cartService.itemTotal(item) === 0 ?
   //     this.cartService.cart_deleteItem(id) : false
   // }
+
+  makeOrder() {
+    let cartRef!: ItemRef[];
+    this.cartService.cartObservable.subscribe({
+      next: (itemRef: ItemRef[]) => { cartRef = itemRef },
+    })
+    const order: OrderRef = {
+      date: new Date,
+      cartRef: cartRef,
+      isAccepted: false
+    }
+  }
 }

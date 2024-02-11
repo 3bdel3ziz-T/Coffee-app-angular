@@ -3,7 +3,7 @@
 .cart {
   display: flex;
   flex-direction: column;
-  
+
   .page-content {
     min-height: calc(100dvh - 250px);
     overflow-y: scroll;
@@ -26,7 +26,8 @@
     }
     button {
       width: 240px;
-      padding: 20px 100px;
+      padding: 20px 0;
+      text-align: center;
       border-radius: $rad-25;
     }
   }

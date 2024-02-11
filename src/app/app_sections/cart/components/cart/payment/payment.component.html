@@ -1,37 +1,43 @@
 <section class="payment page">
   <section class="content">
     <title-bar leftBtnShape="backBtn" pageTitle='payment'></title-bar>
-    @if (card) {
-      <card-shape></card-shape>
-    }
-    @if (!card) {
-    <div class="item" routerLink="add-card">
+    <!-- @if (card) {
+    <card-shape></card-shape>
+    } -->
+    <!-- @if (!card) { -->
+    <label class="item" for="add-card">
+      <input type="radio" routerLink="add-card" name="payment" id="add-card">
       <h4 class="">add credit card</h4>
-    </div>
-  }@else {
-    <div class="item" routerLink="edit-card">
+    </label>
+    <!-- }@else {
+    <label class="item" for="edit-card">
+      <input type="checkbox" routerLink="edit-card" name="payment" id="add-card">
       <h4 class="">edit credit card</h4>
-    </div>
-  }
-    <div class="item">
+    </label>
+    } -->
+    <label class="item" for="wallet">
+      <input type="radio" name="payment" id="wallet">
       <h4 class="">wallet</h4>
-    </div>
-    <div class="item">
+    </label>
+    <label class="item" for="google-pay">
+      <input type="radio" name="payment" id="google-pay">
       <h4 class="">google pay</h4>
-    </div>
-    <div class="item">
+    </label>
+    <label class="item" for="apple-pay">
+      <input type="radio" name="payment" id="apple-pay">
       <h4 class="">apple pay</h4>
-    </div>
-    <div class="item">
+    </label>
+    <label class="item" for="amazon-pay">
+      <input type="radio" name="payment" id="amazon-pay">
       <h4 class="">amazon pay</h4>
-    </div>
+    </label>
   </section>
   <div class="buy-box">
     <div class="price">
       <h4 subTitle>Total Price</h4>
       <!-- <price [price]="getTotal(cart)" [priceSize]="'20px'"></price> -->
     </div>
-    <button routerLink="pay" btnShape>Pay from</button>
+    <button routerLink="payment" btnShape>Pay from</button>
   </div>
 </section>
 <router-outlet></router-outlet>

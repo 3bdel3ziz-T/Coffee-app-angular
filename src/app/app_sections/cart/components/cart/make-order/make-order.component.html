@@ -1,0 +1,17 @@
+<section class="make-order page">
+  <section class="page-content">
+    <title-bar leftBtnShape="backBtn" pageTitle="over view"></title-bar>
+    <button class="btn" btnShape routerLink="choose-payment">choose payment method</button>
+  </section>
+  <div class="buy-box">
+    <div class="price">
+      <h4 subTitle>Total Price</h4>
+      <!-- <price [price]="getTotal(cart)" [priceSize]="'20px'"></price> -->
+      <price priceSize="20px"></price>
+    </div>
+    <button class="approve-order" routerLink="" btnShape>
+      approve order
+    </button>
+  </div>
+</section>
+<router-outlet></router-outlet>
