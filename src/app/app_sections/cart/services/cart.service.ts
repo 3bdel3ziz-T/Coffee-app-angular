@@ -5,6 +5,7 @@ import { Price, SizeOrDose } from 'src/app/models/types/size';
 import { AppService } from '../../../services/app.service';
 import { Observable, of } from 'rxjs';
 import { UserService } from 'src/app/user/user.service';
+import { OrderRef } from 'src/app/models/types/order-history';
 
 @Injectable({
   providedIn: 'root'
@@ -143,6 +144,10 @@ export class CartService {
 
   ToPrice(price: number): Price {
     return `${price}`
+  }
+
+  makeOrder(historyRef: OrderRef) {
+    this.userService.set_historyRef(historyRef);
   }
 
   get cartObservable(): Observable<ItemRef[]> {

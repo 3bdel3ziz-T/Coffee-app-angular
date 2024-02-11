@@ -98,6 +98,6 @@ export class HistoryService {
   }
 
   get historyObservable(): Observable<OrderRef[]> {
-    return of(this.userService.get_HistoryRef)
+    return of(this.userService.get_historyRef)
   }
 }

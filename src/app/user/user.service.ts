@@ -30,7 +30,7 @@ export class UserService {
   get get_cartRef() {
     return this.get_Data<ItemRef[]>(this._user.cartData)
   }
-  get get_HistoryRef() {
+  get get_historyRef() {
     return this.get_Data<OrderRef[]>(this._user.historyData)
   }
 
@@ -43,6 +43,9 @@ export class UserService {
   }
   set_cartRef(cartRef: ItemRef) {
     this.set_Data<ItemRef>(cartRef, this._user.cartData)
+  }
+  set_historyRef(historyRef: OrderRef) {
+    this.set_Data<OrderRef>(historyRef, this._user.historyData)
   }
 
   // get getUserCartRef(): ItemRef[] {
