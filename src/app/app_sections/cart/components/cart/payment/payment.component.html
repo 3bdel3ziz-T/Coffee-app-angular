@@ -18,26 +18,31 @@
     <label class="item" for="wallet">
       <input type="radio" name="payment" id="wallet">
       <h4 class="">wallet</h4>
+      <span class="money">0$</span>
     </label>
     <label class="item" for="google-pay">
       <input type="radio" name="payment" id="google-pay">
       <h4 class="">google pay</h4>
+      <span class="money">0$</span>
     </label>
     <label class="item" for="apple-pay">
       <input type="radio" name="payment" id="apple-pay">
       <h4 class="">apple pay</h4>
+      <span class="money">0$</span>
     </label>
     <label class="item" for="amazon-pay">
       <input type="radio" name="payment" id="amazon-pay">
       <h4 class="">amazon pay</h4>
+      <span class="money">0$</span>
     </label>
   </section>
   <div class="buy-box">
     <div class="price">
       <h4 subTitle>Total Price</h4>
+      <span class="money">0$</span>
       <!-- <price [price]="getTotal(cart)" [priceSize]="'20px'"></price> -->
     </div>
-    <button routerLink="payment" btnShape>Pay from</button>
+    <button routerLink="choose-address" btnShape>Pay from</button>
   </div>
 </section>
 <router-outlet></router-outlet>

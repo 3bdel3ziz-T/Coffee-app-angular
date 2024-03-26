@@ -1,7 +1,13 @@
 <section class="make-order page">
   <section class="page-content">
     <title-bar leftBtnShape="backBtn" pageTitle="over view"></title-bar>
-    <button class="btn" btnShape routerLink="choose-payment">choose payment method</button>
+    <button class="btn" btnShape routerLink="payments">choose payment method</button>
+    <button class="btn" btnShape routerLink="address">choose address method</button>
+    <div class="order-over-view">
+      <!-- @for (item of obj.cartRef; track $index) {
+        <product-item></product-item>
+      } -->
+    </div>
   </section>
   <div class="buy-box">
     <div class="price">

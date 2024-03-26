@@ -146,9 +146,9 @@ export class CartService {
     return `${price}`
   }
 
-  makeOrder(historyRef: OrderRef) {
-    this.userService.set_historyRef(historyRef);
-  }
+  // makeOrder(historyRef: OrderRef) {
+  //   this.userService.set_historyRef(historyRef);
+  // }
 
   get cartObservable(): Observable<ItemRef[]> {
     return of(this.userService.get_cartRef)

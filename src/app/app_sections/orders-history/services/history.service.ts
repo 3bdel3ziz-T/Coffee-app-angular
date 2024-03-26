@@ -8,81 +8,81 @@ import { UserService } from 'src/app/user/user.service';
   providedIn: 'root'
 })
 export class HistoryService {
+  test_data_historyItemsRef: OrderRef[] = [
+    {
+      date: new Date,
+      cartRef: [
+        {
+          itemId: 'C1',
+          amounts: [
+            {
+              size: 'S',
+              quantity: 2
+            }, {
+              size: 'M',
+              quantity: 0
+            }, {
+              size: 'L',
+              quantity: 1
+            }
+          ]
+        },
+        {
+          itemId: 'B2',
+          amounts: [
+            {
+              size: '250gm',
+              quantity: 0
+            }, {
+              size: '500gm',
+              quantity: 0
+            }, {
+              size: '1000gm',
+              quantity: 1
+            }
+          ]
+        },
+      ], isAccepted: false
+    },
+    {
+      date: new Date,
+      cartRef: [
+        {
+          itemId: 'C3',
+          amounts: [
+            {
+              size: 'S',
+              quantity: 1
+            }, {
+              size: 'M',
+              quantity: 1
+            }, {
+              size: 'L',
+              quantity: 0
+            }
+          ]
+        },
+        {
+          itemId: 'B4',
+          amounts: [
+            {
+              size: '250gm',
+              quantity: 2
+            }, {
+              size: '500gm',
+              quantity: 0
+            }, {
+              size: '1000gm',
+              quantity: 1
+            }
+          ]
+        },
+      ], isAccepted: true
+    }
+  ]
   constructor(
     private cartService: CartService,
     private userService: UserService) {
-    // this.historyItemsRef = [
-    //   {
-    //     date: new Date,
-    //     cartRef: [
-    //       {
-    //         itemId: 'C1',
-    //         amounts: [
-    //           {
-    //             size: 'S',
-    //             quantity: 2
-    //           }, {
-    //             size: 'M',
-    //             quantity: 0
-    //           }, {
-    //             size: 'L',
-    //             quantity: 1
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         itemId: 'B2',
-    //         amounts: [
-    //           {
-    //             size: '250gm',
-    //             quantity: 0
-    //           }, {
-    //             size: '500gm',
-    //             quantity: 0
-    //           }, {
-    //             size: '1000gm',
-    //             quantity: 1
-    //           }
-    //         ]
-    //       },
-    //     ], isAccepted: false
-    //   },
-    //   {
-    //     date: new Date,
-    //     cartRef: [
-    //       {
-    //         itemId: 'C3',
-    //         amounts: [
-    //           {
-    //             size: 'S',
-    //             quantity: 1
-    //           }, {
-    //             size: 'M',
-    //             quantity: 1
-    //           }, {
-    //             size: 'L',
-    //             quantity: 0
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         itemId: 'B4',
-    //         amounts: [
-    //           {
-    //             size: '250gm',
-    //             quantity: 2
-    //           }, {
-    //             size: '500gm',
-    //             quantity: 0
-    //           }, {
-    //             size: '1000gm',
-    //             quantity: 1
-    //           }
-    //         ]
-    //       },
-    //     ], isAccepted: true
-    //   }
-    // ]
   }
 
   getHistory(historyRef: OrderRef[]): OrderItem[] {
@@ -98,6 +98,7 @@ export class HistoryService {
   }
 
   get historyObservable(): Observable<OrderRef[]> {
-    return of(this.userService.get_historyRef)
+    // return of(this.userService.get_historyRef)
+    return of(this.test_data_historyItemsRef)
   }
 }

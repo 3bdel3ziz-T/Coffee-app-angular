@@ -1,11 +1,7 @@
 <section class="history page">
   @if (historyItems.length) {
   <section class="page-content">
-    <title-bar
-      leftBtnShape="settingBtn"
-      rightBtnShape="notification"
-      pageTitle="history"
-    ></title-bar>
+    <title-bar leftBtnShape="settingBtn" rightBtnShape="notification" pageTitle="history"></title-bar>
 
     <div class="slider">
       @for (history of historyItems; track $index) {
@@ -17,30 +13,18 @@
           </div>
           <div class="total">
             <h4>Total Amount</h4>
-            <price
-              [price]="orderTotal(history.cartData)"
-              [priceSize]="'22px'"
-            ></price>
+            <price [price]="orderTotal(history.cartData)" [priceSize]="'22px'"></price>
           </div>
         </div>
         @for (cartItem of history.cartData; track $index) {
-        <product-item
-          [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
-          [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }"
-          [mainBoxFlex]="{ direction: 'row', gap: '25px' }"
-          [itemStyles]="{ padding: '18px' }"
-          [contentTemplate]="orderAmounts"
-          [sideTemplate]="itemTotalTemp"
-          [imgBoxSize]="'S'"
-          [itemData]="cartItem.item"
-        ></product-item>
+        <product-item [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
+          [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }" [mainBoxFlex]="{ direction: 'row', gap: '25px' }"
+          [itemStyles]="{ padding: '18px' }" [contentTemplate]="orderAmounts" [sideTemplate]="itemTotalTemp"
+          [imgBoxSize]="'S'" [itemData]="cartItem.item"></product-item>
 
         <ng-template #itemTotalTemp>
           <div class="price">
-            <price
-              [price]="ToPrice(itemTotal(cartItem))"
-              [priceSize]="'22px'"
-            ></price>
+            <price [price]="ToPrice(itemTotal(cartItem))" [priceSize]="'22px'"></price>
           </div>
         </ng-template>
         <ng-template #orderAmounts>
@@ -49,31 +33,25 @@
             @if(detail.quantity > 0){
             <div class="detail">
               <div class="price-and-size">
-                <h3
-                  [ngStyle]="{
+                <h3 [ngStyle]="{
                     width: cartItem.item.type === 'Coffee' ? '60px' : '90px'
-                  }"
-                >
+                  }">
                   {{ detail.size }}
                 </h3>
                 <div class="price">
-                  <price
-                    [price]="
+                  <price [price]="
                       getPriceBySize(
                         cartItem.item.id,
                         cartItem.amounts[$index].size
                       )
-                    "
-                    [priceSize]="'16px'"
-                  ></price>
+                    " [priceSize]="'16px'"></price>
                 </div>
               </div>
               <h3 class="quantity">
                 <span class="Xsign">X</span>{{ detail.quantity }}
               </h3>
               <div class="price">
-                <price
-                  [price]="
+                <price [price]="
                     ToPrice(
                       +detail.quantity *
                         +getPriceBySize(
@@ -81,9 +59,7 @@
                           cartItem.amounts[$index].size
                         )
                     )
-                  "
-                  [priceSize]="'18px'"
-                ></price>
+                  " [priceSize]="'18px'"></price>
               </div>
             </div>
             }}
@@ -92,11 +68,7 @@
         } @if (history.isAccepted) {
         <button class="btn reorder" btnShape>Reorder</button>
         }@else{
-        <button
-          class="btn cancel-order"
-          btnShape
-          [ngStyle]="{ background: 'red' }"
-        >
+        <button class="btn cancel-order" btnShape [ngStyle]="{ background: 'red' }">
           cancel order
         </button>
         }
@@ -106,7 +78,7 @@
   </section>
   <button class="btn download" btnShape>download</button>
   }@else {
-  <msg></msg>
+  <msg routerLink="/cart"></msg>
   }
   <menu-bar></menu-bar>
 </section>

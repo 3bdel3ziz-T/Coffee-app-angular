@@ -17,7 +17,7 @@
     </div>
   </section>
   } @else {
-  <msg [msg]="'you can t add favorite without sign in'" [btnTxt]="'sign in now!'"></msg>
+  <msg routerLink="/home" msg="you'r favorite is Empty" btnTxt="add some favorite!"></msg>
   }
   <menu-bar></menu-bar>
 </section>

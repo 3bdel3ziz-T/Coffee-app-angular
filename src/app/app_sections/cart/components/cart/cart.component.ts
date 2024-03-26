@@ -60,7 +60,7 @@ export class CartComponent {
   //     this.cartService.cart_deleteItem(id) : false
   // }
 
-  makeOrder() {
+  makeOrder(): void {
     let cartRef!: ItemRef[];
     this.cartService.cartObservable.subscribe({
       next: (itemRef: ItemRef[]) => { cartRef = itemRef },
@@ -70,5 +70,6 @@ export class CartComponent {
       cartRef: cartRef,
       isAccepted: false
     }
+    // this.cartService.makeOrder(order);
   }
 }

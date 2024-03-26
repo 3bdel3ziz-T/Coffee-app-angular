@@ -27,8 +27,9 @@ const routes: Routes = [
       { path: 'notifications', component: NotificationComponent },
       {
         path: 'make-order', component: MakeOrderComponent, children: [
+          // { path: 'address', component: PaymentComponent },
           {
-            path: 'choose-payment', component: PaymentComponent, children: [
+            path: 'payments', component: PaymentComponent, children: [
               { path: 'add-card', component: AddCardFormComponent },
             ]
           }

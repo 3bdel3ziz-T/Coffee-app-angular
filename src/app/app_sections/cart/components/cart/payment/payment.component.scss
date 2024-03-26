@@ -22,6 +22,9 @@
       color: white;
       background: $main-gradient;
       transition: 400ms;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       input[type="radio"] {
         display: none;
       }
@@ -32,6 +35,9 @@
       }
       h4 {
         font-weight: 500;
+        display: inline-block;
+      }
+      .money {
       }
     }
   }
