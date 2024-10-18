@@ -16,13 +16,10 @@ import { RouterLink } from '@angular/router';
 export class ProductItemComponent {
   @Input() itemData!: Item;
   @Input() imgLink?: string = undefined;
-  @Input() itemStyles: {padding: CssUnits};
   @Input() imgBoxSize: TupleSize;
   @Input() mainBoxFlex: BoxFlex;
   @Input() sideContentBoxFlex: BoxFlex;
   @Input() titlesSize: { mainTitle: CssUnits, subTitle: CssUnits };
-  @Input() sideTemplate!: TemplateRef<unknown>;
-  @Input() contentTemplate!: TemplateRef<unknown>;
   constructor() {
     this.mainBoxFlex = { direction: 'column', gap: '12px' };
     this.titlesSize = { mainTitle: '13px', subTitle: '9px' };
@@ -31,6 +28,5 @@ export class ProductItemComponent {
       direction: 'column',
       gap: '0',
     }
-    this.itemStyles = { padding : '12px'}
   }
 }

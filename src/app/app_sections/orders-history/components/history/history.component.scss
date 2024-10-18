@@ -1,98 +1,97 @@
 @use "../../../../../styles" as *;
 
-.history {
-  display: flex;
-  flex-direction: column;
-  .page-content {
-    min-height: calc(100dvh - 250px);
-    overflow-y: scroll;
-    .slider {
-      .item {
+.slider {
+  overflow: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-15;
+    padding: $gap-15 0;
+    &:first-of-type {
+      padding: 0;
+      padding-bottom: $gap-15;
+    }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: $col-white;
+      h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .date {
+        span {
+          font-weight: 200;
+        }
+      }
+    }
+    .details-items {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding-top: 15px;
+      .detail {
         display: flex;
-        flex-direction: column;
-        gap: $gap-25;
-        padding: $gap-25 0;
-        &:first-of-type {
-          padding: 0;
-          padding-bottom: $gap-25;
-        }
-        .item-head {
+        align-items: center;
+        justify-content: left;
+        height: 35px;
+        border-radius: $rad-10;
+        .price-and-size {
+          flex-basis: 50%;
           display: flex;
+          align-items: center;
           justify-content: space-between;
-          font-size: 14px;
-          color: $col-white;
-          h4 {
-            font-size: 16px;
-            margin-bottom: 5px;
+          border-radius: $rad-7 + 5;
+          width: fit-content;
+          background-color: $col-dark;
+          h3 {
+            padding: 8px 0;
+            text-align: center;
+            border-right: 2px solid $col-border;
+            color: $col-white;
+            font-weight: 500;
+            height: 100%;
           }
-          .date {
-            span {
-              font-weight: 200;
-            }
+          .price {
+            text-align: center;
+            padding: 8px 0;
+            flex: 1;
           }
         }
-        .details-items {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          gap: 10px;
-          padding-top: 15px;
-          .detail {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            height: 35px;
-            border-radius: $rad-10;
-            .price-and-size {
-              flex-basis: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              border-radius: $rad-7 + 5;
-              width: fit-content;
-              background-color: $col-dark;
-              h3 {
-                padding: 8px 0;
-                text-align: center;
-                border-right: 2px solid $col-border;
-                color: $col-white;
-                font-weight: 500;
-                height: 100%;
-              }
-              .price {
-                text-align: center;
-                padding: 8px 0;
-                flex: 1;
-              }
-            }
-            .quantity {
-              width: 90px;
-              text-align: center;
-              span.Xsign {
-                color: $col-orange;
-              }
-              color: $col-white;
-              font-size: 18px;
-              font-weight: 600;
-            }
-            .price {
-              text-align: center;
-            }
+        .quantity {
+          width: 90px;
+          text-align: center;
+          span.Xsign {
+            color: $col-orange;
           }
+          color: $col-white;
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .price {
+          text-align: center;
         }
       }
     }
   }
-  button.btn {
-    flex: 1;
-    padding: 10px 0;
+}
+
+button.btn {
+  flex: 1;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: $rad-10 + 10;
+  &.download {
+    margin: 25px 0;
+    padding: 20px 0;
+    border-radius: $rad-25;
     width: 100%;
-    border-radius: $rad-10 + 10;
-    &.download {
-      margin: 30px;
-      padding: 20px 0;
-      border-radius: $rad-25;
-      width: calc(100% - 60px);
-    }
   }
 }

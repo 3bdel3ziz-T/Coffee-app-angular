@@ -7,7 +7,7 @@
     background: MainBoxStyle.background
   }"
 >
-  <img src="{{ item.imageLink_portrait }}" alt="" />
+  <img [src]="item.imageLink_portrait" alt="" />
   <details-section [item]="item" [buttons]="{ leftBtn: true, rightBtn: true }">
     <section class="buy-section">
       <div class="sizes-box">

@@ -3,13 +3,13 @@
 section {
   width: 100%;
   position: sticky;
-  bottom: -1px;
+  bottom: 0px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   background-color: transparent;
   backdrop-filter: blur($blur-20);
-  z-index: $lay999;
+  z-index: 1;
   a {
     padding: 22px;
     transition: 300ms;

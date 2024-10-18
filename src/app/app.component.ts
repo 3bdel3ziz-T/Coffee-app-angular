@@ -1,22 +1,15 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { MenuBarComponent } from './app_sections/shared/components/menu-bar/menu-bar.component';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './app_sections/shared/components/header/header.component';
-import { SplashScreenComponent } from './app_sections/shared/components/splash-screen/splash-screen.component';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: true,
-    imports: [
-        HeaderComponent,
-        RouterOutlet,
-        MenuBarComponent,
-        SplashScreenComponent
-    ],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [
+    RouterOutlet],
 })
-export class AppComponent { 
+export class AppComponent {
   constructor() {
   }
 }

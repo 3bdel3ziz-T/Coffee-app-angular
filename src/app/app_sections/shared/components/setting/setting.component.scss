@@ -2,12 +2,13 @@
 
 .settings-page {
   width: 100%;
-  height: calc(100dvh - 45px);
-  position: sticky;
-  top: 0;
+  height: calc(100% - $header-height);
+  position: absolute;
+  left: 0;
+  top: $header-height;
   background-color: rgba($col-dark, 60%);
   z-index: 1000;
-  opacity: 1;
+  opacity: 2;
   transition: opacity 550ms;
   .settings {
     padding: 50px 30px;
@@ -123,7 +124,7 @@
       }
     }
     &:has(#close:checked) {
-    animation: hide-left 500ms ease-in-out 0s 1 normal both;
+      animation: hide-left 500ms ease-in-out 0s 1 normal both;
     }
   }
   &:has(#close:checked) {

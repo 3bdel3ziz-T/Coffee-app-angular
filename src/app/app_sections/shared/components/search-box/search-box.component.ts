@@ -1,26 +1,28 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @Component({
   selector: 'search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss'],
   standalone: true,
-  imports: [FormsModule, BtnShapeDirective]
+  imports: [FormsModule, BtnShapeDirective, SearchResultsComponent]
 })
 export class SearchBoxComponent {
-  @Output() emitSearchTxt: EventEmitter<string> = new EventEmitter<string>
-  private lastValue: string = '';
-  getSearchValue(inputRef: HTMLInputElement): void {
-    if (!this.isItLastValue(inputRef.value)) {
-      this.emitSearchTxt.emit(inputRef.value);
-      this.lastValue = inputRef.value
-    }else {
-      console.error('this is the last value');
-    }
+  @Input()
+  testMsg: string | undefined = undefined;
+
+  @Input()
+  otherTestMsg: string | undefined = undefined;
+
+  @ViewChild('searchContainer')
+  containerDiv!: ElementRef<HTMLDivElement>;
+  constructor() {
   }
-  isItLastValue(value: string):boolean {
-    return value === this.lastValue ? true : false
+  searchTxt: string = '';
+  changeTxt(El: HTMLInputElement) {
+    this.searchTxt = El.value
   }
 }

@@ -6,10 +6,10 @@ import { Amounts } from '../models/types/size';
   providedIn: 'root'
 })
 export class DataService {
-  private coffeeData: CoffeeCup[];
-  private beansData: CoffeeBeans[];
+  private _coffeeData: CoffeeCup[];
+  private _beansData: CoffeeBeans[];
   constructor() {
-    this.coffeeData = [
+    this._coffeeData = [
       {
         id: 'C1',
         name: 'Americano',
@@ -609,7 +609,7 @@ export class DataService {
       },
     ];
 
-    this.beansData = [
+    this._beansData = [
       {
         id: 'B1',
         name: 'Robusta Beans',
@@ -768,23 +768,20 @@ export class DataService {
 
   }
   get getCoffeeData(): CoffeeCup[] {
-    this.coffeeData.forEach((e: CoffeeCup) => {
-      // console.log(e.imageLink_square)
-      // console.log(e.imageLink_portrait)?
+    this._coffeeData.forEach((e: CoffeeCup) => {
+
       return this.createImgLink(e)
-      // console.log(e.imageLink_square)
-      // console.log(e.imageLink_portrait)
+
     })
-    return this.coffeeData
+    return this._coffeeData
   }
+  
   get getBeansData(): CoffeeBeans[] {
-    this.beansData.forEach((e: CoffeeBeans) => {
-      // console.log(e.imageLink_square)
-      // console.log(e.imageLink_portrait)
+    this._beansData.forEach((e: CoffeeBeans) => {
+
       return this.createImgLink(e)
-      //        console.log(e.imageLink_square)
-      // console.log(e.imageLink_portrait)
+
     })
-    return this.beansData
+    return this._beansData
   }
 }

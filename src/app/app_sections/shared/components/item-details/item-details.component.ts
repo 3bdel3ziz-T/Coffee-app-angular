@@ -9,6 +9,7 @@ import { BtnShapeDirective } from '../../../../custom_directives/btn-shape.direc
 import { PriceComponent } from '../price/price.component';
 import { SubTitleDirective } from '../../../../custom_directives/sub-title.directive';
 import { DetailsComponent } from './details/details.component';
+import { AlertMsgComponent } from '../alert-msg/alert-msg.component';
 
 @Component({
   selector: 'item-details',
@@ -21,6 +22,7 @@ import { DetailsComponent } from './details/details.component';
     SubTitleDirective,
     PriceComponent,
     BtnShapeDirective,
+    AlertMsgComponent
   ],
 })
 export class ItemDetailsComponent implements OnInit {
@@ -42,11 +44,16 @@ export class ItemDetailsComponent implements OnInit {
   ngOnInit(): void {
     //Because the function 'getItemDetailsById' only gets 'Id' type
     //,and 'activatedRoute.snapshot.paramMap.get' of type 'string'.
-    const Id: any = this.activatedRoute.snapshot.paramMap.get('id')!
-    this.getItemDetailsById(Id)
-
-    this.selected = this.item.price.USD.sizes[0].size
-  }
+    let Id: any = this.activatedRoute.snapshot.paramMap.get('id')!
+    new Promise((resolve: Function,reject: Function)=> {
+      typeof Id === 'string' ? resolve() : reject()
+    }).then(()=>{
+      this.getItemDetailsById(Id)
+      this.getSelected(this.item.price.USD.sizes[0].size);
+    }).catch(()=> {
+      console.log('rejected')
+    })
+    }
 
   getSelected(selectedSize: SizeOrDose): void {
     this.selected = selectedSize

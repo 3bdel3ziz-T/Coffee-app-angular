@@ -4,12 +4,11 @@ header {
   position: sticky;
   top: 0;
   color: $col-white;
-  margin-bottom: -1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: $lay999;
-  padding: 10px 20px;
+  padding: 20px 30px;
   transition: 200ms;
   .time {
     font-weight: 500;

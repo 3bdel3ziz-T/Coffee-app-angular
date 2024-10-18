@@ -30,6 +30,8 @@ $small-btn-size: 30px;
 $gap-25: 25px;
 $gap-15: 15px;
 $blur-20: 20px;
+$header-height: 55.3px;
+$menu-bar-height: 72.5px;
 $main-gradient: linear-gradient(to bottom right, #252a32 0%, #262b3300 100%);
 $sec-gradient: linear-gradient(to bottom right, #21262e 20%, #0c0f14 70%);
 
@@ -71,6 +73,12 @@ body {
   text-transform: capitalize;
   position: relative;
   z-index: 1;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 button {
@@ -82,38 +90,17 @@ img {
 }
 // Helper Classes
 
-.page {
-  position: absolute;
-  top: 44px;
-  width: 100%;
-  height: calc(100dvh - 44px);
-  overflow: hidden;
-  overflow-y: scroll;
-  z-index: 5;
-}
-
-.page-content {
-  padding: 10px 30px 10px 30px;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: $gap-25;
-  // height: calc(100dvh - 114px);
-  // overflow: scroll;
-}
-
-.container {
-  padding: 10px 30px;
-  position: relative;
-  z-index: 1;
-}
-
-// button:hover {
-//   color: $col-orange;
-//   background-color: transparent;
-//   border-color: $col-orange;
+// .container {
+//   padding: 10px 30px;
+//   position: relative;
+//   z-index: 1;
 // }
+input[type="button"]:active,
+button:active {
+  color: $col-orange;
+  background-color: transparent;
+  border-color: $col-orange;
+}
 
 //show and hide animation
 @keyframes show-animation {

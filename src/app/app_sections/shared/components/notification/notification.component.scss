@@ -2,75 +2,49 @@
 
 .notifications {
   width: 100%;
-  height: calc(100dvh - 45px);
-  position: sticky;
-  top: 0;
-  background-color: rgba($col-dark, 60%);
-  z-index: 1000;
-  opacity: 1;
-  transition: opacity 550ms;
-  .page-content {
-    position: absolute;
-    background-color: $col-dark;
-    animation: pop 500ms ease-in-out 0s 1 normal both;
-    &:has(.back-input:checked) {
-      animation: hide 500ms ease-in-out 0s 1 normal both;
-    }
-    .slider {
-      display: flex;
-      flex-direction: column;
-      gap: $gap-25;
-      .notification {
-        position: relative;
-        span {
-          color: $col-gray;
-          display: block;
-          width: 100%;
-          text-align: center;
-          &.time {
-            width: fit-content;
-            position: absolute;
-            right: 0;
-          }
+  height: 100%;
+  position: absolute;
+  margin-top: $header-height;
+  left: 0;
+  padding: 0px 25px;
+  background-color: $col-dark;
+  z-index: 2;
+  // transition: opacity 550ms;
+  animation: show-animation 500ms ease-out 0s 1 normal both;
+  &:has(.back-input:checked) {
+    animation: hide-animation 500ms ease-out 0s 1 normal both;
+  }
+  // .page-content {
+  //   position: absolute;
+  //   background-color: $col-dark;
+  .slider {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-15;
+    .notification {
+      position: relative;
+      span {
+        color: $col-gray;
+        display: block;
+        width: 100%;
+        text-align: center;
+        &.time {
+          width: fit-content;
+          position: absolute;
+          right: 0;
         }
-        h3 {
-          color: white;
-          padding-bottom: 15px;
-        }
-        p {
-          color: $col-gray;
-          border-radius: $rad-25;
-          background: $sec-gradient;
-          padding: 15px;
-        }
+      }
+      h3 {
+        color: white;
+        padding-bottom: 15px;
+      }
+      p {
+        color: $col-gray;
+        border-radius: $rad-25;
+        background: $sec-gradient;
+        padding: 15px;
       }
     }
   }
-}
-
-@keyframes pop {
-  0% {
-    top: 100%;
-    scale: 1;
-  }
-  50% {
-    scale: 1.2;
-  }
-  100% {
-    top: 0%;
-    scale: 1;
-  }
-}
-@keyframes hide {
-  0% {
-    top: 0%;
-    scale: 1;
-  }
-  50% {
-    scale: 1.1;
-  }
-  100% {
-    top: 100%;
-    scale: 1;
-  }
+  // }
 }

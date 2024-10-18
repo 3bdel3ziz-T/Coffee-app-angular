@@ -1,4 +1,4 @@
-<div class="item" [ngStyle]="{ padding: itemStyles.padding }">
+<div class="item" >
   <div
     class="content"
     [ngStyle]="{ flexDirection: mainBoxFlex.direction, gap: mainBoxFlex.gap }"
@@ -9,7 +9,7 @@
         width: imgBoxSize == 'S' ? '57px': imgBoxSize == 'M' ? '100px' : '126px',
         height: imgBoxSize == 'S' ? '57px': imgBoxSize == 'M' ? '100px' : '126px',
       }"
-      [routerLink]="imgLink"
+      routerLink="{{imgLink}}"
     >
       @if (imgBoxSize !== 'S') {
       <div class="rate">
@@ -43,9 +43,10 @@
         <span class="subtitle" [ngStyle]="{ 'font-size': titlesSize.subTitle }">
           {{ itemData.special_ingredient }}
         </span>
+        
       </div>
-      <ng-container [ngTemplateOutlet]="sideTemplate"></ng-container>
+      <ng-content select=".tags"></ng-content>
     </div>
   </div>
-  <ng-container [ngTemplateOutlet]="contentTemplate"></ng-container>
+  <ng-content select=".extra-content"></ng-content>
 </div>

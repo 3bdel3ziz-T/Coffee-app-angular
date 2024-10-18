@@ -4,11 +4,17 @@
   display: flex;
   flex-wrap: nowrap;
   text-wrap: nowrap;
-  gap: 19px;
+  gap: 15px;
   overflow-x: scroll;
-  height: 31px;
+  height: fit-content;
+  padding: 10px 0;
   width: 100%;
+  text-align: center;
   position: relative;
+    &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
   label {
     input[type="radio"] {
       display: none;

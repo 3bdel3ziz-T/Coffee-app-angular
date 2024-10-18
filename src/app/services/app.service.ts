@@ -1,13 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CoffeeCup, CoffeeBeans, Id, Item } from '../models/types/coffee';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs';
-import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService implements OnInit {
+
+export class AppService {
   private coffeeData: CoffeeCup[];
   private beansData: CoffeeBeans[];
 
@@ -16,8 +16,6 @@ export class AppService implements OnInit {
   ) {
     this.coffeeData = dataService.getCoffeeData
     this.beansData = dataService.getBeansData
-  }
-  ngOnInit(): void {
   }
   //One pattern to pass data to "component.ts"
   passData<T>(arr: T[]): T[] {
@@ -48,5 +46,17 @@ export class AppService implements OnInit {
   private findById<T extends Item>(arr: T[], id: Id): T {
     return arr.find((e) => e.id == id)!
   }
-}
 
+  //----------Get the cup or beans item data using title----------
+  getItemArrByTitle(searchTxt: string): any {
+    // if (searchTxt.includes('beans')) {
+    //   return this.findByTitle<CoffeeBeans[]>(this.beansData, searchTxt)
+    // } else {
+    //   return this.findByTitle<CoffeeCup[]>(this.coffeeData, searchTxt)
+    // }
+  }
+
+  private findByTitle<T extends Item>(arr: T[], searchTxt: string): T {
+    return arr.forEach((e) => e.name.includes(searchTxt))!
+  }
+}

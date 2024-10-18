@@ -10,6 +10,7 @@ import { SearchBoxComponent } from '../../../shared/components/search-box/search
 import { MenuBarComponent } from 'src/app/app_sections/shared/components/menu-bar/menu-bar.component';
 import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { CoffeeCategory } from 'src/app/models/types/category';
+import { AlertMsgComponent } from 'src/app/app_sections/shared/components/alert-msg/alert-msg.component';
 
 @Component({
   selector: 'home-page',
@@ -24,8 +25,8 @@ import { CoffeeCategory } from 'src/app/models/types/category';
     BtnShapeDirective,
     RouterLink,
     RouterOutlet,
-    MenuBarComponent,
-    TitleBarComponent
+    TitleBarComponent,
+    AlertMsgComponent
   ],
 })
 export class HomeComponent {
@@ -39,7 +40,8 @@ export class HomeComponent {
       next: (data: CoffeeCup) => this.coffeeData.push(data),
       error: (err: Error) => console.error(err),
       complete: () => { }
-    })
+    }) 
+    
     appService.beansObservable.subscribe({
       next: (data: CoffeeBeans) => this.beansData.push(data),
       error: (err: Error) => console.error(err),
@@ -48,8 +50,5 @@ export class HomeComponent {
   }
   selectedCategory(selected: CoffeeCategory): void {
     this.selected = selected
-  }
-  getSearchTxt(searchTxt: string): string {
-    return searchTxt;
   }
 }

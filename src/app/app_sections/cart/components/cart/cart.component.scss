@@ -1,35 +1,32 @@
 @use "../../../../../styles" as *;
 
-.cart {
+.cart-list {
+  overflow: hidden;
+  overflow-y: scroll;
   display: flex;
+  gap: $gap-15;
   flex-direction: column;
-
-  .page-content {
-    min-height: calc(100dvh - 250px);
-    overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
   }
-  .cart-list {
-    display: flex;
-    gap: $gap-25;
-    flex-direction: column;
-  }
-  .buy-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    bottom: 0;
-    padding: 30px;
+}
+.buy-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  bottom: 0px;
+  padding: 30px 0;
 
-    background-color: $col-dark;
-    .price {
-    }
-    button {
-      width: 240px;
-      padding: 20px 0;
-      text-align: center;
-      border-radius: $rad-25;
-    }
+  background-color: $col-dark;
+  .price {
+  }
+  button {
+    width: 240px;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: $rad-25;
   }
 }
 
@@ -61,7 +58,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 12px 0;
   .box {
     $gap: 17px;
     display: flex;
