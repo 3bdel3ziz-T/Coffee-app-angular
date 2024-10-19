@@ -2,11 +2,16 @@
   position: relative;
   height: 880px;
   width: 430px;
-  padding: 12px 19px;
-  .iphone {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  @media (min-width: 431px) {
+      padding: 12px 19px;
+  }
+}
+.iphone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 431px) {
+      display: none;
   }
 }
