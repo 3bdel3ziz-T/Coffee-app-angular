@@ -7,6 +7,9 @@
   border-radius: 57px;
   overflow: hidden;
   z-index: 1;
+  @media (max-width: 431px) {
+      border-radius: 0px;
+  }
   .page-content {
     overflow: hidden;
     overflow-y: scroll;
