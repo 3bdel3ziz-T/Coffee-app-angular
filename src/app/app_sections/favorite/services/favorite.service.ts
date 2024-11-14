@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Item as FavItem, Id as FavRef, Item } from 'src/app/models/types/coffee';
+import { Item as FavItem, Id, Id as FavRef } from 'src/app/models/types/coffee';
 import { AppService } from 'src/app/services/app.service';
 import { UserService } from 'src/app/user/user.service';
-
+// import { favRef } from 'src/app/models/types/fav';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,14 +13,21 @@ export class FavoriteService {
     private userService: UserService) {
   }
 
-  fav_addItem(favItem: Item): void {
-    this.isFavTrue(favItem) ?
-      this.userService.set_favRef(favItem.id) :
-      this.deleteItem<FavRef>(favItem.id, this.userService.get_favRef)
+  fav_addItem(favRef: Id): void {
+    if (!this.isFavMember(favRef)) {
+      // console.log('added')
+      this.appService.getItemById(favRef).isFavorite = true
+      this.userService.set_favRef(favRef)
+    } else {
+      // console.log('deleted')
+      this.appService.getItemById(favRef).isFavorite = false
+      this.deleteItem<FavRef>(favRef, this.userService.get_favRef)
+    }
   }
 
-  private isFavTrue(favItem: Item): boolean {
-    return favItem.isFavorite
+  private isFavMember(id: Id): boolean {
+    const isAlreadyExist = this.userService.get_favRef.find((favRef: FavRef) => favRef === id)
+    return isAlreadyExist !== undefined ? true : false;
   }
   private deleteItem<T>(favRef: FavRef, arr: T[]) {
     let index: number = arr.findIndex((e: T) => favRef === e)

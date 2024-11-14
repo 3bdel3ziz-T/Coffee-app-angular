@@ -1,0 +1,64 @@
+<div class="item">
+  <div class="item-head">
+    <div class="date">
+      <h4>order date</h4>
+      <span>{{ appService.getDate(orderData.date) }}</span>
+    </div>
+    <div class="total">
+      <h4>Total Amount</h4>
+      <price [price]="cartService.getTotal(orderData.cartData)" [priceSize]="'22px'"></price>
+    </div>
+  </div>
+  @for (cartItem of orderData.cartData; track $index) {
+  <product-item [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
+    [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }" [mainBoxFlex]="{ direction: 'row', gap: '25px' }"
+    [imgBoxSize]="'S'" [itemData]="cartItem.item">
+
+    <ng-container class="tags">
+      <div class="price">
+        <price [price]="cartService.ToPrice(cartService.itemTotal(cartItem))" [priceSize]="'22px'"></price>
+      </div>
+    </ng-container>
+
+    <ng-container class="extra-content">
+      <div class="details-items">
+        @for (detail of cartItem.amounts; track $index) {
+        @if(detail.quantity > 0){
+        <div class="detail">
+          <div class="price-and-size">
+            <h3 [ngStyle]="{
+                                      width: cartItem.item.type === 'Coffee' ? '60px' : '90px'
+                                    }">
+              {{ detail.size }}
+            </h3>
+            <div class="price">
+              <price [price]="
+                                        cartService.getPriceBySize(
+                                          cartItem.item.id,
+                                          cartItem.amounts[$index].size
+                                        )
+                                      " [priceSize]="'16px'"></price>
+            </div>
+          </div>
+          <h3 class="quantity">
+            <span class="Xsign">X</span>{{ detail.quantity }}
+          </h3>
+          <div class="price">
+            <price [price]="
+                                      cartService.ToPrice(
+                                        +detail.quantity *
+                                          +cartService.getPriceBySize(
+                                            cartItem.item.id,
+                                            cartItem.amounts[$index].size
+                                          )
+                                      )
+                                    " [priceSize]="'18px'"></price>
+          </div>
+        </div>
+        }}
+      </div>
+    </ng-container>
+
+  </product-item>
+  }
+</div>

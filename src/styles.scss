@@ -15,7 +15,7 @@
 // $secondaryBlackRGBA: rgba(0,0,0,0.7);
 
 // Colors
-$col-favorite: #dc3535;
+$col-red: #dc3535;
 $col-orange: #d17842;
 $col-dark: #0c0f14;
 $col-border: #21262e;
@@ -79,6 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  // cursor: url(assets/icons/coffee-bean.svg), auto; 
 }
 
 button {
@@ -95,10 +96,16 @@ img {
 //   position: relative;
 //   z-index: 1;
 // }
-input[type="button"]:active,
-button:active {
-  color: $col-orange;
+// input[type="button"]:active,
+// button:active {
+//   color: $col-orange;
+//   background-color: transparent;
+//   border-color: $col-orange;
+// }
+
+[btnshape]:active {
   background-color: transparent;
+  color: $col-orange;
   border-color: $col-orange;
 }
 

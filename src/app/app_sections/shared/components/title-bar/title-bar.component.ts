@@ -1,8 +1,9 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductService } from '../../services/product.service';
-import { Id, Item } from 'src/app/models/types/coffee';
+import { Item } from 'src/app/models/types/coffee';
+import { FavoriteService } from 'src/app/app_sections/favorite/services/favorite.service';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'title-bar',
@@ -16,14 +17,9 @@ export class TitleBarComponent {
   @Input() pageTitle: string = '';
   @Input() leftBtnShape: 'settingBtn' | 'backBtn' | null = null;
   @Input() rightBtnShape: 'addFav' | 'notification' | null = null;
+
   id: string;
-  constructor(private productService: ProductService) {
+  constructor(public appService: AppService, public favService: FavoriteService) {
     this.id = `${Math.round(Math.random() * 1000) + 1}`;
-  }
-  get goBack(): boolean {
-    return this.productService.goBack;
-  }
-  fav_addItem(id: Id): void {
-    this.productService.favRef_addItem(id)
   }
 }

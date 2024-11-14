@@ -17,11 +17,11 @@ export class SearchResultsComponent implements OnChanges {
   results: Item[] = [];
   constructor(private appService: AppService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    this.appService.getItemArrByTitle(this.searchTxt)
-console.log('something changed')
+    // this.appService.getItemArrByTitle(this.searchTxt)
+    console.log('something changed')
   }
   getMatchedItems() {
-    
+
   }
 
 }

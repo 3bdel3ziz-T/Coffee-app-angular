@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-setting',
@@ -9,8 +9,6 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './setting.component.scss'
 })
 export class SettingComponent {
-  constructor(private productService: ProductService) {}
-  get goBack(): boolean {
-    return this.productService.goBack
-  }
+  constructor(public appService: AppService) {}
+
 }

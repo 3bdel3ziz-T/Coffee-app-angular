@@ -2,12 +2,14 @@
 
 .container {
   width: 100%;
-  height: calc(100dvh - 117px);
+  height: calc(100dvh - #{$header-height} - #{$menu-bar-height});
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   .cup-container {
     width: fit-content;
     height: fit-content;

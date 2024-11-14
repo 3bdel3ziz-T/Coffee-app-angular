@@ -6,6 +6,7 @@ import { AppService } from '../../../services/app.service';
 import { Observable, of } from 'rxjs';
 import { UserService } from 'src/app/user/user.service';
 import { OrderRef } from 'src/app/models/types/order-history';
+import { HistoryService } from '../../orders-history/services/history.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,61 +14,71 @@ import { OrderRef } from 'src/app/models/types/order-history';
 export class CartService {
   constructor(
     private appService: AppService,
-    private userService: UserService
+    private userService: UserService,
+    // private historyService: HistoryService
   ) {
   }
 
-  cart_addItem(id: Id, selected: SizeOrDose): void {
-    const itemRef = this.createCartRefItem(id, selected);
-
-    if (this.isItemExist(itemRef, this.userService.get_cartRef)) {
-      this.changeQty("increment", itemRef.itemId, selected)
+  cart_addItem(id: Id, selected: number): void {
+    if (this.isItemExist(id)) {
+      this.changeQty("increment", id, selected)
+      this.userService.get_cartRef
     } else {
+      const itemRef = this.createCartRefItem(id, selected);
+      this.changeQty("increment", id, selected)
       this.userService.set_cartRef(itemRef)
     }
+    this.userService.set_UserData()
   }
-  private createCartRefItem(id: Id, selected: SizeOrDose): ItemRef {
+  private createCartRefItem(id: Id, selected: number): ItemRef {
     const itemRef: ItemRef = {
       itemId: id,
       amounts: this.createAmount(id, selected)
     }
     return itemRef;
   }
-  private createAmount(id: Id, selected: SizeOrDose): Amount {
-    let amount: Amount = [
-      {
-        size: 'S',
+  private createAmount(id: Id, selected: number): Amount {
+    let amount: Amount;
+    if (id.startsWith('C')) {
+      amount = [
+        {
+          size: 'S',
+          quantity: 0,
+        }, {
+          size: 'M',
+          quantity: 0,
+        }, {
+          size: 'L',
+          quantity: 0,
+        }
+      ]
+      amount[selected].quantity++
+      return amount
+    } else if (id.startsWith('B')) {
+      amount = [{
+        size: '250gm',
         quantity: 0,
       }, {
-        size: 'M',
+        size: '500gm',
         quantity: 0,
       }, {
-        size: 'L',
+        size: '1000gm',
         quantity: 0,
       }
-    ]
-    if (id.startsWith('C')) {
-      this.incrementSelected(selected, amount)
-    } else if (id.startsWith('B')) {
-      amount[0].size = '250gm'
-      amount[1].size = '500gm'
-      amount[2].size = '1000gm'
-      this.incrementSelected(selected, amount)
-    }
-    return amount
+      ]
+      amount[selected].quantity++
+      return amount
+    } else throw 'the item is not coffee or beans.'
   }
-  private incrementSelected(selected: SizeOrDose, arr: Amount): void {
-    arr.forEach((e: AmountItem) => {
-      selected == e.size ? e.quantity++ : false;
-    })
-  }
+  // private incrementSelected(selected: SizeOrDose, arr: Amount): void {
+  //   arr.forEach((e: AmountItem) => {
+  //     selected == e.size ? e.quantity++ : false;
+  //   })
+  // }
 
-  private isItemExist<T extends ItemRef>(itemRef: T, arr: T[]): boolean {
-    let booleans: boolean[] = [];
-    arr.forEach((e: ItemRef) =>
-      e.itemId === itemRef.itemId ? booleans.push(true) : false
-    )
-    return booleans.includes(true) ? true : false
+  private isItemExist(id: Id): boolean {
+    const isAlreadyExist = this.userService.get_cartRef.find((itemRef: ItemRef) => itemRef.itemId === id)
+    return isAlreadyExist !== undefined ? true : false;
   }
 
   qtyCount(arr: AmountItem[]): number {
@@ -76,22 +87,17 @@ export class CartService {
     return booleans.length
   };
 
-  changeQty(action: 'increment' | 'decrement', itemId: Id, clickedSize: SizeOrDose): void {
+  changeQty(action: 'increment' | 'decrement', itemId: Id, selected: number): void {
     this.userService.get_cartRef.forEach((itemRef: ItemRef) => {
-      itemRef.itemId === itemId ?
-        itemRef.amounts.forEach((amount: AmountItem, i: number) => {
-          if (clickedSize === amount.size) {
-            if (action === 'increment') {
-              amount.quantity++
-            } else if (action === 'decrement') {
-              amount.quantity--;
-              (this.qtyCount(itemRef.amounts) === 0) ? this.cart_deleteItem(itemRef.itemId) : false;
-            }
-          }
-        })
-        : false;
-      this.userService.set_UserData()
+      if (itemRef.itemId === itemId) {
+        if (action === 'increment') {
+          itemRef.amounts[selected].quantity++
+        } else {
+          itemRef.amounts[selected].quantity--
+        }
+      } else false;
     })
+    this.userService.set_UserData()
   }
 
   cart_deleteItem(id: Id) {
@@ -145,11 +151,17 @@ export class CartService {
   ToPrice(price: number): Price {
     return `${price}`
   }
-
-  // makeOrder(historyRef: OrderRef) {
-  //   this.userService.set_historyRef(historyRef);
-  // }
-
+  get makeOrderData(): OrderRef {
+    let cartRef!: ItemRef[];
+    this.cartObservable.subscribe({
+      next: (itemRef: ItemRef[]) => { cartRef = itemRef },
+    })
+    return {
+      date: new Date,
+      cartRef: cartRef,
+      isAccepted: false
+    }
+  }
   get cartObservable(): Observable<ItemRef[]> {
     return of(this.userService.get_cartRef)
   }

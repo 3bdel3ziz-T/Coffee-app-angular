@@ -3,7 +3,6 @@ import { BoxStyles } from 'src/app/models/types/box';
 import { CoffeeBeans, CoffeeCup, Id } from 'src/app/models/types/coffee';
 import { SubTitleDirective } from '../../../../../custom_directives/sub-title.directive';
 import { NgStyle } from '@angular/common';
-import { ProductService } from '../../../services/product.service';
 import { RouterLink } from '@angular/router';
 import { TitleBarComponent } from '../../title-bar/title-bar.component';
 

@@ -11,8 +11,8 @@
           </g>
         </svg>
       </div>
-      <input name="search-input" class="search-input" autocomplete="off" type="text" required="" placeholder="Find Your Coffee..."
-        id="search" #searchInput />
+      <input name="search-input" class="search-input" autocomplete="off" type="text" required=""
+        placeholder="Find Your Coffee..." id="search" #searchInput />
       <button class="close-btn" type="reset">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
@@ -20,10 +20,8 @@
             clip-rule="evenodd"></path>
         </svg>
       </button>
-      <button class="search-btn"
-            (click)="changeTxt(searchInput)"
-            >
-            search
+      <button class="search-btn" (click)="passSearchTxt(searchInput)">
+        search
       </button>
     </label>
   </form>

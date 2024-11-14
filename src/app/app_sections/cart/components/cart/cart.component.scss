@@ -1,114 +1,124 @@
 @use "../../../../../styles" as *;
 
-.cart-list {
-  overflow: hidden;
-  overflow-y: scroll;
+.cart {
+  position: relative;
   display: flex;
-  gap: $gap-15;
   flex-direction: column;
-  &::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-  }
-}
-.buy-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  bottom: 0px;
-  padding: 30px 0;
-
-  background-color: $col-dark;
-  .price {
-  }
-  button {
-    width: 240px;
-    padding: 20px 0;
-    text-align: center;
-    border-radius: $rad-25;
-  }
-}
-
-//templates Styles
-.tag {
-  background-color: $col-dark;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: $col-gray;
-  border-radius: 10px;
-  font-size: 10px;
-  width: 55px;
-  height: 55px;
-  svg {
-    fill: $col-orange;
-    $vol: 17px;
-    width: $vol;
-  }
-  &.custom {
-    width: fit-content;
-    height: fit-content;
-    text-wrap: nowrap;
-    padding: 12px 20px;
-  }
-}
-.order-details {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  .box {
-    $gap: 17px;
+  // align-items: center;
+  height: 100%;
+  width: 100%;
+  .cart-list {
+    flex: 1;  
     display: flex;
-    gap: $gap;
-    justify-content: space-evenly;
-    .price-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: $gap;
-      .size {
-        width: 70px;
-        height: 35px;
-        background-color: $col-dark;
-        font-weight: 400;
-        font-size: 16px;
-        border-radius: $rad-10;
-        color: $col-white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    overflow: hidden;
+    overflow-y: scroll;
+    gap: $gap-15;
+    flex-direction: column;
+    &::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
     }
-    .quantity-box {
+  }
+  .buy-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    padding: 30px 0;
+
+    background-color: $col-dark;
+    .price {
+    }
+    button {
+      width: 240px;
+      padding: 20px 0;
+      text-align: center;
+      border-radius: $rad-25;
+    }
+  }
+
+  //templates Styles
+  .tag {
+    background-color: $col-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: $col-gray;
+    border-radius: 10px;
+    font-size: 10px;
+    width: 55px;
+    height: 55px;
+    svg {
+      fill: $col-orange;
+      $vol: 17px;
+      width: $vol;
+    }
+    &.custom {
+      width: fit-content;
+      height: fit-content;
+      text-wrap: nowrap;
+      padding: 12px 20px;
+    }
+  }
+  .order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .box {
+      $gap: 17px;
       display: flex;
       gap: $gap;
-      .quantity {
-        width: 50px;
-        height: 30px;
-        border-radius: $rad-7;
-        border: 1px solid $col-orange;
+      justify-content: space-evenly;
+      .price-box {
         display: flex;
         align-items: center;
-        justify-content: center;
-        background-color: $col-dark;
-        font-size: 16px;
-        font-weight: 500;
-        color: $col-white;
-      }
-      .btn {
-        $vol: 30px;
-        width: $vol;
-        height: $vol;
-        border-radius: $rad-7;
-        svg {
-          width: 12px;
+        justify-content: space-between;
+        gap: $gap;
+        .size {
+          width: 70px;
+          height: 35px;
+          background-color: $col-dark;
+          font-weight: 400;
+          font-size: 16px;
+          border-radius: $rad-10;
+          color: $col-white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        //   .increment {
-        //   }
-        //   .decrement {
-        //   }
+      }
+      .quantity-box {
+        display: flex;
+        gap: $gap;
+        .quantity {
+          width: 50px;
+          height: 30px;
+          border-radius: $rad-7;
+          border: 1px solid $col-orange;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $col-dark;
+          font-size: 16px;
+          font-weight: 500;
+          color: $col-white;
+        }
+        .btn {
+          $vol: 30px;
+          width: $vol;
+          height: $vol;
+          border-radius: $rad-7;
+          svg {
+            width: 12px;
+          }
+          //   .increment {
+          //   }
+          //   .decrement {
+          //   }
+        }
       }
     }
   }

@@ -26,7 +26,7 @@ import { AlertMsgComponent } from 'src/app/app_sections/shared/components/alert-
     RouterLink,
     RouterOutlet,
     TitleBarComponent,
-    AlertMsgComponent
+    AlertMsgComponent,
   ],
 })
 export class HomeComponent {
@@ -40,8 +40,8 @@ export class HomeComponent {
       next: (data: CoffeeCup) => this.coffeeData.push(data),
       error: (err: Error) => console.error(err),
       complete: () => { }
-    }) 
-    
+    })
+
     appService.beansObservable.subscribe({
       next: (data: CoffeeBeans) => this.beansData.push(data),
       error: (err: Error) => console.error(err),

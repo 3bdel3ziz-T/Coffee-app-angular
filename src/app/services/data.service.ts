@@ -9,9 +9,12 @@ export class DataService {
   private _coffeeData: CoffeeCup[];
   private _beansData: CoffeeBeans[];
   constructor() {
+    this.getData()
     this._coffeeData = [
       {
         id: 'C1',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Americano',
         description: `The Americano is another popular type of coffee drink, and it's very easy to make! It's just espresso with hot water dripping over it. The name came about during World War II when European baristas added water to their espresso drinks for the American soldiers stationed there. The resulting drink had a smoother, less concentrated flavour than espresso and thus the Americano was born.`,
         roasted: 'Medium Roasted',
@@ -48,6 +51,8 @@ export class DataService {
       },
       {
         id: 'C2',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Americano',
         description: `The Americano is another popular type of coffee drink, and it's very easy to make! It's just espresso with hot water dripping over it. The name came about during World War II when European baristas added water to their espresso drinks for the American soldiers stationed there. The resulting drink had a smoother, less concentrated flavour than espresso and thus the Americano was born.`,
         roasted: 'Medium Roasted',
@@ -81,6 +86,8 @@ export class DataService {
       },
       {
         id: 'C3',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Americano',
         description: `The Americano is another popular type of coffee drink, and it's very easy to make! It's just espresso with hot water dripping over it. The name came about during World War II when European baristas added water to their espresso drinks for the American soldiers stationed there. The resulting drink had a smoother, less concentrated flavour than espresso and thus the Americano was born.`,
         roasted: 'Medium Roasted',
@@ -114,6 +121,8 @@ export class DataService {
       },
       {
         id: 'C4',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Black Coffee',
         description: `Black coffee is arguably the most common type of coffee drink out there. Its popularity can be mainly attributed to how easy it is to make this beverage, be it drip, pour-over, French press, or anything else. Black coffee is usually served with no add-ins.`,
         roasted: 'Medium Roasted',
@@ -147,6 +156,8 @@ export class DataService {
       },
       {
         id: 'C5',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Black Coffee',
         description: `Black coffee is arguably the most common type of coffee drink out there. Its popularity can be mainly attributed to how easy it is to make this beverage, be it drip, pour-over, French press, or anything else. Black coffee is usually served with no add-ins.`,
         roasted: 'Medium Roasted',
@@ -180,6 +191,8 @@ export class DataService {
       },
       {
         id: 'C6',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Black Coffee',
         description: `Black coffee is arguably the most common type of coffee drink out there. Its popularity can be mainly attributed to how easy it is to make this beverage, be it drip, pour-over, French press, or anything else. Black coffee is usually served with no add-ins.`,
         roasted: 'Medium Roasted',
@@ -213,6 +226,8 @@ export class DataService {
       },
       {
         id: 'C7',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Cappuccino',
         description: `Cappuccinos are a classic Italian type of coffee drink made of espresso, steamed milk, and thick foam in equal parts. The name comes from the resemblance to the hoods worn by Capuchin monks. Making cappuccino is relatively easy and can be done at home too if you know how to make espresso.`,
         roasted: 'Medium Roasted',
@@ -246,6 +261,8 @@ export class DataService {
       },
       {
         id: 'C8',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Cappuccino',
         description: `Cappuccinos are a classic Italian type of coffee drink made of espresso, steamed milk, and thick foam in equal parts. The name comes from the resemblance to the hoods worn by Capuchin monks. Making cappuccino is relatively easy and can be done at home too if you know how to make espresso.`,
         roasted: 'Medium Roasted',
@@ -279,6 +296,8 @@ export class DataService {
       },
       {
         id: 'C9',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Cappuccino',
         description: `Cappuccinos are a classic Italian type of coffee drink made of espresso, steamed milk, and thick foam in equal parts. The name comes from the resemblance to the hoods worn by Capuchin monks. Making cappuccino is relatively easy and can be done at home too if you know how to make espresso.`,
         roasted: 'Medium Roasted',
@@ -312,6 +331,8 @@ export class DataService {
       },
       {
         id: 'C10',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Espresso',
         description: `Espresso is made by forcing nearly boiling water through finely-ground coffee beans, which results in a concentrated, syrup-like coffee drink. This is the base for many Italian beverages in coffee shops. When compared to regular brewed coffee, espresso is much stronger than the other types of coffee drinks. Espressos are enjoyed in shots where a single shot is one ounce and a long (single and double) shot is two ounces in amount, respectively.`,
         roasted: 'Medium Roasted',
@@ -345,6 +366,8 @@ export class DataService {
       },
       {
         id: 'C11',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Espresso',
         description: `Espresso is made by forcing nearly boiling water through finely-ground coffee beans, which results in a concentrated, syrup-like coffee drink. This is the base for many Italian beverages in coffee shops. When compared to regular brewed coffee, espresso is much stronger than the other types of coffee drinks. Espressos are enjoyed in shots where a single shot is one ounce and a long (single and double) shot is two ounces in amount, respectively.`,
         roasted: 'Medium Roasted',
@@ -378,6 +401,8 @@ export class DataService {
       },
       {
         id: 'C12',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Espresso',
         description: `Espresso is made by forcing nearly boiling water through finely-ground coffee beans, which results in a concentrated, syrup-like coffee drink. This is the base for many Italian beverages in coffee shops. When compared to regular brewed coffee, espresso is much stronger than the other types of coffee drinks. Espressos are enjoyed in shots where a single shot is one ounce and a long (single and double) shot is two ounces in amount, respectively.`,
         roasted: 'Medium Roasted',
@@ -411,6 +436,8 @@ export class DataService {
       },
       {
         id: 'C13',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Latte',
         description: `A latte is an espresso with steamed milk and a dollop of milk foam on top. This beverage is more prevalent in America than other coffee drinks like cappuccinos because it contains less foam, making it smoother and gentler for those with sensitive palettes. And if you want to spice up your latte, add some flavouring syrup. To make an iced version of this drink, simply pour espresso and steamed milk over ice cubes.`,
         roasted: 'Medium Roasted',
@@ -444,6 +471,8 @@ export class DataService {
       },
       {
         id: 'C14',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Latte',
         description: `A latte is an espresso with steamed milk and a dollop of milk foam on top. This beverage is more prevalent in America than other coffee drinks like cappuccinos because it contains less foam, making it smoother and gentler for those with sensitive palettes. And if you want to spice up your latte, add some flavouring syrup. To make an iced version of this drink, simply pour espresso and steamed milk over ice cubes.`,
         roasted: 'Medium Roasted',
@@ -477,6 +506,8 @@ export class DataService {
       },
       {
         id: 'C15',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Latte',
         description: `A latte is an espresso with steamed milk and a dollop of milk foam on top. This beverage is more prevalent in America than other coffee drinks like cappuccinos because it contains less foam, making it smoother and gentler for those with sensitive palettes. And if you want to spice up your latte, add some flavouring syrup. To make an iced version of this drink, simply pour espresso and steamed milk over ice cubes.`,
         roasted: 'Medium Roasted',
@@ -510,6 +541,8 @@ export class DataService {
       },
       {
         id: 'C16',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Macchiato',
         description: `The word "macchiato" means spotted, so a macchiato espresso is an espresso with a splash of milk. Most coffee shops will top off this type of coffee drink with some foamed milk instead of just steamed milk for what's known as a traditional macchiato. `,
         roasted: 'Medium Roasted',
@@ -543,6 +576,8 @@ export class DataService {
       },
       {
         id: 'C17',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Macchiato',
         description: `The word "macchiato" means spotted, so a macchiato espresso is an espresso with a splash of milk. Most coffee shops will top off this type of coffee drink with some foamed milk instead of just steamed milk for what's known as a traditional macchiato. `,
         roasted: 'Medium Roasted',
@@ -576,6 +611,8 @@ export class DataService {
       },
       {
         id: 'C18',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Macchiato',
         description: `The word "macchiato" means spotted, so a macchiato espresso is an espresso with a splash of milk. Most coffee shops will top off this type of coffee drink with some foamed milk instead of just steamed milk for what's known as a traditional macchiato. `,
         roasted: 'Medium Roasted',
@@ -612,6 +649,8 @@ export class DataService {
     this._beansData = [
       {
         id: 'B1',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Robusta Beans',
         description: `Robusta beans are larger and more rounded than the other bean varieties. These plants typically grow much larger than Arabica plants, measuring between 15 and 20 feet. Robusta beans are typically considered to be hardier because they can grow at lower altitudes and resist diseases. But recent research suggests that they don’t handle heat as well as was previously thought.`,
         roasted: 'Medium Roasted',
@@ -645,6 +684,8 @@ export class DataService {
       },
       {
         id: 'B2',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Arabica Beans',
         description: `Arabica beans are by far the most popular type of coffee beans, making up about 60% of the world’s coffee. These tasty beans originated many centuries ago in the highlands of Ethiopia, and may even be the first coffee beans ever consumed! The name Arabica likely comes from the beans’ popularity in 7th-century Arabia (present-day Yemen).`,
         roasted: 'Medium Roasted',
@@ -678,6 +719,8 @@ export class DataService {
       },
       {
         id: 'B3',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Liberica Beans',
         description: `Native to central and western Africa – specifically Liberia, hence its name – Coffea liberica is prized for its piquant floral aroma and bold, smoky flavor profile. Growing from a much larger plant than Arabica or Robusta, most Liberica cherries tend to be irregular in shape and closer to Robusta in size and general appearance. It’s also tolerant of hot, humid climates and does well at low altitude. `,
         roasted: 'Medium Roasted',
@@ -711,6 +754,8 @@ export class DataService {
       },
       {
         id: 'B4',
+        cartPosition: null,
+        orderPosition: null,
         name: 'Excelsa Beans',
         description: `Excelsa beans grow almost entirely in Southeast Asia, and they’re shaped somewhat like Liberica beans — elongated ovals. These beans grow on large 20 to 30-foot coffee plants at medium altitudes. In terms of flavor, Excelsa beans are pretty unique. They combine light roast traits like tart notes and fruity flavors with flavors that are more reminiscent of dark roasts.`,
         roasted: 'Medium Roasted',
@@ -744,7 +789,11 @@ export class DataService {
       },
     ];
   }
-  createImgLink(item: Item): void {
+
+  async getData() {
+    // const beans = fetch("./data/beans.json");
+  }
+  generateImgPath(item: Item): void {
     const containerPath: string = './assets/coffee_assets';
     let imageName_square: string = item.imageLink_square.toLowerCase(),
       imageName_portrait: string = item.imageLink_portrait.toLowerCase();
@@ -770,16 +819,16 @@ export class DataService {
   get getCoffeeData(): CoffeeCup[] {
     this._coffeeData.forEach((e: CoffeeCup) => {
 
-      return this.createImgLink(e)
+      return this.generateImgPath(e)
 
     })
     return this._coffeeData
   }
-  
+
   get getBeansData(): CoffeeBeans[] {
     this._beansData.forEach((e: CoffeeBeans) => {
 
-      return this.createImgLink(e)
+      return this.generateImgPath(e)
 
     })
     return this._beansData

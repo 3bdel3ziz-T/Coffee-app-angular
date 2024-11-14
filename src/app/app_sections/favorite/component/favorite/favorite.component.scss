@@ -1,13 +1,10 @@
 @use "../../../../../styles" as *;
 
-.favorite {
-  .page-content {
-    min-height: calc(100% - 73px);
-  }
+
   .slider {
     display: flex;
     flex-direction: column;
-    gap: $gap-15;
+    gap: $gap-25;
     position: relative;
     justify-content: center;
     .item {
@@ -17,4 +14,3 @@
       overflow: hidden;
     }
   }
-}

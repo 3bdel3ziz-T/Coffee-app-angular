@@ -11,18 +11,10 @@ import { SearchResultsComponent } from './search-results/search-results.componen
   imports: [FormsModule, BtnShapeDirective, SearchResultsComponent]
 })
 export class SearchBoxComponent {
-  @Input()
-  testMsg: string | undefined = undefined;
-
-  @Input()
-  otherTestMsg: string | undefined = undefined;
-
   @ViewChild('searchContainer')
   containerDiv!: ElementRef<HTMLDivElement>;
   constructor() {
   }
-  searchTxt: string = '';
-  changeTxt(El: HTMLInputElement) {
-    this.searchTxt = El.value
+  passSearchTxt(El: HTMLInputElement) {
   }
 }

@@ -1,83 +1,21 @@
 @if (historyItems.length) {
-  <title-bar leftBtnShape="settingBtn" rightBtnShape="notification" pageTitle="history"></title-bar>
+<title-bar leftBtnShape="settingBtn" rightBtnShape="notification" pageTitle="history"></title-bar>
 
-  <div class="slider">
-    @for (history of historyItems; track $index) {
-    <div class="item">
-      <div class="item-head">
-        <div class="date">
-          <h4>order date</h4>
-          <span>{{ getDate(history.date) }}</span>
-        </div>
-        <div class="total">
-          <h4>Total Amount</h4>
-          <price [price]="orderTotal(history.cartData)" [priceSize]="'22px'"></price>
-        </div>
-      </div>
-      @for (cartItem of history.cartData; track $index) {
-      <product-item [sideContentBoxFlex]="{ direction: 'row', gap: '30px' }"
-        [titlesSize]="{ mainTitle: '18px', subTitle: '10px' }" [mainBoxFlex]="{ direction: 'row', gap: '25px' }"
-        [imgBoxSize]="'S'" [itemData]="cartItem.item">
+<div class="slider">
+  @for (orderData of historyItems; track $index) {
 
-        <ng-container class="tags">
-          <div class="price">
-            <price [price]="ToPrice(itemTotal(cartItem))" [priceSize]="'22px'"></price>
-          </div>
-        </ng-container>
-
-        <ng-container class="extra-content">
-          <div class="details-items">
-            @for (detail of cartItem.amounts; track $index) {
-            @if(detail.quantity > 0){
-            <div class="detail">
-              <div class="price-and-size">
-                <h3 [ngStyle]="{
-                                      width: cartItem.item.type === 'Coffee' ? '60px' : '90px'
-                                    }">
-                  {{ detail.size }}
-                </h3>
-                <div class="price">
-                  <price [price]="
-                                        getPriceBySize(
-                                          cartItem.item.id,
-                                          cartItem.amounts[$index].size
-                                        )
-                                      " [priceSize]="'16px'"></price>
-                </div>
-              </div>
-              <h3 class="quantity">
-                <span class="Xsign">X</span>{{ detail.quantity }}
-              </h3>
-              <div class="price">
-                <price [price]="
-                                      ToPrice(
-                                        +detail.quantity *
-                                          +getPriceBySize(
-                                            cartItem.item.id,
-                                            cartItem.amounts[$index].size
-                                          )
-                                      )
-                                    " [priceSize]="'18px'"></price>
-              </div>
-            </div>
-            }}
-          </div>
-        </ng-container>
-
-      </product-item>
-
-      } @if (history.isAccepted) {
-      <button class="btn reorder" btnShape>Reorder</button>
-      }@else{
-      <button class="btn cancel-order" btnShape [ngStyle]="{ background: 'red' }">
-        cancel order
-      </button>
-      }
-    </div>
-    }
-  </div>
+  <order-details [orderData]="orderData"></order-details>
+  @if (orderData.isAccepted) {
+  <button class="btn reorder" btnShape>Reorder</button>
+  }@else{
+  <button class="btn cancel-order" btnShape>
+    cancel order
+  </button>
+  }
+  }
+</div>
 <button class="btn download" btnShape>download</button>
 }@else {
-<msg routerLink="/cart"></msg>
+<empty-page routerLink="/cart"></empty-page>
 }
 <router-outlet></router-outlet>

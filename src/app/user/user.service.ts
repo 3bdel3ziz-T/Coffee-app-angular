@@ -14,7 +14,6 @@ export class UserService {
     'userData' in localStorage ?
       this._user = this.get_UserData : this.set_UserData();
   }
-
   private get_Data<T>(arr: T): T {
     return arr
   }
@@ -46,6 +45,10 @@ export class UserService {
   }
   set_historyRef(historyRef: OrderRef) {
     this.set_Data<OrderRef>(historyRef, this._user.historyData)
+  }
+  clearCart(): void {
+    this._user.cartData = [];
+    this.set_UserData()
   }
 
   // get getUserCartRef(): ItemRef[] {

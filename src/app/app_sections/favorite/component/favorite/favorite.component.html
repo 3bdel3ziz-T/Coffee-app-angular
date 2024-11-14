@@ -1,6 +1,4 @@
-<section class="favorite page">
   @if(favData.length) {
-  <section class="page-content">
     <title-bar leftBtnShape="settingBtn" rightBtnShape="notification" pageTitle="favorites"></title-bar>
     <div class="slider">
       @for (favItem of favData; track $index) {
@@ -15,9 +13,8 @@
       </div>
       }
     </div>
-  </section>
   } @else {
-  <msg routerLink="/home" msg="you'r favorite is Empty" btnTxt="add some favorite!"></msg>
+  <empty-page routerLink="/home" empty-page="you'r favorite is Empty" btnTxt="add some favorite!"></empty-page>
   }
-</section>
 <router-outlet></router-outlet>
+<alert-msg></alert-msg>

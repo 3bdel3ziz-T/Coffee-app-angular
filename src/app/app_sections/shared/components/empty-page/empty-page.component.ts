@@ -3,13 +3,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BtnShapeDirective } from 'src/app/custom_directives/btn-shape.directive';
 
 @Component({
-  selector: 'msg',
+  selector: 'empty-page',
   standalone: true,
   imports: [BtnShapeDirective, NgStyle],
-  templateUrl: './msg.component.html',
-  styleUrl: './msg.component.scss'
+  templateUrl: './empty-page.component.html',
+  styleUrl: './empty-page.component.scss'
 })
-export class MsgComponent implements OnInit {
+export class EmptyPageComponent implements OnInit {
   ngOnInit(): void {
     this.scale = `${this.getScaleValue} ${this.getScaleValue}`
   }

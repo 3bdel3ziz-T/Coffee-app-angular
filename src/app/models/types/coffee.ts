@@ -2,6 +2,8 @@ import { BeanTypes, CoffeeCategory } from "./category"
 import { Sizes } from "./size"
 
 type Coffee = {
+  cartPosition: null | number,
+  orderPosition: null | number,
   price: Payment,
   description: string,
   roasted: `${RoastLvlS} Roasted`,

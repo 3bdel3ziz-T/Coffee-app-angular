@@ -1,0 +1,13 @@
+@use "../../../../../styles" as *;
+#custom-cursor {
+  position: relative;
+  top: 0;
+  left: 0;
+  $dimensions: 30px;
+  width: $dimensions;
+  height: $dimensions;
+  pointer-events: none;
+  z-index: 99999;
+  transition: all 100ms;
+  color: $col-orange;
+}

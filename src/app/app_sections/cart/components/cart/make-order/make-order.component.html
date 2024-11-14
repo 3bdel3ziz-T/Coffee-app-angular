@@ -1,23 +1,21 @@
-<section class="make-order page">
-  <section class="page-content">
-    <title-bar leftBtnShape="backBtn" pageTitle="over view"></title-bar>
-    <button class="btn" btnShape routerLink="payments">choose payment method</button>
-    <button class="btn" btnShape routerLink="address">choose address method</button>
-    <div class="order-over-view">
-      <!-- @for (item of obj.cartRef; track $index) {
-        <product-item></product-item>
-      } -->
-    </div>
-  </section>
+<section class="make-order">
+  <title-bar leftBtnShape="backBtn" pageTitle="over view"></title-bar>
+  <div class="order-over-view">
+    <order-details [orderData]="orderData"></order-details>
+  </div>
+  <button class="btn" btnShape routerLink="payments">choose payment method</button>
+  <button class="btn" btnShape routerLink="address">choose address method</button>
   <div class="buy-box">
     <div class="price">
       <h4 subTitle>Total Price</h4>
       <!-- <price [price]="getTotal(cart)" [priceSize]="'20px'"></price> -->
       <price priceSize="20px"></price>
     </div>
-    <button class="approve-order" routerLink="" btnShape>
+    <button class="approve-order" btnShape (click)="historyService.makeOrder(); isLoading = true">
       approve order
     </button>
   </div>
+  <!-- <espresso-loader [isLoading]="isLoading"></espresso-loader> -->
 </section>
+
 <router-outlet></router-outlet>

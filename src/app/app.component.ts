@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CustomCursorComponent } from './app_sections/shared/components/custom-cursor/custom-cursor.component';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
-    RouterOutlet],
+    RouterOutlet, CustomCursorComponent],
 })
 export class AppComponent {
   constructor() {

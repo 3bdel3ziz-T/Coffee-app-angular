@@ -115,7 +115,7 @@
   &:has(input[type="checkbox"]:checked) {
     svg {
       animation: heart 300ms ease-in-out 0s 1 normal both;
-      fill: $col-favorite;
+      fill: $col-red;
     }
     .svg-celebrate {
       animation-name: add-favorite;
@@ -130,8 +130,8 @@
   .svg-celebrate {
     position: absolute;
     display: block;
-    stroke: $col-favorite;
-    fill: $col-favorite;
+    stroke: $col-red;
+    fill: $col-red;
     stroke-width: 2px;
     width: fit-content;
     scale: 0;

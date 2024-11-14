@@ -25,7 +25,7 @@
   </svg>
 </div>
 
-<search-box [testMsg]="'message'" [otherTestMsg]="'otherTestMsg'"></search-box>
+<search-box></search-box>
 
 <category-filter (emitSelected)="selectedCategory($event)"></category-filter>
 
@@ -54,7 +54,6 @@
 </section>
 
 <h3 class="items-title">Coffee beans</h3>
-
 <section class="slider">
   @for (beansData of beansData; track $index) {
   <product-item [itemData]="beansData" [imgBoxSize]="'L'">

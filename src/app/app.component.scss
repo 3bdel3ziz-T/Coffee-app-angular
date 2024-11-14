@@ -9,6 +9,40 @@
   }
   @media (min-width: 431px) {
     padding: 12px 19px;
+    .notch {
+      --width: 125px;
+      position: absolute;
+      top: 25px;
+      left: calc(50% - (var(--width) / 2));
+      width: var(--width);
+      height: 35px;
+      background-color: black;
+      border-radius: 25px;
+      z-index: 999;
+      padding: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &::before {
+        content: "";
+        border-radius: calc(40px - 10px);
+        width: 65px;
+        height: 22px;
+        background-color: #040404;
+        display: block;
+      }
+      &::after {
+        margin-right: 5px;
+        content: "";
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        background: #050517;
+        display: block;
+        box-shadow: 0 0px 0px 2px #121323, 0 0px 0px 4px #050505;
+      }
+    }
   }
 }
 .iphone {
