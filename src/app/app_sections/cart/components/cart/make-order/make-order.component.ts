@@ -13,12 +13,11 @@ import { CartItem } from 'src/app/models/types/cart-item';
 import { OrderDetailsComponent } from 'src/app/app_sections/shared/components/order-details/order-details.component';
 import { AppService } from 'src/app/services/app.service';
 import { HistoryService } from 'src/app/app_sections/orders-history/services/history.service';
-import { EspressoLoaderComponent } from 'src/app/app_sections/shared/components/espresso-loader/espresso-loader.component';
 
 @Component({
   selector: 'make-order',
   standalone: true,
-  imports: [TitleBarComponent, BtnShapeDirective, RouterLink, RouterOutlet, PriceComponent, SubTitleDirective, ProductItemComponent, MainLayoutComponent, OrderDetailsComponent, EspressoLoaderComponent],
+  imports: [TitleBarComponent, BtnShapeDirective, RouterLink, RouterOutlet, PriceComponent, SubTitleDirective, OrderDetailsComponent],
   templateUrl: './make-order.component.html',
   styleUrl: './make-order.component.scss'
 })

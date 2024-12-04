@@ -10,7 +10,6 @@ import { SearchBoxComponent } from '../../../shared/components/search-box/search
 import { MenuBarComponent } from 'src/app/app_sections/shared/components/menu-bar/menu-bar.component';
 import { TitleBarComponent } from 'src/app/app_sections/shared/components/title-bar/title-bar.component';
 import { CoffeeCategory } from 'src/app/models/types/category';
-import { AlertMsgComponent } from 'src/app/app_sections/shared/components/alert-msg/alert-msg.component';
 
 @Component({
   selector: 'home-page',
@@ -26,7 +25,6 @@ import { AlertMsgComponent } from 'src/app/app_sections/shared/components/alert-
     RouterLink,
     RouterOutlet,
     TitleBarComponent,
-    AlertMsgComponent,
   ],
 })
 export class HomeComponent {

@@ -6,8 +6,6 @@ import { CartComponent } from './app_sections/cart/components/cart/cart.componen
 import { FavoriteComponent } from './app_sections/favorite/component/favorite/favorite.component';
 import { HistoryComponent } from './app_sections/orders-history/components/history/history.component';
 import { SettingComponent } from './app_sections/shared/components/setting/setting.component';
-import { PaymentComponent } from './app_sections/cart/components/cart/payment/payment.component';
-import { AddCardFormComponent } from './app_sections/cart/components/cart/payment/add-card-form/add-card-form.component';
 import { NotificationComponent } from './app_sections/shared/components/notification/notification.component';
 import { MakeOrderComponent } from './app_sections/cart/components/cart/make-order/make-order.component';
 import { MainLayoutComponent } from './app_sections/shared/components/main-layout/main-layout.component';
@@ -29,16 +27,8 @@ const routes: Routes = [
           { path: 'setting', component: SettingComponent },
           { path: 'notifications', component: NotificationComponent },
           {
-            path: 'make-order', component: MakeOrderComponent, children: [
-              // { path: 'address', component: PaymentComponent },
-              {
-                path: 'payments', component: PaymentComponent, children: [
-                  { path: 'add-card', component: AddCardFormComponent },
-                ]
-              }
-            ]
+            path: 'make-order', component: MakeOrderComponent
           },
-
         ]
       },
       {

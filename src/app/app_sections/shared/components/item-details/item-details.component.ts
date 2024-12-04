@@ -8,7 +8,6 @@ import { BtnShapeDirective } from '../../../../custom_directives/btn-shape.direc
 import { PriceComponent } from '../price/price.component';
 import { SubTitleDirective } from '../../../../custom_directives/sub-title.directive';
 import { DetailsComponent } from './details/details.component';
-import { AlertMsgComponent } from '../alert-msg/alert-msg.component';
 import { CartService } from 'src/app/app_sections/cart/services/cart.service';
 import { AppService } from 'src/app/services/app.service';
 
@@ -23,7 +22,6 @@ import { AppService } from 'src/app/services/app.service';
     SubTitleDirective,
     PriceComponent,
     BtnShapeDirective,
-    AlertMsgComponent
   ],
 })
 export class ItemDetailsComponent implements AfterContentInit {
